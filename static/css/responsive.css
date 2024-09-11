@@ -1,0 +1,246 @@
+:root {
+    --small-gap: 1.5rem;
+    --big-gap: 3rem
+}
+@media screen and (max-width: 580px) {
+    h2 {
+        font-size: 9vw;
+        text-align: center;
+        margin-inline: 1rem;
+        font-weight: 700;
+    }
+
+    .respHidden {
+        display: none;
+    }
+
+    .respNavbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background: #15082c;
+        width: 90vw;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .respNavbar ul {
+        margin-left: var(--big-gap);
+        align-items: baseline;
+    }
+
+    .respNavbar ul li {
+       display: flex;
+       align-items: baseline;
+       gap: 1rem;
+    }
+
+    .respNavbar ul li > * {
+        color: #FFF;
+    }
+
+    .nav-close span {
+        font-size: 2rem;
+
+    }
+
+    .nav-close {
+        align-self: last baseline;
+        padding: 1rem;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 100vh;
+    }
+
+    .hero-text-box h4 {
+        font-size: 0.9rem;
+    }
+
+    .first-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .first-img img{
+        width: 80vw;
+    }
+
+    .hero-text-container h1{
+        font-size: 12vw;
+    }
+
+    .hero-text-container h3{
+        font-size: 5vw;
+    }
+
+    .service-section {
+        margin-top: var(--big-gap);
+        height: max-content;
+    }
+
+    .service-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: var(--big-gap);
+    }
+
+    .service-item {
+        margin-inline: .5rem;
+        height: 30rem;
+    }
+    
+    .service-item img{
+       width: 60vw;
+    }
+
+    .team-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+        margin-bottom: 5rem;
+        margin-top: 5rem;
+        align-items: center;
+        gap: var(--big-gap);
+    }
+
+    .team-heading {
+        align-items: center;
+    }
+
+    .team-heading h2 {
+        font-size: 8.5vw;
+    }
+
+    .team-text-container {
+        align-items: center;
+    }
+
+    .team-svg img {
+        position: relative;
+        width: 80vw;
+        z-index: 3;
+        left: -5%;
+    }
+
+    .team-blob img {
+        width: 70vw;
+    }
+    
+
+    /* lang-toll section  */
+
+    .lan-tool-container {
+        height: max-content;
+    }
+
+    /* why choose us container */
+
+    .choose-container {
+        margin-top: var(--big-gap);
+        align-items: center;
+        gap: var(--big-gap);
+        margin-bottom: var(--big-gap);
+    }
+
+    .choose-container > div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: var(--big-gap);
+        height: max-content;
+    }
+
+    .choose-us-text-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: unset;
+        gap: var(--big-gap);
+        margin-bottom: var(--big-gap);
+    }
+
+    .choose-us-img-container img{
+        width: 60vw;
+    }
+
+    .choose-us-img-container h2 {
+        width: 90%;
+        font-size: 9vw;
+        text-align: center;
+    }
+
+    .circle {
+        width: 60%;
+    }
+
+    
+.choose-point-item {
+    width: 95%;
+}
+
+
+    /* our top client scroll */
+
+    .client-scroll-item-container img{
+        width: 40vw;
+    }
+
+    /* testionial section */
+
+    .testimonial-item {
+        max-width: 300px;
+    }
+
+    .testimonial-section-title {
+        gap: var(--small-gap)
+    }
+
+    
+    .testimonial-section-title h2{
+        font-size: 9vw;
+    }
+
+    /* our products */
+
+    .our-product-section {
+        gap: 1rem;
+    }
+
+    .product-item  {
+        align-items: baseline;
+    }
+
+    .product-item h2 {
+        font-size: 1.5rem;
+    }
+
+    .product-item img {
+        width: 80vw;
+    }
+
+    /* contact us section */
+
+    .contact-form {
+        width: 90vw;
+    }
+
+    /* footer responsive */
+
+    .footer-section {
+        height: max-content;
+    }
+
+    .main-footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
