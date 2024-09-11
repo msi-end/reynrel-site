@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/meta.ejs') %>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/commonClass.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <title>Our products</title>
+</head>
+
+<body>
+    <header>
+        <section class="flex header-section">
+            <div class="logo-container">
+                <div class="flex">
+                    <img src="../img/logo.png" class="logo-img" alt="logo">
+                    <!-- <a href="#">RAYNREL</a> -->
+                    <a href="#">reynrel</a>
+                </div>
+            </div>
+            <div class="nav-container">
+                <nav>
+                    <ul class="flex respHidden">
+                        <li><a href="/index.html">Home</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="/pages/about-us.html">About us</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="#">Services</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="#">Products</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="/pages/contact-us.html">Contact Us</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                    </ul>
+
+                    <!-- Mobile nav bar -->
+
+                    <div class="hidden flex-col respNavbar" id="mobile-navbar" style="display: none;">
+                        <div class="nav-close" onclick="closeNavBar()">
+                            <span class="material-symbols-outlined" style="color: #fff;">
+                                close
+                            </span>
+                        </div>
+                        <ul class="flex flex-col">
+                            <li><a href="#">Home</a><span class="material-symbols-outlined">
+                                    arrow_drop_down
+                                </span></li>
+                            <li><a href="#">Pages</a><span class="material-symbols-outlined">
+                                    arrow_drop_down
+                                </span></li>
+                            <li><a href="#">Services</a><span class="material-symbols-outlined">
+                                    arrow_drop_down
+                                </span></li>
+                            <li><a href="#">Products</a><span class="material-symbols-outlined">
+                                    arrow_drop_down
+                                </span></li>
+                            <li><a href="#">Contact Us</a><span class="material-symbols-outlined">
+                                    arrow_drop_down
+                                </span></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="btn-container">
+                <div class="hidden showResp" onclick="openNavBar()">
+                    <span class="material-symbols-outlined">
+                        menu
+                    </span>
+                </div>
+                <div>
+                    <button class="btn-hero respHidden">Lets Chat</button>
+                </div>
+            </div>
+
+        </section>
+    </header>
+
+    <main>
+        <section class="our-product-section">
+            <div class="title-container mt">
+                <span class="material-symbols-outlined">
+                    sports_volleyball
+                </span>
+                <h3 class="section-title">Our Products</h3>
+                <span class="material-symbols-outlined">
+                    sports_volleyball
+                </span>
+            </div>
+
+            <div>
+                <div class="flex make-query respflex-col">
+                    <h1>To query for any of the our product</h1>
+                    <button class="btn-hero">
+                        <span>Make Query</span>
+                        <span class="material-symbols-outlined">
+                            sms
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-container respflex-col">
+                <div class="flex product-item">
+                    <img src="../img/cipmedic-thumbnail.png" alt="Our-products">
+                    <h2>Interior design Software</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam velit labore perferendis
+                        doloremque.</p>
+                </div>
+                <div class="flex product-item">
+                    <img src="../img/cipmedic-thumbnail.png" alt="Our-products">
+                    <h2>Interior design Software</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam velit labore perferendis
+                        doloremque.</p>
+                </div>
+                <div class="flex product-item">
+                    <img src="../img/cipmedic-thumbnail.png" alt="Our-products">
+                    <h2>Interior design Software</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam velit labore perferendis
+                        doloremque.</p>
+                </div>
+                <div class="flex product-item">
+                    <img src="../img/cipmedic-thumbnail.png" alt="Our-products">
+                    <h2>Interior design Software</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam velit labore perferendis
+                        doloremque.</p>
+                </div>
+                <div class="flex product-item">
+                    <img src="../img/cipmedic-thumbnail.png" alt="Our-products">
+                    <h2>Interior design Software</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam velit labore perferendis
+                        doloremque.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="flex footer-section">
+        <div class="main-footer-container">
+            <div class="flex logo-container" style="align-self: center;">
+                <img src="../img/logo-v.png" alt="">
+                <h2>INFOTECH</h2>
+                <p style="color: #fff; font-weight: 600; font-size: 1rem;">"Defining the Future"</p>
+            </div>
+            <!-- contact us container -->
+            <div class="flex footer-container">
+                <div class="title-container">
+                    <span class="material-symbols-outlined" style="color: #fff;">
+                        sports_volleyball
+                    </span>
+                    <h3 class="section-title">Contact Us</h3>
+                    <span class="material-symbols-outlined" style="color: #fff;">
+                        sports_volleyball
+                    </span>
+                </div>
+                <div class="flex contact-way-container">
+                    <div class="flex contact-email">
+                        <div class="flex title">
+                            <span class="material-symbols-outlined">
+                                mail
+                            </span>
+                            <span style="color: rgb(153, 153, 153);">Send us Email</span>
+                        </div>
+                        <h3>panchananDeka162534@gmail.com</h3>
+                    </div>
+                    <div class="flex contact-email">
+                        <div class="flex title">
+                            <span class="material-symbols-outlined">
+                                phone_in_talk
+                            </span>
+                            <span style="color: rgb(153, 153, 153);">Give us a call</span>
+                        </div>
+                        <h3>+91 6000192289</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Quick links  -->
+            <div class="flex footer-container">
+                <div class="title-container">
+                    <span class="material-symbols-outlined" style="color: #fff;">
+                        sports_volleyball
+                    </span>
+                    <h3 class="section-title">Quick Links</h3>
+                    <span class="material-symbols-outlined" style="color: #fff;">
+                        sports_volleyball
+                    </span>
+                </div>
+                <div class="flex link-container">
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Team members</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Our products</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">About us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="flex copyright-container">
+            <p>Designed and maintain by Raynrel Infotech | All Rights Reserved</p>
+            <div class="social-container">
+
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>

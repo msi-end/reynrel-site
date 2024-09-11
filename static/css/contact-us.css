@@ -1,0 +1,162 @@
+.contact-us-section {
+    width: 100%;
+    background-color: #f7f6f6;
+    padding: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: first baseline;
+
+}
+
+.contact-us-heading {
+    margin-top: 2rem;
+    align-items: center;
+    gap: .5rem;
+}
+
+.contact-us-heading p {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.contact-details-box {
+    margin-top: 2rem;
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: #f06c06;
+}
+
+.contact-detail h3 {
+    color: black
+}
+
+.contact-title {
+    align-items: center;
+    gap: 0.5rem
+}
+
+.contact-title span:nth-last-child(1) {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-weight: 600;
+}
+
+
+/* callback form */
+
+.contact-form {
+    width: 35vw;
+    margin: 0 auto;
+    margin-top: 3rem;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 95%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: .6rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* //////map  */
+.map-container {
+    width: 90%;
+    margin: auto;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #f06c06, #ffa437);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.map-container .map-text {
+    width: 37%;
+    border-radius: 16px;
+    height: 60vh;
+    margin: 10px;
+    padding: 10px;
+    max-width: fit-content;
+    background-color: #ffffff;
+
+}
+
+.map-container .map-iframe {
+    width: 60%;
+}
+
+.map-container .map-iframe iframe {
+    border-radius: 16px;
+    width: 100%;
+    height: 60vh;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+.business-hours {
+    /* text-align: center; */
+  }
+  
+  .business-hours h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .hours-list li {
+    font-size: 1.1em;
+    color: #555;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .hours-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .hours-list li strong {
+    color: #333;
+    font-weight: bold;
+  }
+  

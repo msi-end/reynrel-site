@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts List</title>
+</head>
+<body>
+    <h1>Contact Details</h1>
+
+    <ul>
+        <% contacts.forEach(function(contact) { %>
+            <li><strong>Complete Name:</strong> <%= contact['Complete Name'] %></li>
+            <li><strong>Phone No:</strong> <%= contact['Phone No'] %></li>
+            <li><strong>Email Address:</strong> <%= contact['Email Address'] %></li>
+            <li><strong>Favorite Language:</strong> <%= contact['fav_language'] %></li>
+            <li><strong>Request Time:</strong> <%= contact.requestTime %></li>
+            <li><strong>Client IP:</strong> <%= contact.clientIP %></li>
+            <hr />
+        <% }); %>
+    </ul>
+</body>
+</html>

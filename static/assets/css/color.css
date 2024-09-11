@@ -1,0 +1,20 @@
+.heading>span,
+.team-expert span,
+.performance-count,
+.performance-count h2 {
+    color: #d48104;
+}
+
+
+/* Background Color */
+
+.batton,
+.discount-offer:before,
+.pricing-plans-data:before,
+.pricing-plans-data.two i,
+.client-reviews i,
+.location:before,
+.get-a-quote:before,
+.swal-modal:before {
+    background-color: #d48104;
+}

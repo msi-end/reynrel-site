@@ -1,0 +1,71 @@
+<header>
+    <section class="flex header-section">
+        <div class="logo-container">
+            <div class="flex">
+                <img src="./img/logo.png" class="logo-img" alt="logo">
+                <!-- <a href="#">RAYNREL</a> -->
+                <a href="/">reynrel</a>
+            </div>
+        </div>
+        <div class="nav-container">
+            <nav>
+                <ul class="flex respHidden">
+                    <li><a href="/">Home</a><span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span></li>
+                    <li><a href="/about-us">About us</a><span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span></li>
+                    <li><a href="/services">Services</a><span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span></li>
+                    <li><a href="/#products">Products</a><span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span></li>
+                    <li><a href="/contact-us">Contact Us</a><span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span></li>
+                </ul>
+
+                <!-- Mobile nav bar -->
+
+                <div class="hidden flex-col respNavbar" id="mobile-navbar" style="display: none;">
+                    <div class="nav-close" onclick="closeNavBar()">
+                        <span class="material-symbols-outlined" style="color: #fff;">
+                            close
+                        </span>
+                    </div>
+                    <ul class="flex flex-col">
+                        <li><a href="#">Home</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="#">Pages</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="#">Services</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="#">Products</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                        <li><a href="#">Contact Us</a><span class="material-symbols-outlined">
+                                arrow_drop_down
+                            </span></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="btn-container">
+            <div class="hidden showResp" onclick="openNavBar()">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+            <div>
+                <a href="http://wa.me/+917779885160" target="_blank"> <button class="btn-hero respHidden">Lets
+                        Chat</button></a>
+            </div>
+        </div>
+
+    </section>
+</header>

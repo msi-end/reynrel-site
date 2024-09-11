@@ -1,0 +1,59 @@
+.about-us-heading {
+    width: 100%;
+    height: 20vh;
+    background-color: #fff1d4;
+    align-items: first baseline;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.about-us-heading h3 {
+    font-size: 2rem;
+}
+
+.about-us-heading h4 {
+    font-size: 3rem;
+}
+
+/* our story */
+
+.about-us-container {
+    width: 100%;
+    height: 80vh;
+    background-color: #f5f5f5;
+    justify-content: space-between;
+}
+
+.our-story-text {
+    margin-top: 5rem;
+    max-width: 45vw;
+    margin-left: 5rem;
+}
+
+.our-story-text p {
+    line-height: 1.6rem;
+    color: var(--gray-text-color);
+    font-weight: 500;
+}
+
+.about-us-container img {
+    width: 30vw;
+    height: 20rem;
+    border-radius: 1rem;
+    margin-top: 5rem;
+    margin-right: 5rem;
+}
+
+.welcome {
+    font-size: 1.5rem;
+    color: rgb(80, 79, 79);
+    font-weight: 600;
+}
+
+.empower-part img{
+    margin-left: 5rem;
+}
+
+.empower-part .empower-text {
+    margin-right: 5rem;
+}
