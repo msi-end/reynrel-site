@@ -529,6 +529,7 @@ header {
     align-items: center;
     justify-content: center;
     margin: 3rem;
+    width: 100%;
 }
 
 .testimonial-item {
