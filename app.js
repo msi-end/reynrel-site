@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const ejs = require('ejs');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1111;
 const fs = require('node:fs');
 const compression = require('compression');
 
@@ -15,7 +15,6 @@ app.set('view engine', ejs)
 
 
 app.get('/', (req, res) => {
-    console.log(path.join(__dirname, '/'));
     res.status(200).render(path.join(__dirname, '/views/index.ejs'))
 });
 app.get('/info', (req, res) => {
@@ -60,7 +59,6 @@ app.post('/contact-us', (req, res) => {
         const currentIST = new Date(current.getTime() + 5.5 * 60 * 60 * 1000);
         return currentIST.toISOString().replace('T', ' ').slice(0, 19);
     }
-    console.log(req.body);
     const requestTime = getIndianTime();
     const clientIP = req.headers['x-forwarded-for'] || req.ip;
     const dataToSave = { ...req.body, requestTime: requestTime, clientIP: clientIP, };
