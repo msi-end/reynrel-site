@@ -3,94 +3,121 @@
 
 <head>
     <%- include('../partials/meta.ejs') %>
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/commonClass.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/about-us.css">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/commonClass.css">
+        <link rel="stylesheet" href="../css/responsive.css">
+        <link rel="stylesheet" href="../css/about-us.css">
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DNMGJY4KDT"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-DNMGJY4KDT');
+        </script>
+
 </head>
 
 <body>
     <%- include('../partials/header.ejs') %>
 
-    <div class="flex flex-col about-us-heading">
-        <div class="title-container">
-            <span class="material-symbols-outlined">
-                sports_volleyball
-            </span>
-            <h3 class="section-title">About Reynrel</h3>
-            <span class="material-symbols-outlined">
-                sports_volleyball
-            </span>
+        <div class="flex flex-col about-us-heading">
+            <div class="title-container">
+                <span class="material-symbols-outlined">
+                    sports_volleyball
+                </span>
+                <h3 class="section-title">About Reynrel</h3>
+                <span class="material-symbols-outlined">
+                    sports_volleyball
+                </span>
+            </div>
+            <h4>How we Started</h4>
         </div>
-        <h4>How we Started</h4>
-    </div>
-     
-    <!-- our story -->
 
-    <div class="flex about-us-container">
-        <div class="our-story-text">
-            <p>
-                <span class="welcome">Welcome to REYNREL</span>, where passion meets performance. Founded by two self-taught programmers, our
-                journey started with a shared love for coding and a vision to create software solutions that make a difference.
-                With a deep understanding of technology and an unwavering commitment to excellence, we've grown into a trusted
-                partner for businesses looking to innovate and thrive in the digital age.
-            </p>
-            <p style="margin-top: .8rem;">
-                Our story is one of dedication and hard work. Without formal training, we dove into the world of programming,
-                learning from every project, every challenge, and every success. This hands-on experience has shaped us into
-                versatile developers who think outside the box and deliver solutions that are not only functional but also
-                elegant and efficient.
-            </p>
-            <p style="margin-top: .8rem;">
-                At REYNREL, we believe that our work speaks for itself. We take pride in the relationships we've
-                built with our clients, who return to us time and again for our performance, reliability, and personalized
-                service. From startups to established enterprises, our clients trust us to bring their ideas to life with
-                software that’s tailored to their unique needs.
-        
-                Our commitment to quality, innovation, and client satisfaction drives everything we do. We're not just building
-                software; we're building long-term partnerships based on trust and mutual success.
-        
-                Thank you for considering REYNREL. We look forward to the opportunity to help you achieve your goals
-                and transform your vision into reality.</p>
+        <!-- our story -->
+
+        <div class="flex about-us-container">
+            <div class="our-story-text">
+                <p>
+                    <span class="welcome">Welcome to REYNREL</span>, where passion meets performance. Founded by two
+                    self-taught programmers, our
+                    journey started with a shared love for coding and a vision to create software solutions that make a
+                    difference.
+                    With a deep understanding of technology and an unwavering commitment to excellence, we've grown into
+                    a trusted
+                    partner for businesses looking to innovate and thrive in the digital age.
+                </p>
+                <p style="margin-top: .8rem;">
+                    Our story is one of dedication and hard work. Without formal training, we dove into the world of
+                    programming,
+                    learning from every project, every challenge, and every success. This hands-on experience has shaped
+                    us into
+                    versatile developers who think outside the box and deliver solutions that are not only functional
+                    but also
+                    elegant and efficient.
+                </p>
+                <p style="margin-top: .8rem;">
+                    At REYNREL, we believe that our work speaks for itself. We take pride in the relationships we've
+                    built with our clients, who return to us time and again for our performance, reliability, and
+                    personalized
+                    service. From startups to established enterprises, our clients trust us to bring their ideas to life
+                    with
+                    software that’s tailored to their unique needs.
+
+                    Our commitment to quality, innovation, and client satisfaction drives everything we do. We're not
+                    just building
+                    software; we're building long-term partnerships based on trust and mutual success.
+
+                    Thank you for considering REYNREL. We look forward to the opportunity to help you achieve your goals
+                    and transform your vision into reality.</p>
+            </div>
+            <img src="../img/about-us/about-us.webp" alt="our-story-image">
         </div>
-        <img src="../img/about-us/about-us.webp" alt="our-story-image">
-    </div>
 
-    <div class="flex flex-col about-us-heading">
-        <div class="title-container">
-            <span class="material-symbols-outlined">
-                sports_volleyball
-            </span>
-            <h3 class="section-title">About business</h3>
-            <span class="material-symbols-outlined">
-                sports_volleyball
-            </span>
+        <div class="flex flex-col about-us-heading">
+            <div class="title-container">
+                <span class="material-symbols-outlined">
+                    sports_volleyball
+                </span>
+                <h3 class="section-title">About business</h3>
+                <span class="material-symbols-outlined">
+                    sports_volleyball
+                </span>
+            </div>
+            <h4>How we empower businesses with TECH</h4>
         </div>
-        <h4>How we empower businesses with TECH</h4>
-    </div>
 
-    <!-- empowering businesses -->
-    <div class="flex about-us-container empower-part">
-        <img src="../img/about-us/about-us.webp" alt="our-story-image">
-        <div class="our-story-text empower-text">
-            <p>
-                We believe that technology should be accessible and affordable for every business, regardless of size. Our mission is to empower small and medium enterprises (SMEs) by providing them with the tools and support they need to thrive in today's digital landscape.
-            </p>
-            <p style="margin-top: .8rem;">
-                We specialize in offering tailored tech solutions, including CRM, ERP systems, and custom software designed to meet the unique needs of your business. By focusing on affordability and scalability, we ensure that you can leverage the latest technology without breaking the bank.
-            </p>
-            <p style="margin-top: .8rem;">
-                Our team is committed to providing ongoing support, helping you seamlessly integrate and optimize these solutions to drive growth, improve efficiency, and stay competitive. We're not just a service provider—we're your partner in success.
+        <!-- empowering businesses -->
+        <div class="flex about-us-container empower-part">
+            <img src="../img/about-us/about-us.webp" alt="our-story-image">
+            <div class="our-story-text empower-text">
+                <p>
+                    We believe that technology should be accessible and affordable for every business, regardless of
+                    size. Our mission is to empower small and medium enterprises (SMEs) by providing them with the tools
+                    and support they need to thrive in today's digital landscape.
+                </p>
+                <p style="margin-top: .8rem;">
+                    We specialize in offering tailored tech solutions, including CRM, ERP systems, and custom software
+                    designed to meet the unique needs of your business. By focusing on affordability and scalability, we
+                    ensure that you can leverage the latest technology without breaking the bank.
+                </p>
+                <p style="margin-top: .8rem;">
+                    Our team is committed to providing ongoing support, helping you seamlessly integrate and optimize
+                    these solutions to drive growth, improve efficiency, and stay competitive. We're not just a service
+                    provider—we're your partner in success.
 
-                Let us help you navigate the complexities of technology so you can focus on what you do best: running your business.
-            </p>
+                    Let us help you navigate the complexities of technology so you can focus on what you do best:
+                    running your business.
+                </p>
+            </div>
         </div>
-    </div>
 
-    <!-- footer -->
-    <%- include('../partials/footer.ejs') %>
+        <!-- footer -->
+        <%- include('../partials/footer.ejs') %>
 
 </body>
 
