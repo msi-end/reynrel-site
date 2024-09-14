@@ -532,16 +532,17 @@ header {
 }
 
 .testimonial-item {
-    background-color: #fff;
+    /* background-color: #faede1; */
+    background-color: #faede169;
     padding: 1rem;
     padding-inline: 2rem;
     margin: 1rem;
     position: relative;
     border-radius: 1.5rem;
     box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.03);
-    width: 420px;
+    width: 30%;
     align-items: baseline;
-    /* height: 280px; */
+    height: 300px;
 }
 
 .testimonial-item p {
