@@ -25,12 +25,17 @@
     <meta property="og:type" content="website">
 
     <!-- Meta CSS-->
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/commonClass.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <script src="./js/script.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+    </style>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DNMGJY4KDT"></script>
@@ -41,9 +46,95 @@
 
         gtag('config', 'G-DNMGJY4KDT');
     </script>
+    <style>
+        .material-icons {
+            font-family: "Material Icons";
+            visibility: hidden;
+        }
 
+        .material-icons::before {
+            content: "";
+            visibility: visible;
+        }
 
+        @font-face {
+            font-family: "Material Icons";
+            src: url("https://fonts.googleapis.com/icon?family=Material+Icons");
+            font-display: block;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "reynrel",
+      "url": "https://reynrel.in",
+      "logo": "https://reynrel.in/img/logo.png",
+      "sameAs": [
+        "https://jsdl.in/DT-99IGURZD1CD",
+        "https://g.page/r/CRbSGdoAjp2bEAI",
+        "https://www.instagram.com/reynrel_infotech",
+        "https://www.linkedin.com/company/reynrel"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+919401069337",
+        "contactType": "Customer Service",
+        "areaServed": "IN",
+        "availableLanguage": "English"
+      },
+      "description": "Reynrel offers custom web and software development services, tech consultation, and pre-built software solutions.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "lkrb path, nabin nagar",
+        "addressLocality": "Guwahati",
+        "addressRegion": "Assam",
+        "postalCode": "781024",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "26.1445", 
+        "longitude": "91.7362"
+      },
+      "foundingDate": "2021",
+      "areaServed": "IN",
+      ],
+      "offers": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Development",
+              "description": "Custom website development services."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Software Development",
+              "description": "Tailored software development for businesses."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Tech Consultancy",
+              "description": "Expert consultation on tech solutions."
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
+
 
 <body>
     <%- include('./partials/header.ejs') %>
