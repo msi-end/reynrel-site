@@ -85,8 +85,14 @@
         width: 157vw;
     }
 
+    .hero-text-container {
+        position: relative;
+        top: -10%;
+    }
+
     .hero-text-container h1 {
         font-size: 12vw;
+
     }
 
     .hero-text-container h3 {
