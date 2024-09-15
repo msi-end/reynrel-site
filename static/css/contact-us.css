@@ -1,11 +1,15 @@
 .contact-us-section {
     width: 100%;
     background-color: #f7f6f6;
-    padding: 10%;
+    padding: 5%;
     display: flex;
     flex-direction: row;
     align-items: first baseline;
+    gap: 3rem;
 
+}
+.contact-us-section div {
+    width: 100%;
 }
 
 .contact-us-heading {
@@ -160,3 +164,16 @@ textarea {
     font-weight: bold;
   }
   
+@media screen and (max-width: 780px) {
+    .contact-us-section {
+     flex-wrap: wrap;
+    
+    }
+    .map-container .map-text{
+        width: 100%;
+    }
+    .map-container .map-iframe{
+        width: 96%;
+    }
+
+  }
