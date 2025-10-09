@@ -30,6 +30,17 @@ app.get('/services', (req, res) => {
 app.get('/contact-us', (req, res) => {
     res.status(200).render(path.join(__dirname, 'views/pages/contact-us.ejs'))
 })
+app.get('/terms-conditions', (req, res) => {
+    res.status(200).render(path.join(__dirname, 'views/pages/terms_condition.ejs'))
+})
+app.get('/refund-cancellation', (req, res) => {
+    res.status(200).render(path.join(__dirname, 'views/pages/refund_cancel.ejs'))
+})
+
+
+
+
+
 
 app.get('/blog/:blogName', (req, res) => {
     if (fs.existsSync(path.join(__dirname, `views/blog/${req.params.blogName}.html`))) {
