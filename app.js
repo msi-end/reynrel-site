@@ -14,6 +14,10 @@ app.set('views', __dirname + '/views')
 app.set('view engine', ejs)
 
 
+const appsRoutes= require('./routes/apps.routes');
+app.use('/apps', appsRoutes);
+
+
 app.get('/', (req, res) => {
     res.status(200).render(path.join(__dirname, '/views/index.ejs'))
 });
@@ -98,6 +102,6 @@ app.get('*', (req, res) => {
 })
 app.listen(PORT,
     () => {
-        console.log(`working at port ${PORT}`);
+        console.log(`working at port http://localhost:${PORT}`);
     }
 )
