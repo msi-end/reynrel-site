@@ -14,7 +14,7 @@ app.set('views', __dirname + '/views')
 app.set('view engine', ejs)
 
 
-const appsRoutes= require('./routes/apps.routes');
+const appsRoutes = require('./routes/apps.routes');
 app.use('/apps', appsRoutes);
 
 
@@ -41,7 +41,9 @@ app.get('/refund-cancellation', (req, res) => {
     res.status(200).render(path.join(__dirname, 'views/pages/refund_cancel.ejs'))
 })
 
-
+app.get('/privacy-policy', (req, res) => {
+    res.status(200).render(path.join(__dirname, 'views/pages/privacy_policy.ejs'))
+})
 
 
 
@@ -83,10 +85,10 @@ app.post('/contact-us', (req, res) => {
     res.status(200).send('success!')
 })
 app.get('/contacts', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname,'/contacts-list.json'))
+    res.status(200).sendFile(path.join(__dirname, '/contacts-list.json'))
 });
 app.get('/leads', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname,'/leads-list.json'))
+    res.status(200).sendFile(path.join(__dirname, '/leads-list.json'))
 });
 
 
