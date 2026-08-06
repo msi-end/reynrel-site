@@ -49,6 +49,12 @@ app.use('/api/client', clientAuthRoutes);
 app.use('/api/client', clientRoutes);
 app.use('/api/leads', leadsRoutes);
 
+const frontendDist = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendDist));
+app.get(/^(?!\/api).*/, (req, res) => {
+  res.sendFile(path.join(frontendDist, 'index.html'));
+});
+
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   console.error(err);
