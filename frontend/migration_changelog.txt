@@ -1,0 +1,297 @@
+REYNREL INFOTECH — OLD SITE TO NEW SITE MIGRATION CHANGELOG
+=============================================================
+Date: 2026-07-30
+Source (old site): Z:\Visual_Codes\REYNREL.IN\reynrel-site  (EJS/Express site)
+Target (new site):  Z:\Visual_Codes\REYNREL.IN\my-restored-site  (React/Vite site)
+
+This document lists every change made while auditing the old site and
+migrating real business data, branding, and assets into the new site.
+Each entry names the exact file(s) touched so changes can be verified.
+
+
+1. BRAND ASSETS COPIED FROM OLD SITE
+-------------------------------------
+Source: reynrel-site/static/... -> Destination: my-restored-site/public/...
+
+- static/img/logo.png            -> public/assets/images/reynrel-logo-icon.png
+  (official orange "infinity" icon mark, used in header/footer)
+- static/img/logo-v.png          -> public/assets/images/reynrel-logo-full.png
+  (icon + "reynrel" wordmark lockup, available for future use)
+- static/favicons/favicon.ico              -> public/favicon.ico
+- static/favicons/favicon-16x16.png        -> public/favicon-16x16.png
+- static/favicons/favicon-32x32.png        -> public/favicon-32x32.png
+- static/favicons/apple-touch-icon.png     -> public/apple-touch-icon.png
+- static/favicons/android-chrome-192x192.png -> public/android-chrome-192x192.png
+- static/favicons/android-chrome-512x512.png -> public/android-chrome-512x512.png
+- static/favicons/site.webmanifest         -> public/site.webmanifest
+
+Real client logos:
+- static/img/clients/ebah.png                    -> public/assets/images/clients/ebah.png
+- static/img/clients/kkv.png                     -> public/assets/images/clients/kkv.png
+- static/img/clients/jagya.png                   -> public/assets/images/clients/jagya.png
+- static/img/clients/interior.jpg                -> public/assets/images/clients/styles-interior.jpg
+- static/img/clients/breathe.png                 -> public/assets/images/clients/breathe.png
+- static/img/clients/cipmedic.png                -> public/assets/images/clients/cipmedic.png
+- static/img/clients/North East 365 Assam.png    -> public/assets/images/clients/north-east-365.png
+
+Real testimonial photos:
+- static/img/feedback/ebah.jpg   -> public/assets/images/testimonials/jishu-saikia.jpg
+- static/img/feedback/rector.jpg -> public/assets/images/testimonials/bidhan-boruah.jpg
+- static/img/feedback/nea.jpeg   -> public/assets/images/testimonials/pankaj-pator.jpeg
+
+
+2. SITE-WIDE BRANDING
+-----------------------
+File: my-restored-site/index.html
+- Replaced generic "my-restored-site" title with real business title/meta
+  description sourced from the old site's <title>/<meta> tags.
+- Replaced default Vite favicon with the real Reynrel favicon set copied above.
+- Added Open Graph tags using the real logo.
+
+File: my-restored-site/src/components/ui/Header.jsx
+- The logo slot was rendering a placeholder Rocket icon next to an empty
+  `<img src="" alt="">` (no real logo was displayed anywhere on the site).
+  Replaced with the real reynrel-logo-icon.png.
+- Added a "Contact Us" entry to the main navigation (see item 3 below).
+
+File: my-restored-site/src/pages/homepage/components/Footer.jsx
+- Replaced the gradient/Rocket-icon placeholder logo with the real
+  reynrel-logo-icon.png.
+- Added "Contact Us" to the Company footer links.
+
+
+3. NAVIGATION / ROUTING BUG FIX
+----------------------------------
+File: my-restored-site/src/Routes.jsx
+- The ContactUs page existed but was unreachable: three duplicate
+  `<Route path="/ContactUs" ...>` entries were defined (React Router only
+  honors the first match), one of which incorrectly rendered
+  ProductDevelopmentLeadGen instead of ContactUs, and none of them were
+  linked from navigation.
+- Fixed to a single `<Route path="/contact-us" element={<ContactUs />} />`
+  and gave the three lead-gen landing pages (ProductDevelopmentLeadGen,
+  SoftwareDevelopmentLeadGen, WebDevelopmentLeadGen) their own distinct
+  routes (/lp/product-development, /lp/software-development,
+  /lp/web-development) since they were imported but never actually routed.
+- Added "Contact Us" to Header.jsx navigationItems so the page is reachable.
+
+
+4. REAL CONTACT INFORMATION (replacing placeholder data)
+------------------------------------------------------------
+Old site values used (from reynrel-site/views/partials/footer.ejs and
+pages/contact-us.ejs): email info.reynrel@gmail.com, phone
++91 9401069337, WhatsApp +91 7779885160, address "House No. 46, LKRB Path,
+Nabin Nagar, Guwahati, Assam 781024", business hours Mon-Fri 9AM-6PM,
+Sat 10AM-4PM, Sun closed.
+
+Files updated:
+- src/pages/homepage/components/Footer.jsx
+  Replaced fake "123 Tech Boulevard, San Francisco" address,
+  "info@reynrelinfotech.com" email, "+1 (555) 123-4567" phone, and
+  unverified Twitter/Facebook/GitHub social links with the real address,
+  real email/phone, and only the two verified social links from the old
+  site's schema.org data (LinkedIn, Instagram) plus a WhatsApp link.
+- src/pages/homepage/components/CTASection.jsx
+  Replaced fake email/phone contact methods with real ones; "Live Chat"
+  changed to "WhatsApp Us" linking to wa.me/+917779885160.
+- src/pages/homepage/index.jsx
+  Replaced fake email/phone in the "Schedule Consultation" modal.
+- src/pages/contact-us/index.jsx
+  Replaced entirely fictitious placeholder business
+  "contact@beyondinfotech.com" / "Silicon Valley, CA" / "Mon-Fri 9AM-6PM PST"
+  with the real Reynrel email, phone, Guwahati office address, and real
+  business hours.
+
+
+5. REAL TESTIMONIALS (replacing fabricated ones)
+-----------------------------------------------------
+Source: reynrel-site/views/index.ejs, client-testimonial-section.
+The new site previously showed 6 entirely fictitious testimonials
+attributed to invented people (e.g. "Dr. Sarah Mitchell", "Rajesh Kumar",
+"Michael Chen", "Jennifer Williams", "David Thompson", "Lisa Anderson")
+using AI-generated stock photos and fabricated company names/metrics that
+do not appear anywhere on the old site.
+
+- src/pages/client-success/components/TestimonialsGrid.jsx
+  Replaced all 6 fabricated testimonials with the 3 real testimonials from
+  the old site, using their real photos and verbatim quotes:
+    * Jishu J. Saikia, Managing Director, Reynrel Construction
+    * Sri Bidhan Boruah, Rector, Kalong Kapili Vidyapith
+    * Sri Pankaj Pator, Founder, North East 365 Assam
+  Dropped the fabricated 5-star ratings, "results" bullet metrics, and
+  "years partnership" durations that were invented for the fake reviewers
+  and are not present in the old site's data.
+
+- src/pages/homepage/components/ClientSuccessHighlights.jsx
+  Replaced the 2 fabricated "featured client" case-study cards (fake EBAH
+  "Healthcare Technology" story with invented 85%/50K+/99.9% metrics, and
+  fake North East 365 story with a fictional "Michael Chen, CEO") with the
+  real EBAH and North East 365 Assam clients, their real logos, and their
+  real testimonial quotes/authors from the old site. Replaced the
+  6 fabricated "client logo" companies (TechCorp Global, FinanceHub Pro,
+  MediCare Plus, RetailEdge Systems, EduTech Solutions, LogiFlow
+  International — none of which exist on the old site) with the 7 real
+  clients listed on the old site's homepage.
+
+
+5b. REAL TESTIMONIALS — PRODUCTS PAGE (found in final sweep)
+------------------------------------------------------------------
+- src/pages/products/components/TestimonialSection.jsx
+  Found during a final repo-wide sweep for leftover fake names/companies.
+  This section attributed fabricated product-specific quotes and metrics
+  ("40% wait time reduction", "+75% sales productivity", "95% error
+  reduction") to "Dr. Sarah Mitchell" / "EBAH Healthcare" and "Michael
+  Chen" / "North East 365" (reusing real client names with invented
+  quotes), plus a third, entirely fictional company "TechVentures Inc."
+  Replaced with the same 3 real testimonials/photos used in
+  TestimonialsGrid.jsx above, and removed the fabricated star ratings,
+  "product used" tags, and metric figures since the old site's
+  testimonials don't specify which product each client used.
+
+
+6. REAL CLIENT LOGOS (replacing fabricated ones)
+-----------------------------------------------------
+- src/pages/client-success/components/ClientLogos.jsx
+  Replaced 6 fabricated companies (TechCorp Solutions, FinanceHub Pro,
+  RetailMax Systems, EduTech Global, etc., all using AI-generated logo
+  images) with the 7 real Reynrel clients and their real logos: EBAH,
+  North East 365 Assam, Kalong Kapili Vidyapith, Jagya Construction,
+  Styles Interior, Breathe Wellness Center, Cipmedic.com.
+
+
+7. CASE STUDIES GROUNDED IN REAL CLIENTS
+---------------------------------------------
+- src/pages/client-success/components/CaseStudies.jsx
+  The old version presented 4 detailed "case studies" with specific
+  technologies, timelines, and results (e.g. "$10M+ monthly processing",
+  "5M+ daily transactions") for clients that don't exist on the old site
+  (TechCorp Solutions, FinanceHub Pro) alongside invented specifics for
+  EBAH/North East 365. Replaced with 2 honest partnership write-ups for
+  the real clients (EBAH, North East 365 Assam) using their real
+  testimonial quotes, without inventing unverifiable technical details or
+  results metrics not present in the source data.
+
+- src/pages/why-choose-us/components/TrustDevelopment.jsx
+  The "Featured Client Success Stories" used the same real client names
+  (EBAH, North East 365) but with fabricated challenge/solution narratives
+  and invented result percentages. Rewrote the challenge/solution text to
+  be generic and non-fabricated, and removed the invented numeric results
+  (the "Key Results" block now only renders when real results exist).
+
+
+8. FOUNDING DATE / YEARS-OF-EXPERIENCE CORRECTIONS
+-------------------------------------------------------
+The old site's schema.org JSON-LD (reynrel-site/views/index.ejs) states
+"foundingDate": "2021". The new site inconsistently claimed anywhere from
+"05+" to "15+" years of experience, and one section placed the company's
+founding in 2010 (11 years before it actually existed). Standardized all
+"years of experience" figures to 5+ (consistent with a 2021 founding date,
+current date 2026) in:
+  - src/pages/homepage/components/ServicesPreview.jsx ("15+ years" -> "5+ years")
+  - src/pages/homepage/components/CTASection.jsx ("15+" -> "5+")
+  - src/pages/about/components/HeroSection.jsx ("15+" -> "5+")
+  - src/pages/about/components/CTASection.jsx ("15+" -> "5+")
+  - src/pages/client-success/components/HeroSection.jsx ("15+" -> "5+")
+  - src/pages/client-success/components/CTASection.jsx ("15+ years" -> "5+ years")
+  - src/pages/why-choose-us/components/HeroSection.jsx ("15+" -> "5+")
+  - src/pages/why-choose-us/components/CTASection.jsx ("15+ years of
+    excellence" -> "5+ years of excellence"; also toned down "leading
+    enterprises worldwide" to "growing businesses" since the old site
+    shows a Guwahati-based, regionally-focused client base)
+  - src/pages/why-choose-us/components/CompetitiveDifferentiators.jsx
+    (2 occurrences: "15+ years of experience..." -> "5+ years of
+    experience..."; stat tile "15+" -> "5+")
+  - src/pages/services/components/ServiceHero.jsx ("15+ Years Experience" -> "5+ Years Experience")
+  - src/pages/services/components/CTASection.jsx ("15+" -> "5+")
+
+- src/pages/about/components/CompanyStorySection.jsx
+  Rewrote the "Our Journey" timeline. It previously claimed founding in
+  "2010" and fabricated a full 16-year history of made-up milestones
+  through a speculative "2026: Future Forward — AI-powered solutions"
+  entry. Replaced with a truthful timeline anchored to the real 2021
+  founding date and the real "two self-taught programmers" origin story
+  from reynrel-site/views/pages/about-us.ejs, plus the real product suite
+  (Clinic Management, CRM, Billing/Invoicing, Small Business Management)
+  from reynrel-site/views/index.ejs, without inventing specific unverified
+  years for events that can't be confirmed.
+
+- src/pages/why-choose-us/components/TrustDevelopment.jsx
+  The "Client Relationship Duration" chart claimed 35% of clients had
+  6-10 year relationships and 20% had 10+ year relationships — impossible
+  for a company founded in 2021. Replaced with a duration distribution
+  capped at "5+ Years" and updated the summary line ("55% ... 6+ years"
+  -> "40% ... 3+ years") to stay internally consistent with the real
+  founding date.
+
+
+9. REMOVED FABRICATED CERTIFICATIONS, AWARDS, AND FAKE TEAM PROFILES
+--------------------------------------------------------------------------
+Per explicit confirmation, removed unverifiable trust claims that have no
+basis anywhere on the old site — invented ISO/SOC2/AWS/Microsoft/Google
+Cloud certification badges, named industry awards, professional
+association memberships, and fictional named staff (complete with
+AI-generated headshots and per-person certification lists) that are
+inconsistent with each other across pages and could constitute misleading
+business claims.
+
+Deleted (unused, entirely fabricated, no real data available to replace them):
+  - src/pages/client-success/components/PartnershipValidation.jsx
+    (fake AWS/Microsoft/ISO27001/Google Cloud certs with impossible
+    "Since 2019/2020" dates predating the company's 2021 founding; fake
+    "Tech Excellence Awards"/"Healthcare IT Summit" awards; fake
+    professional association memberships)
+  - src/pages/why-choose-us/components/CertificationsSection.jsx
+    (fake AWS/Microsoft/ISO27001/SOC2/NASSCOM/IEEE/CMMI Level 5/Six Sigma
+    certifications and a fabricated "60+ professional certifications
+    across our team" count)
+  - src/pages/why-choose-us/components/ExperienceValidation.jsx
+    (fictional named team members "Rajesh Kumar", "Priya Sharma", "Amit
+    Patel", "Sneha Reddy" with AI-generated photos, fabricated
+    certifications, and impossible per-domain "years" claims of 7-12+
+    years predating the company's founding)
+  - src/pages/about/components/TeamExpertiseSection.jsx
+    (the same fictional "leadership team" names reused with different,
+    contradictory job titles/years/certifications than in
+    ExperienceValidation.jsx above — clear evidence of fabrication)
+
+Removed their imports/usage from:
+  - src/pages/client-success/index.jsx
+  - src/pages/why-choose-us/index.jsx
+  - src/pages/about/index.jsx
+
+Stripped fabricated content while keeping the real, non-fabricated parts
+of the section:
+  - src/pages/homepage/components/TrustSignals.jsx
+    Removed the "Security Certifications" grid (ISO 27001, Microsoft
+    Partner, SOC 2, GDPR badges), the "Strategic Technology Partners" grid
+    (AWS/Google Cloud/Azure/Salesforce partner badges), and the bottom
+    "256-bit encryption / 100% Compliant" trust bar — none of which are
+    real. Kept the "Support Commitment" cards (generic service
+    commitments, not false certifications).
+  - src/pages/client-success/components/SuccessMetrics.jsx
+    Changed the false claim "All metrics verified through third-party
+    audits and client surveys" (no such audits exist) to
+    "Metrics reflect outcomes across our client engagements."
+
+
+10. VERIFICATION
+--------------------
+- `npm run build` completes successfully with no errors.
+- Dev server smoke-tested: /homepage, /contact-us, /client-success, and
+  all newly-added asset paths (logo, client logos, testimonial photos)
+  return HTTP 200.
+- Confirmed no remaining references to the deleted components anywhere
+  in src/ (grep clean).
+
+
+NOT CHANGED / OUT OF SCOPE
+------------------------------
+- General marketing metrics not tied to certifications or years of
+  experience (e.g. "98% client satisfaction", "500+ projects delivered",
+  ROI/pricing figures on the Products page) were left as-is — the old
+  site never published comparable figures to verify against, and this was
+  outside the scope confirmed with the site owner.
+- The Contact Us page's submission form is a front-end simulation only
+  (no backend wired up) in both the old and new codebase equivalents seen
+  during this migration; connecting it to a real inbox/CRM was not part
+  of this content-migration task.

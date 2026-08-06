@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /leads
-Disallow: /contacts
-Disallow: /cgi-bin/
-Sitemap: https://reynrel.in/sitemap.xml
