@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Seo from '../../components/Seo';
 import Header from '../../components/ui/Header';
 import HeroSection from './components/HeroSection';
+import ROICalculatorSection from './components/ROICalculatorSection';
 import ServicesPreview from './components/ServicesPreview';
 import ProductsPreview from './components/ProductsPreview';
 import ClientSuccessHighlights from './components/ClientSuccessHighlights';
@@ -38,6 +39,7 @@ const Homepage = () => {
 
       <main className="pt-16 lg:pt-20">
         <HeroSection onScheduleConsultation={handleScheduleConsultation} />
+        <ROICalculatorSection onScheduleConsultation={handleScheduleConsultation} />
         <ServicesPreview />
         <ProductsPreview />
         <ClientSuccessHighlights />

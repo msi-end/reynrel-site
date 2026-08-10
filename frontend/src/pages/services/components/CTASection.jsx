@@ -73,11 +73,11 @@ const CTASection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-16">
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold mb-2">5+</div>
+            <div className="text-4xl md:text-5xl font-bold mb-2">05+</div>
             <div className="text-sm md:text-base text-white/80">Years Experience</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold mb-2">100+</div>
+            <div className="text-4xl md:text-5xl font-bold mb-2">37+</div>
             <div className="text-sm md:text-base text-white/80">Projects Delivered</div>
           </div>
           <div className="text-center">

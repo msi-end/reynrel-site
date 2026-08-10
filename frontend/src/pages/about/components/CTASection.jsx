@@ -67,7 +67,7 @@ const CTASection = () => {
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
                     <Icon name="Award" size={32} color="var(--color-brand-electric)" />
                   </div>
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">5+</div>
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">05+</div>
                   <div className="text-sm md:text-base text-white/80">Years of Excellence</div>
                 </div>
 
@@ -75,7 +75,7 @@ const CTASection = () => {
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
                     <Icon name="Target" size={32} color="var(--color-brand-electric)" />
                   </div>
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">200+</div>
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">37+</div>
                   <div className="text-sm md:text-base text-white/80">Successful Projects</div>
                 </div>
               </div>

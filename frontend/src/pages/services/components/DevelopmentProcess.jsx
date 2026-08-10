@@ -51,7 +51,7 @@ const DevelopmentProcess = () => {
         'Production environment setup',
         'Deployment and monitoring',
         'User training and documentation',
-        '24/7 technical support',
+        '15/7 technical support',
         'Continuous improvement and updates'
       ]
     }

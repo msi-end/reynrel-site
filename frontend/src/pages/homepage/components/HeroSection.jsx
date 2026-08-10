@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 
 const HeroSection = ({ onScheduleConsultation }) => {
+  const navigate = useNavigate();
+
   return (
     <>
     <section className="relative min-h-screen pb-24 md:pb-32 flex items-center justify-center overflow-hidden bg-gradient-to-br from-[var(--color-brand-navy)] via-[var(--color-hero-primary)] to-[var(--color-brand-charcoal)]">
@@ -56,6 +59,16 @@ const HeroSection = ({ onScheduleConsultation }) => {
             >
               Watch Demo
             </Button>
+            <Button
+              variant="ghost"
+              size="lg"
+              className="w-full sm:w-auto text-white hover:bg-white/10"
+              iconName="Calculator"
+              iconPosition="left"
+              onClick={() => navigate('/roi-calculator')}
+            >
+              ROI Calculator
+            </Button>
           </div>
 
           {/* Trust Indicators */}
@@ -73,7 +86,7 @@ const HeroSection = ({ onScheduleConsultation }) => {
               <div className="text-xs md:text-sm text-white/80">Client Satisfaction</div>
             </div>
             <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-white/10">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--color-brand-electric)] mb-2">24/7</div>
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--color-brand-electric)] mb-2">15/7</div>
               <div className="text-xs md:text-sm text-white/80">Support Available</div>
             </div>
           </div>

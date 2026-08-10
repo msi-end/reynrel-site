@@ -114,7 +114,7 @@ const CTASection = () => {
               </Button>
               <div className="text-center pt-4">
                 <p className="text-xs md:text-sm text-white/70">
-                  Trusted by growing businesses • 5+ years of excellence
+                  Trusted by growing businesses • 05+ years of excellence
                 </p>
               </div>
             </div>

@@ -35,7 +35,7 @@ const ServiceComparison = () => {
     },
     {
       feature: 'Support',
-      custom: '24/7 dedicated support',
+      custom: '15/7 dedicated support',
       template: 'Community support',
       icon: 'Headphones'
     },

@@ -8,6 +8,7 @@ import Homepage from './pages/homepage';
 const NotFound = lazy(() => import('pages/NotFound'));
 const Services = lazy(() => import('./pages/services'));
 const Products = lazy(() => import('./pages/products'));
+const RoiCalculator = lazy(() => import('./pages/roi-calculator'));
 const AndroidApps = lazy(() => import('./pages/android-apps'));
 const WhyChooseUs = lazy(() => import('./pages/why-choose-us'));
 const ClientSuccess = lazy(() => import('./pages/client-success'));
@@ -56,6 +57,7 @@ const Routes = () => {
         <Route path="/" element={<Homepage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/roi-calculator" element={<RoiCalculator />} />
         <Route path="/android-apps" element={<AndroidApps />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/lp/product-development" element={<ProductDevelopmentLeadGen />} />

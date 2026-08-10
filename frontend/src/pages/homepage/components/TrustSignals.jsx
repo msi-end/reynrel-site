@@ -6,8 +6,8 @@ const TrustSignals = () => {
     {
       id: 1,
       icon: "Clock",
-      title: "24/7 Support",
-      description: "Round-the-clock technical assistance",
+      title: "15/7 Support",
+      description: "Extended-hours technical assistance, 7 days a week",
       metric: "<15 min",
       metricLabel: "Response Time"
     },

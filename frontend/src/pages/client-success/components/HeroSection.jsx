@@ -25,8 +25,8 @@ const HeroSection = () => {
             {[
               { icon: 'Users', value: '50+', label: 'Happy Clients' },
               { icon: 'TrendingUp', value: '98%', label: 'Success Rate' },
-              { icon: 'Clock', value: '24/7', label: 'Support' },
-              { icon: 'Award', value: '5+', label: 'Years Experience' }
+              { icon: 'Clock', value: '15/7', label: 'Support' },
+              { icon: 'Award', value: '05+', label: 'Years Experience' }
             ]?.map((stat, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-white/20">
                 <Icon name={stat?.icon} size={32} color="var(--color-brand-electric)" className="mx-auto mb-3" />

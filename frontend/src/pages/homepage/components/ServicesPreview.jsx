@@ -86,7 +86,7 @@ const ServicesPreview = () => {
             </h2>
             <p className="text-base md:text-lg text-[var(--color-muted-foreground)] max-w-3xl mx-auto">
               From concept to deployment, we provide end-to-end software
-              development services backed by 5+ years of industry expertise
+              development services backed by 05+ years of industry expertise
             </p>
           </div>
 

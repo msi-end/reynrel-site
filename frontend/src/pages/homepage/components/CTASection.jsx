@@ -110,23 +110,7 @@ const CTASection = ({ onScheduleConsultation }) => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-[var(--color-brand-electric)] mb-2">
-                {'<24h'}
-              </div>
-              <div className="text-xs md:text-sm text-white/80">
-                Response Time
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[var(--color-brand-electric)] mb-2">
-                100%
-              </div>
-              <div className="text-xs md:text-sm text-white/80">
-                Client Satisfaction
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[var(--color-brand-electric)] mb-2">
-                5+
+                05+
               </div>
               <div className="text-xs md:text-sm text-white/80">
                 Years Experience
@@ -134,7 +118,23 @@ const CTASection = ({ onScheduleConsultation }) => {
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-[var(--color-brand-electric)] mb-2">
-                24/7
+                37+
+              </div>
+              <div className="text-xs md:text-sm text-white/80">
+                Projects Delivered
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-[var(--color-brand-electric)] mb-2">
+                98%
+              </div>
+              <div className="text-xs md:text-sm text-white/80">
+                Client Satisfaction
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-[var(--color-brand-electric)] mb-2">
+                15/7
               </div>
               <div className="text-xs md:text-sm text-white/80">
                 Support Available

@@ -16,14 +16,14 @@ const CTASection = () => {
     {
       id: 2,
       icon: 'Headphones',
-      title: '24/7 Dedicated Support',
-      description: 'Get expert assistance whenever you need it, day or night'
+      title: '15/7 Dedicated Support',
+      description: 'Get expert assistance across extended hours, 7 days a week'
     },
     {
       id: 3,
       icon: 'TrendingUp',
       title: 'Proven Track Record',
-      description: '5+ years of delivering exceptional results and ROI'
+      description: '05+ years of delivering exceptional results and ROI'
     }
   ];
 

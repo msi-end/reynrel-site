@@ -261,16 +261,16 @@ const ContactUs = () => {
                         
                         <div>
                           <label className="block text-sm font-semibold text-slate-300 mb-2">
-                            Email Address *
+                            Phone Number *
                           </label>
                           <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
                             onChange={handleChange}
                             required
                             className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-                            placeholder="john@company.com"
+                            placeholder="+91 00000 00000"
                           />
                         </div>
                       </div>
@@ -278,18 +278,18 @@ const ContactUs = () => {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-sm font-semibold text-slate-300 mb-2">
-                            Phone Number
+                            Email Address
                           </label>
                           <input
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
+                            type="email"
+                            name="email"
+                            value={formData.email}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-                            placeholder="+1 (555) 000-0000"
+                            placeholder="john@company.com"
                           />
                         </div>
-                        
+
                         <div>
                           <label className="block text-sm font-semibold text-slate-300 mb-2">
                             Company Name

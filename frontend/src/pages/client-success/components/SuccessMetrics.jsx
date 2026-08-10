@@ -24,7 +24,7 @@ const SuccessMetrics = () => {
       icon: 'Clock',
       value: '< 15min',
       label: 'Support Response',
-      description: 'Average response time for support requests, available 24/7',
+      description: 'Average response time for support requests, available 15/7',
       color: 'var(--color-brand-electric)'
     },
     {

@@ -5,8 +5,8 @@ const SupportCommitment = () => {
   const supportFeatures = [
     {
       icon: "Clock",
-      title: "24/7 Support Availability",
-      description: "Round-the-clock technical support ensuring your business operations never face downtime. Our dedicated support team is always ready to assist.",
+      title: "15/7 Support Availability",
+      description: "Extended-hours technical support, 7 days a week, ensuring your business operations rarely face downtime. Our dedicated support team is ready to assist.",
       metrics: ["<15 min response time", "99.9% uptime guarantee", "Multi-channel support"]
     },
     {
@@ -34,14 +34,14 @@ const SupportCommitment = () => {
       level: "Critical",
       responseTime: "15 minutes",
       resolutionTime: "4 hours",
-      availability: "24/7",
+      availability: "15/7",
       color: "var(--color-error)"
     },
     {
       level: "High",
       responseTime: "1 hour",
       resolutionTime: "8 hours",
-      availability: "24/7",
+      availability: "15/7",
       color: "var(--color-brand-orange)"
     },
     {

@@ -125,7 +125,7 @@ const WebDevelopmentLeadGen = () => {
               
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <div className="px-6 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-full">
-                  <span className="text-orange-400 font-bold">50+</span>
+                  <span className="text-orange-400 font-bold">37+</span>
                   <span className="text-slate-300 ml-2">Projects Delivered</span>
                 </div>
                 <div className="px-6 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-full">
@@ -133,7 +133,7 @@ const WebDevelopmentLeadGen = () => {
                   <span className="text-slate-300 ml-2">Client Satisfaction</span>
                 </div>
                 <div className="px-6 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-full">
-                  <span className="text-orange-400 font-bold">24/7</span>
+                  <span className="text-orange-400 font-bold">15/7</span>
                   <span className="text-slate-300 ml-2">Support Available</span>
                 </div>
               </div>

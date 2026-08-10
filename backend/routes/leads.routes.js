@@ -8,8 +8,8 @@ const router = Router();
 router.post('/', async (req, res) => {
   const { name, email, phone, company, service, message, source } = req.body || {};
 
-  if (!name || !email) {
-    return res.status(400).json({ error: 'Name and email are required' });
+  if (!name || !phone) {
+    return res.status(400).json({ error: 'Name and phone number are required' });
   }
 
   await db.read();
@@ -17,8 +17,8 @@ router.post('/', async (req, res) => {
   const lead = {
     id: nanoid(),
     name,
-    email,
-    phone: phone || '',
+    email: email || '',
+    phone,
     company: company || '',
     service: service || '',
     message: message || '',

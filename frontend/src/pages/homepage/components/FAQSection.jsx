@@ -15,7 +15,7 @@ const faqs = [
   {
     question: 'Do you offer support after the project is delivered?',
     answer:
-      "Yes — every engagement includes a post-launch warranty period for bug fixes, and we offer ongoing support & maintenance plans with 24/7 availability and typical response times under 15 minutes for critical issues."
+      "Yes — every engagement includes a post-launch warranty period for bug fixes, and we offer ongoing support & maintenance plans with 15/7 availability and typical response times under 15 minutes for critical issues."
   },
   {
     question: 'What technologies do you work with?',

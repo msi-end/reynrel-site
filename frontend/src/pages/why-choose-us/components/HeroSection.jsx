@@ -26,7 +26,7 @@ const HeroSection = () => {
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-lg">
               <Icon name="Users" size={24} className="text-[var(--color-brand-electric)]" />
               <div className="text-left">
-                <div className="text-2xl md:text-3xl font-bold">5+</div>
+                <div className="text-2xl md:text-3xl font-bold">05+</div>
                 <div className="text-xs md:text-sm text-white/80">Years Experience</div>
               </div>
             </div>
@@ -42,7 +42,7 @@ const HeroSection = () => {
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-lg">
               <Icon name="Trophy" size={24} className="text-[var(--color-brand-orange)]" />
               <div className="text-left">
-                <div className="text-2xl md:text-3xl font-bold">500+</div>
+                <div className="text-2xl md:text-3xl font-bold">37+</div>
                 <div className="text-xs md:text-sm text-white/80">Projects Delivered</div>
               </div>
             </div>

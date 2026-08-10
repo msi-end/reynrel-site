@@ -28,15 +28,15 @@ const ServiceHero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-lg">
               <Icon name="CheckCircle2" size={24} color="var(--color-brand-electric)" />
-              <span className="text-sm md:text-base font-medium">5+ Years Experience</span>
+              <span className="text-sm md:text-base font-medium">05+ Years Experience</span>
             </div>
             <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-lg">
               <Icon name="Users" size={24} color="var(--color-brand-electric)" />
-              <span className="text-sm md:text-base font-medium">100+ Projects Delivered</span>
+              <span className="text-sm md:text-base font-medium">37+ Projects Delivered</span>
             </div>
             <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-lg">
               <Icon name="Award" size={24} color="var(--color-brand-electric)" />
-              <span className="text-sm md:text-base font-medium">24/7 Support</span>
+              <span className="text-sm md:text-base font-medium">15/7 Support</span>
             </div>
           </div>
         </div>

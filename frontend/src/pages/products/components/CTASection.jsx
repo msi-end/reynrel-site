@@ -14,8 +14,8 @@ const CTASection = () => {
     },
     {
       icon: "Headphones",
-      title: "24/7 Support",
-      description: "Dedicated team always available"
+      title: "15/7 Support",
+      description: "Dedicated team available extended hours"
     },
     {
       icon: "Zap",

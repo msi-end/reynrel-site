@@ -111,24 +111,24 @@ const LeadCaptureSection = () => {
                     placeholder="John Doe"
                   />
                   <Input
-                    label="Email Address"
-                    type="email"
-                    name="email"
+                    label="Phone Number"
+                    type="tel"
+                    name="phone"
                     required
-                    value={formData?.email}
+                    value={formData?.phone}
                     onChange={handleChange}
-                    placeholder="john@company.com"
+                    placeholder="+91 00000 00000"
                   />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <Input
-                    label="Phone Number"
-                    type="tel"
-                    name="phone"
-                    value={formData?.phone}
+                    label="Email Address"
+                    type="email"
+                    name="email"
+                    value={formData?.email}
                     onChange={handleChange}
-                    placeholder="+91 00000 00000"
+                    placeholder="john@company.com"
                   />
                   <div className="space-y-2">
                     <label htmlFor="lead-service" className="text-sm font-medium text-[var(--color-foreground)]">

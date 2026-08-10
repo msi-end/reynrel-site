@@ -31,6 +31,7 @@ const Footer = () => {
       { label: 'About Us', path: '/about' },
       { label: 'Why Choose Us', path: '/why-choose-us' },
       { label: 'Client Success', path: '/client-success' },
+      { label: 'ROI Calculator', path: '/roi-calculator' },
       { label: 'Contact Us', path: '/contact-us' }
     ],
     services: [
@@ -67,15 +68,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-16">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-4 md:mb-6">
-              <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+            <div className="flex items-center gap-4 mb-4 md:mb-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 flex items-center justify-center">
                 <img
-                  src="/assets/images/reynrel-logo-icon.png"
+                  src="/assets/images/reynrel-logo-png.png"
                   alt="Reynrel Infotech logo"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-xl md:text-2xl font-bold">Reynrel Infotech</span>
+              <span className="text-2xl md:text-3xl font-bold leading-tight">Reynrel Infotech</span>
             </div>
             <p className="text-sm md:text-base text-white/80 mb-6 leading-relaxed">
               Defining the Future through proven expertise, long-term partnerships, and unwavering support. Your strategic technology partner for digital transformation.

@@ -13,16 +13,16 @@ const CompetitiveDifferentiators = () => {
     {
       icon: "Award",
       title: "Proven Expertise",
-      ourApproach: "5+ years of experience with 98% client retention and 500+ successful projects",
+      ourApproach: "05+ years of experience with 98% client retention and 37+ successful projects",
       others: "Limited track record or focus on quantity over quality",
       benefits: ["Industry-specific knowledge", "Best practice implementation", "Risk mitigation strategies"]
     },
     {
       icon: "Shield",
       title: "Comprehensive Support",
-      ourApproach: "24/7 support with <15 min response time and ongoing maintenance included",
+      ourApproach: "15/7 support with <15 min response time and ongoing maintenance included",
       others: "Limited support hours with additional charges for maintenance",
-      benefits: ["Round-the-clock availability", "Preventive maintenance", "Regular system updates"]
+      benefits: ["Extended-hours availability", "Preventive maintenance", "Regular system updates"]
     },
     {
       icon: "Target",
@@ -55,13 +55,13 @@ const CompetitiveDifferentiators = () => {
       icon: "TrendingUp"
     },
     {
-      metric: "5+",
+      metric: "05+",
       label: "Years Experience",
       description: "Deep expertise across multiple industries and technologies",
       icon: "Award"
     },
     {
-      metric: "500+",
+      metric: "37+",
       label: "Projects Delivered",
       description: "Proven track record of successful implementations",
       icon: "CheckCircle2"
