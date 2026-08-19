@@ -3,18 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import { publicApi } from '../../../lib/apiClient';
+import { goToProductIntro } from '../../../utils/productIntro';
 
 const fallbackProducts = [
   {
-    id: 'clinic-management',
-    name: 'Clinic Management',
-    category: 'Healthcare Solutions',
-    icon: 'Activity',
-    description: 'Streamline patient management, appointments, billing, and clinical documentation in one integrated system.',
-    badges: ['Most Popular'],
+    id: 'inventory-manager',
+    name: 'Inventory Manager',
+    category: 'Retail & Inventory',
+    icon: 'Package',
+    description: 'Complete offline POS & inventory system for kirana, FMCG and pharmacy stores — billing, stock, and customer udhar in one app.',
+    badges: ['Works Offline'],
     metrics: [
-      { label: 'Wait Time', value: '-40%' },
-      { label: 'Efficiency', value: '+65%' }
+      { label: 'Monthly Fees', value: '₹0' },
+      { label: 'Setup Time', value: '<10 min' }
     ]
   },
   {
@@ -125,9 +126,9 @@ const ProductsPreview = () => {
                 className="w-full group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors duration-300"
                 iconName="ArrowRight"
                 iconPosition="right"
-                onClick={() => navigate('/products')}
+                onClick={() => goToProductIntro(navigate, product)}
               >
-                See Live Demo
+                Product Intro
               </Button>
             </div>
           ))}

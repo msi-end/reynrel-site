@@ -5,6 +5,7 @@ import ProductHero from './components/ProductHero';
 import ProductCard from './components/ProductCard';
 import DemoModal from './components/DemoModal';
 import ROICalculator from './components/ROICalculator';
+import StickyROICalculatorButton from './components/StickyROICalculatorButton';
 import TestimonialSection from './components/TestimonialSection';
 import CTASection from './components/CTASection';
 import Icon from '../../components/AppIcon';
@@ -33,16 +34,11 @@ const Products = () => {
     setShowDemoModal(true);
   };
 
-  const handleCalculateROI = (product) => {
-    setSelectedProduct(product);
-    setShowROICalculator(true);
-  };
-
   return (
     <div className="min-h-screen bg-[var(--color-background)]">
       <Seo
-        title="Products - Clinic Management, CRM & Billing Software"
-        description="Ready-made software products from Reynrel Infotech: Clinic Management, CRM Software, and Billing Software built on proven industry expertise."
+        title="Products - Inventory Manager, CRM & Billing Software"
+        description="Ready-made software products from Reynrel Infotech: Inventory Manager, CRM Software, and Billing Software built on proven industry expertise."
         path="/products"
       />
       <Header />
@@ -72,8 +68,7 @@ const Products = () => {
                 <ProductCard
                   key={product?.id}
                   product={product}
-                  onDemoClick={handleDemoClick}
-                  onCalculateROI={handleCalculateROI} />
+                  onDemoClick={handleDemoClick} />
 
                 )}
               </div>
@@ -95,13 +90,11 @@ const Products = () => {
         }} />
 
       }
-      {showROICalculator && selectedProduct &&
+      <StickyROICalculatorButton onClick={() => setShowROICalculator(true)} />
+      {showROICalculator &&
       <ROICalculator
-        product={selectedProduct}
-        onClose={() => {
-          setShowROICalculator(false);
-          setSelectedProduct(null);
-        }} />
+        products={products}
+        onClose={() => setShowROICalculator(false)} />
 
       }
     </div>);

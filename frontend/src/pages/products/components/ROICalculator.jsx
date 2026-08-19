@@ -3,7 +3,8 @@ import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
 
-const ROICalculator = ({ product, onClose }) => {
+const ROICalculator = ({ products = [], onClose }) => {
+  const [selectedProductId, setSelectedProductId] = useState(products?.[0]?.id || '');
   const [inputs, setInputs] = useState({
     employees: '',
     avgSalary: '',
@@ -11,6 +12,24 @@ const ROICalculator = ({ product, onClose }) => {
     currentCost: ''
   });
   const [results, setResults] = useState(null);
+  const [visible, setVisible] = useState(false);
+
+  const product = products?.find((p) => p?.id === selectedProductId) || products?.[0];
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setVisible(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const handleClose = () => {
+    setVisible(false);
+    setTimeout(onClose, 300);
+  };
+
+  const handleProductChange = (e) => {
+    setSelectedProductId(e?.target?.value);
+    setResults(null);
+  };
 
   const calculateROI = () => {
     const employees = parseFloat(inputs?.employees) || 0;
@@ -51,8 +70,14 @@ const ROICalculator = ({ product, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[var(--z-modal-backdrop)] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-[var(--color-card)] rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+    <div
+      onClick={handleClose}
+      className={`fixed inset-0 z-[var(--z-modal-backdrop)] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
+    >
+      <div
+        onClick={(e) => e?.stopPropagation()}
+        className={`bg-[var(--color-card)] rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto transition-all duration-300 ${visible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
+      >
         <div className="sticky top-0 bg-[var(--color-card)] border-b border-[var(--color-border)] p-6 flex items-center justify-between z-10">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--color-brand-success)] to-[var(--color-accent)] flex items-center justify-center">
@@ -63,12 +88,12 @@ const ROICalculator = ({ product, onClose }) => {
                 ROI Calculator
               </h2>
               <p className="text-sm text-[var(--color-muted-foreground)]">
-                Calculate your potential savings with {product?.name}
+                Calculate your potential savings with {product?.name || 'our products'}
               </p>
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="w-10 h-10 rounded-lg hover:bg-[var(--color-muted)] transition-colors flex items-center justify-center"
           >
             <Icon name="X" size={24} />
@@ -82,6 +107,26 @@ const ROICalculator = ({ product, onClose }) => {
                 Enter Your Business Details
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4">
+                {products?.length > 0 && (
+                  <div className="space-y-2">
+                    <label htmlFor="roi-product-select" className="text-sm font-medium leading-none text-foreground">
+                      Product
+                    </label>
+                    <select
+                      id="roi-product-select"
+                      value={selectedProductId}
+                      onChange={handleProductChange}
+                      className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                      {products?.map((p) => (
+                        <option key={p?.id} value={p?.id}>
+                          {p?.name}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="text-sm text-muted-foreground">Choose which product to calculate ROI for</p>
+                  </div>
+                )}
                 <Input
                   label="Number of Employees"
                   type="number"

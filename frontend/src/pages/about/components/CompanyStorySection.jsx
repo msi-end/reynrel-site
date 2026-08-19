@@ -18,7 +18,7 @@ const CompanyStorySection = () => {
     {
       year: "Product Innovation",
       title: "Launching Our Product Suite",
-      description: "We expanded from custom client projects into our own product suite—Clinic Management Software, CRM, Billing & Invoicing, and Small Business Management tools—built to make technology accessible and affordable for SMEs.",
+      description: "We expanded from custom client projects into our own product suite—Inventory Manager Software, CRM, Billing & Invoicing, and Small Business Management tools—built to make technology accessible and affordable for SMEs.",
       icon: "Lightbulb"
     },
     {

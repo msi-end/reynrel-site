@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventory Manager — POS & Inventory Management for Indian Retail</title>
+<style>
+  :root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --primary-light: #818cf8;
+    --accent: #059669;
+    --accent-light: #10b981;
+    --accent-bg: #ecfdf5;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --warning: #d97706;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --text-light: #9ca3af;
+    --bg: #ffffff;
+    --bg-alt: #f9fafb;
+    --bg-dark: #0f172a;
+    --border: #e5e7eb;
+    --border-light: #f3f4f6;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --nav-height: 72px;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up.delay-1 { transition-delay: 0.1s; }
+  .fade-up.delay-2 { transition-delay: 0.2s; }
+  .fade-up.delay-3 { transition-delay: 0.3s; }
+  .fade-up.delay-4 { transition-delay: 0.4s; }
+  .fade-up.delay-5 { transition-delay: 0.5s; }
+  .fade-up.delay-6 { transition-delay: 0.6s; }
+  .fade-up.delay-7 { transition-delay: 0.7s; }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    transition: all 0.3s ease;
+  }
+  nav.scrolled {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border), var(--shadow-sm);
+    height: 60px;
+  }
+  .nav-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+  .nav-logo svg { width: 28px; height: 28px; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); background: #eef2ff; }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(79,70,229,0.4); }
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 9px 20px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-outline:hover { background: #eef2ff; transform: translateY(-1px); }
+  .btn-accent {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  .btn-accent:hover { background: #047857; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(5,150,105,0.4); }
+  .btn-lg { padding: 14px 28px; font-size: 1rem; border-radius: 12px; }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: white;
+    padding: 20px 5%;
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .mobile-menu a:hover { background: var(--bg-alt); }
+
+  /* SECTIONS */
+  section { position: relative; }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .section-pad { padding: 96px 0; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #eef2ff;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+  .text-center { text-align: center; }
+  .text-center .section-sub { margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29 0%, #1a1060 40%, #24243e 100%);
+    display: flex;
+    align-items: center;
+    padding-top: var(--nav-height);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(79,70,229,0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(5,150,105,0.2) 0%, transparent 50%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 80px 0;
+    position: relative;
+  }
+  .hero-content { z-index: 1; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #a5b4fc;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--accent-light); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .hero-title span { color: #a5b4fc; }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+  }
+  .trust-badge svg { color: var(--accent-light); flex-shrink: 0; }
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-visual img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
+    border-radius: 16px;
+  }
+
+  /* PROBLEM SOLUTION */
+  .prob-sol {
+    background: var(--bg-alt);
+  }
+  .prob-sol-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    align-items: center;
+    margin-top: 48px;
+  }
+  .prob-cards, .sol-cards { display: flex; flex-direction: column; gap: 16px; }
+  .prob-card {
+    background: white;
+    border: 1px solid #fecaca;
+    border-left: 4px solid var(--danger);
+    padding: 20px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .prob-card:hover { transform: translateX(-4px); box-shadow: var(--shadow); }
+  .prob-icon {
+    width: 36px; height: 36px;
+    background: var(--danger-bg);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--danger);
+  }
+  .sol-card {
+    background: white;
+    border: 1px solid #a7f3d0;
+    border-left: 4px solid var(--accent);
+    padding: 20px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .sol-card:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+  .sol-icon {
+    width: 36px; height: 36px;
+    background: var(--accent-bg);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+  .card-title { font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+  .card-desc { font-size: 0.825rem; color: var(--text-muted); line-height: 1.5; }
+  .arrow-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .arrow-circle {
+    width: 56px; height: 56px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    box-shadow: 0 4px 16px rgba(79,70,229,0.4);
+    flex-shrink: 0;
+  }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .feature-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:hover { border-color: var(--primary-light); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: #eef2ff;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    color: var(--primary);
+    transition: background 0.3s;
+  }
+  .feature-card:hover .feature-icon { background: var(--primary); color: white; }
+  .feature-name { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+  .feature-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* HOW IT WORKS */
+  .hiw { background: linear-gradient(135deg, #f8faff 0%, #f0fdf4 100%); }
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 56px;
+    position: relative;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    z-index: 0;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px; height: 56px;
+    background: white;
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 6px #eef2ff;
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  .step:hover .step-num { background: var(--primary); color: white; box-shadow: 0 0 0 6px rgba(79,70,229,0.15); }
+  .step-title { font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 8px; }
+  .step-desc { font-size: 0.825rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* DEMO TABS */
+  .demo { background: var(--bg-dark); }
+  .demo .section-title { color: white; }
+  .demo .section-sub { color: rgba(255,255,255,0.6); }
+  .demo .section-label { background: rgba(79,70,229,0.3); color: #a5b4fc; }
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 4px;
+    border-radius: 14px;
+    margin: 36px auto 0;
+    max-width: 560px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .tab-btn.active {
+    background: white;
+    color: var(--text);
+    box-shadow: var(--shadow);
+  }
+  .tab-panel { display: none; margin-top: 32px; }
+  .tab-panel.active { display: block; }
+  .demo-frame {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+  }
+  .demo-titlebar {
+    background: #0f172a;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .titlebar-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red { background: #ef4444; }
+  .dot-yellow { background: #f59e0b; }
+  .dot-green { background: #10b981; }
+  .titlebar-title { color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-left: 12px; }
+  .demo-frame img { width: 100%; display: block; }
+
+  /* PRICING */
+  .pricing { background: var(--bg-alt); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .pricing-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 36px 28px;
+    border-radius: var(--radius-xl);
+    position: relative;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .pricing-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+  .pricing-card.popular {
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 0 4px rgba(79,70,229,0.08), var(--shadow-xl);
+  }
+  .popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+  .plan-name { font-weight: 700; font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .plan-price .currency { font-size: 1.2rem; font-weight: 700; color: var(--text); }
+  .plan-price .amount { font-size: 2.5rem; font-weight: 900; color: var(--text); letter-spacing: -0.04em; line-height: 1; }
+  .plan-price .period { font-size: 0.85rem; color: var(--text-muted); }
+  .plan-tagline { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; }
+  .plan-features { list-style: none; margin-bottom: 32px; flex: 1; }
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .plan-features li:last-child { border-bottom: none; }
+  .plan-features li svg { color: var(--accent); flex-shrink: 0; }
+  .pricing-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 32px;
+    padding: 16px;
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  /* TESTIMONIALS */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .testi-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    transition: all 0.3s;
+    position: relative;
+  }
+  .testi-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+  .testi-quote {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    position: relative;
+    padding-top: 28px;
+  }
+  .testi-quote::before {
+    content: '"';
+    position: absolute;
+    top: -8px; left: -4px;
+    font-size: 4rem;
+    color: #e0e7ff;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .testi-name { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+  .testi-role { font-size: 0.775rem; color: var(--text-muted); }
+  .stars { display: flex; gap: 2px; margin-bottom: 12px; }
+  .star { color: #f59e0b; font-size: 0.9rem; }
+
+  /* FAQ */
+  .faq { background: var(--bg-alt); }
+  .faq-list { margin-top: 48px; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .faq-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .faq-item:hover { box-shadow: var(--shadow); }
+  .faq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    font-family: var(--font);
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--primary); }
+  .faq-q svg { flex-shrink: 0; color: var(--text-muted); transition: transform 0.3s; }
+  .faq-item.open .faq-q svg { transform: rotate(180deg); color: var(--primary); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding: 0 24px;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: linear-gradient(135deg, #1a1060 0%, #0f172a 100%);
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(79,70,229,0.3) 0%, transparent 70%);
+  }
+  .final-cta .section-title { color: white; }
+  .final-cta .section-sub { color: rgba(255,255,255,0.65); }
+  .cta-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin: 36px 0; }
+  .email-form {
+    display: flex;
+    max-width: 440px;
+    margin: 0 auto;
+    gap: 8px;
+  }
+  .email-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 0.9rem;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .email-input::placeholder { color: rgba(255,255,255,0.4); }
+  .email-input:focus { border-color: var(--primary-light); }
+  .email-success {
+    display: none;
+    color: var(--accent-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 12px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .email-label { color: rgba(255,255,255,0.5); font-size: 0.825rem; margin-bottom: 12px; }
+
+  /* LEAD FORM */
+  .lead-form { max-width: 520px; margin: 0 auto; }
+  .lead-form-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .lead-form-row .email-input { flex: 1; }
+  select.email-input { appearance: none; cursor: pointer; }
+  .lead-error { color: #fca5a5; font-size: 0.825rem; margin-top: 10px; display: none; }
+
+  /* FOOTER (matches reynrel.in main site footer) */
+  footer {
+    background: var(--brand-navy);
+    color: rgba(255,255,255,0.8);
+    padding: 64px 5% 32px;
+    --brand-navy: #2d3748;
+    --brand-electric: #ee7a37;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand-row { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .footer-brand-row img { width: 56px; height: 56px; object-fit: contain; }
+  .footer-brand-name { font-size: 1.5rem; font-weight: 800; color: white; }
+  .footer-tagline { font-size: 0.875rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 20px; max-width: 380px; }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    transition: background 0.25s;
+  }
+  .footer-social a:hover { background: var(--brand-electric); }
+  .footer-col h4 { color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 18px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--brand-electric); }
+  .footer-contact-row {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding: 32px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 12px; }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--brand-electric); }
+  .fc-label { font-size: 0.9rem; font-weight: 600; color: white; margin-bottom: 4px; }
+  .fc-value, .fc-value a { font-size: 0.825rem; color: rgba(255,255,255,0.75); text-decoration: none; }
+  .fc-value a:hover { color: var(--brand-electric); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+  .fb-legal { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  .fb-legal a { font-size: 0.8rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .fb-legal a:hover { color: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .testi-grid { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .prob-sol-grid { grid-template-columns: 1fr; }
+    .arrow-middle { flex-direction: row; margin: 8px 0; }
+    .steps-row { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .steps-row::before { display: none; }
+    .tab-bar { flex-wrap: wrap; }
+    .features-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-contact-row { grid-template-columns: 1fr; gap: 20px; }
+    .email-form { flex-direction: column; }
+    .lead-form-row { flex-direction: column; }
+    .section-pad { padding: 64px 0; }
+  }
+  @media (max-width: 480px) {
+    .steps-row { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="7" fill="#4f46e5"/>
+        <path d="M5 11.5L14 7L23 11.5V20.5L14 25L5 20.5V11.5Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M5 11.5L14 16L23 11.5" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M14 16V25" stroke="white" stroke-width="1.5"/>
+      </svg>
+      Inventory Manager
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How it Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#pricing" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Free Trial
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features" onclick="closeMobile()">Features</a>
+  <a href="#how-it-works" onclick="closeMobile()">How it Works</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#pricing" class="btn-primary" style="margin-top:8px;justify-content:center;" onclick="closeMobile()">Download Free Trial</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content fade-up">
+        <div class="hero-badge">
+          <span></span>
+          Now with Udhar (Khatabook) &amp; batch/expiry tracking
+        </div>
+        <h1 class="hero-title">The complete POS &amp; Inventory system for your <span>Business</span></h1>
+        <p class="hero-sub">Manage billing, inventory, purchases and customer udhar — all from one desktop app built for kirana, FMCG and pharmacy stores. Works offline. No Monthly subscription.</p>
+        <div class="hero-buttons">
+          <a href="#pricing" class="btn-primary btn-lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Free Trial
+          </a>
+          <a href="#demo" class="btn-outline btn-lg" style="color:white;border-color:rgba(255,255,255,0.4);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Watch Demo
+          </a>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.03 2.21 2 2 0 012 .03h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            Works offline
+          </div>
+          <div class="trust-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            No monthly fees
+          </div>
+          <div class="trust-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Supports GST
+          </div>
+          <div class="trust-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Made for India
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual fade-up delay-2">
+        <!-- Hero product screenshot -->
+        <img src="images/hero-dashboard.png" alt="Inventory Manager dashboard showing daily sales, low stock alerts and today's summary" width="560" height="420" loading="eager">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM → SOLUTION -->
+<section class="prob-sol section-pad" id="problem">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Why Inventory Manager</div>
+      <h2 class="section-title">Still running your shop on<br>a notebook and guesswork?</h2>
+      <p class="section-sub">You're not alone. Thousands of Indian kirana, FMCG and pharmacy stores waste hours every day on manual billing and stock tracking. Here's how Inventory Manager fixes it.</p>
+    </div>
+    <div class="prob-sol-grid">
+      <div class="prob-cards">
+        <div class="prob-card fade-up delay-1">
+          <div class="prob-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <div>
+            <div class="card-title">Tracking stock and expiry in a notebook</div>
+            <div class="card-desc">One register for stock, one for purchases, one for expiry dates — always out of sync, and expired stock gets sold by mistake</div>
+          </div>
+        </div>
+        <div class="prob-card fade-up delay-2">
+          <div class="prob-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <div class="card-title">Losing track of who owes you money</div>
+            <div class="card-desc">Customer udhar scattered across a khata book, WhatsApp chats, and memory — you're giving away credit and forgetting to collect</div>
+          </div>
+        </div>
+        <div class="prob-card fade-up delay-3">
+          <div class="prob-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h22v18H1z"/><path d="M8 21V9"/><path d="M16 21V9"/></svg>
+          </div>
+          <div>
+            <div class="card-title">Slow billing at the counter, no real sales data</div>
+            <div class="card-desc">Manual billing means long queues and typing errors — and by month-end there's no clear picture of profit or GST liability</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-middle fade-up delay-2">
+        <div class="arrow-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <div class="sol-cards">
+        <div class="sol-card fade-up delay-1">
+          <div class="sol-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="card-title">Real-time inventory with batch &amp; expiry tracking</div>
+            <div class="card-desc">One live view of every SKU with barcode, HSN, MRP and batch numbers — with low-stock and expiry alerts before stock goes bad</div>
+          </div>
+        </div>
+        <div class="sol-card fade-up delay-2">
+          <div class="sol-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <div class="card-title">Customer Udhar (Khatabook) with WhatsApp reminders</div>
+            <div class="card-desc">See every customer's credit limit, outstanding balance and payment history — collect repayments and send WhatsApp reminders in one click</div>
+          </div>
+        </div>
+        <div class="sol-card fade-up delay-3">
+          <div class="sol-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <div class="card-title">Keyboard-driven billing, GST-ready in seconds</div>
+            <div class="card-desc">Barcode auto-add, F1 search, F2 pay, F10 print — Cash, UPI, Card or Udhar tender — with instant GST invoices on a thermal printer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section-pad" id="features">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything your store needs,<br>in one place</h2>
+      <p class="section-sub">Built from scratch for Indian kirana, FMCG and pharmacy stores. Every feature shaped by real retail business needs.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up delay-1">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="feature-name">License &amp; Activation</div>
+        <div class="feature-desc">Hardware-fingerprinted, AES-256 encrypted license binding machine and expiry, with a grace period, renewal screen and anti-tamper clock-rollback protection.</div>
+      </div>
+      <div class="feature-card fade-up delay-2">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        </div>
+        <div class="feature-name">POS / Fast Billing</div>
+        <div class="feature-desc">Keyboard-driven billing (F1 search, F2 pay, F10 print, ESC clear), barcode auto-add, hold-cart, and Cash / UPI(QR) / Card / Udhar split payments with GST invoicing.</div>
+      </div>
+      <div class="feature-card fade-up delay-3">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="feature-name">Inventory &amp; Batch/Expiry</div>
+        <div class="feature-desc">Product catalog with SKU, barcode, HSN and MRP, batch and expiry tracking, and damaged/expired/returned stock adjustments with reasons.</div>
+      </div>
+      <div class="feature-card fade-up delay-4">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <div class="feature-name">Vendors &amp; Purchases</div>
+        <div class="feature-desc">Purchase entry automatically updates stock and the vendor ledger — always know exactly what you owe every supplier.</div>
+      </div>
+      <div class="feature-card fade-up delay-1">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="feature-name">Customers / Udhar (Khatabook)</div>
+        <div class="feature-desc">Credit limits, running balances and repayments for every customer, with one-tap WhatsApp reminder links to collect what's owed.</div>
+      </div>
+      <div class="feature-card fade-up delay-2">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feature-name">Reports &amp; Analytics</div>
+        <div class="feature-desc">Daily sales &amp; net-profit dashboard, GSTR-1/3B exports for easy filing, and low-stock &amp; expiry alerts so nothing catches you off guard.</div>
+      </div>
+      <div class="feature-card fade-up delay-3">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        </div>
+        <div class="feature-name">Returns &amp; Write-offs</div>
+        <div class="feature-desc">Customer returns automatically restore stock. Write off expired or damaged goods with reasons for accurate profit &amp; loss reporting.</div>
+      </div>
+      <div class="feature-card fade-up delay-4">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="feature-name">Backup &amp; Thermal Printing</div>
+        <div class="feature-desc">One-click database export and restore — no command line needed. Plus silent ESC/POS &amp; HTML-to-printer support for 2-inch and 3-inch thermal printers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="hiw section-pad" id="how-it-works">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title">Up and running in minutes</h2>
+      <p class="section-sub">No cloud accounts. No IT team needed. Just install, add your products, and start billing.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step fade-up delay-1">
+        <div class="step-num">1</div>
+        <div class="step-title">Download &amp; Install</div>
+        <div class="step-desc">Works on Windows 10/11. Connects to a local or cloud MySQL database. Simple installer, up in under 5 minutes.</div>
+      </div>
+      <div class="step fade-up delay-2">
+        <div class="step-num">2</div>
+        <div class="step-title">Add Your Products</div>
+        <div class="step-desc">Set up categories, suppliers, HSN/GST slabs, and opening stock. Import via CSV or add products manually.</div>
+      </div>
+      <div class="step fade-up delay-3">
+        <div class="step-num">3</div>
+        <div class="step-title">Start Billing</div>
+        <div class="step-desc">Ring up sales with keyboard shortcuts, record purchases from vendors. GST invoices print instantly on your thermal printer.</div>
+      </div>
+      <div class="step fade-up delay-4">
+        <div class="step-num">4</div>
+        <div class="step-title">Grow with Insights</div>
+        <div class="step-desc">Reports, customer udhar tracking, automated backups — full visibility into every corner of your business.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO TABS -->
+<section class="demo section-pad" id="demo">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Live Preview</div>
+      <h2 class="section-title">See it in action</h2>
+      <p class="section-sub">Explore the screens your team will use every day.</p>
+    </div>
+    <div class="tab-bar fade-up delay-1">
+      <button class="tab-btn active" onclick="switchTab('dashboard')">📊 Dashboard</button>
+      <button class="tab-btn" onclick="switchTab('pos')">🛒 POS / New Sale</button>
+      <button class="tab-btn" onclick="switchTab('van')">📒 Customer Udhar</button>
+      <button class="tab-btn" onclick="switchTab('analytics')">📈 Reports</button>
+    </div>
+
+    <!-- Dashboard Tab -->
+    <div class="tab-panel active" id="tab-dashboard">
+      <div class="demo-frame fade-up delay-2">
+        <div class="demo-titlebar">
+          <div class="titlebar-dot dot-red"></div>
+          <div class="titlebar-dot dot-yellow"></div>
+          <div class="titlebar-dot dot-green"></div>
+          <span class="titlebar-title">Inventory Manager — Dashboard</span>
+        </div>
+        <img src="images/demo-dashboard.png" alt="Inventory Manager dashboard screen showing sales, stock and business overview" width="900" height="480" loading="lazy">
+      </div>
+    </div>
+
+    <!-- POS Tab -->
+    <div class="tab-panel" id="tab-pos">
+      <div class="demo-frame fade-up">
+        <div class="demo-titlebar">
+          <div class="titlebar-dot dot-red"></div>
+          <div class="titlebar-dot dot-yellow"></div>
+          <div class="titlebar-dot dot-green"></div>
+          <span class="titlebar-title">Inventory Manager — New Sale / POS</span>
+        </div>
+        <img src="images/demo-pos.png" alt="Inventory Manager POS / new sale screen with product grid, barcode search and GST invoice printing" width="900" height="480" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Customer Udhar Tab -->
+    <div class="tab-panel" id="tab-van">
+      <div class="demo-frame fade-up">
+        <div class="demo-titlebar">
+          <div class="titlebar-dot dot-red"></div>
+          <div class="titlebar-dot dot-yellow"></div>
+          <div class="titlebar-dot dot-green"></div>
+          <span class="titlebar-title">Inventory Manager — Customer Udhar (Khatabook)</span>
+        </div>
+        <img src="images/demo-khatabook.png" alt="Inventory Manager customer udhar (khatabook) screen showing customer credit balances and payments" width="900" height="460" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Analytics Tab -->
+    <div class="tab-panel" id="tab-analytics">
+      <div class="demo-frame fade-up">
+        <div class="demo-titlebar">
+          <div class="titlebar-dot dot-red"></div>
+          <div class="titlebar-dot dot-yellow"></div>
+          <div class="titlebar-dot dot-green"></div>
+          <span class="titlebar-title">Inventory Manager — Reports &amp; Analytics</span>
+        </div>
+        <img src="images/demo-reports.png" alt="Inventory Manager reports and analytics screen showing sales, stock and GSTR-ready reports" width="900" height="480" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section-pad" id="pricing">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, honest pricing</h2>
+      <p class="section-sub">No per-transaction fees. Single-client desktop install with an annual license. Your data stays on your machine, always.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up delay-1">
+        <div class="plan-name">Free Trial</div>
+        <div class="plan-price"><span class="amount" style="font-size:1.8rem;">30 Days</span></div>
+        <div class="plan-tagline">Full access. No credit card needed.</div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>All features unlocked</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Unlimited invoices</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>GST invoice printing</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Batch &amp; expiry tracking</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Customer Udhar (Khatabook)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Auto backup</li>
+        </ul>
+        <a href="#download" class="btn-outline" style="width:100%;justify-content:center;padding:12px;" onclick="selectPlan('Free Trial')">Download Now</a>
+      </div>
+      <div class="pricing-card popular fade-up delay-2">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">
+          <span class="currency">₹</span>
+          <span class="amount">4,999</span>
+          <span class="period">/year</span>
+        </div>
+        <div class="plan-tagline">Everything a single store needs.</div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 store license</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>All modules included</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Thermal printing (2"/3")</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>GSTR-1/3B exports</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Email support</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free updates for 1 year</li>
+        </ul>
+        <a href="#download" class="btn-primary" style="width:100%;justify-content:center;padding:12px;" onclick="selectPlan('Standard')">Get Standard</a>
+      </div>
+      <div class="pricing-card fade-up delay-3">
+        <div class="plan-name">Business</div>
+        <div class="plan-price">
+          <span class="currency">₹</span>
+          <span class="amount">12,999</span>
+          <span class="period">/year</span>
+        </div>
+        <div class="plan-tagline">For stores with multiple billing counters.</div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Standard</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Multiple billing counters</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Priority phone support</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Data migration assistance</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Staff training session</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
+        </ul>
+        <a href="#download" class="btn-outline" style="width:100%;justify-content:center;padding:12px;" onclick="selectPlan('Business')">Contact Us</a>
+      </div>
+    </div>
+    <div class="pricing-note fade-up">
+      💡 Deployment-agnostic backend — run against a local MySQL or a remote/cloud MySQL server. No per-transaction fees. Your data stays yours, always.
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-pad" id="testimonials">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">Trusted by retail stores across India</h2>
+      <p class="section-sub">From kirana stores in Surat to pharmacies in Pune — real shops, real results.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up delay-1">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="testi-quote">Finally stopped using a notebook for udhar. Every regular customer's balance is one tap away, and the WhatsApp reminder alone gets us paid days faster. Billing at the counter is so much quicker too.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">RM</div>
+          <div>
+            <div class="testi-name">Rajesh Mehta</div>
+            <div class="testi-role">Kirana Store Owner · Surat, Gujarat</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up delay-2">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="testi-quote">The expiry date tracking and batch management is exactly what we needed for a pharmacy. We get an alert weeks before anything expires now. Setup took less than a day.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">PK</div>
+          <div>
+            <div class="testi-name">Priya Kulkarni</div>
+            <div class="testi-role">Pharmacy Owner · Pune, Maharashtra</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up delay-3">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="testi-quote">GST invoices print instantly on our thermal printer, purchases from vendors update stock automatically, and the daily profit dashboard tells us exactly where we stand. Best investment for our store.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AT</div>
+          <div>
+            <div class="testi-name">Arun Thyagarajan</div>
+            <div class="testi-role">FMCG General Store Owner · Chennai, Tamil Nadu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq section-pad" id="faq">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions</h2>
+      <p class="section-sub">Everything you need to know before getting started.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up delay-1">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does Inventory Manager work without internet?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Yes, completely. Inventory Manager is an offline-first desktop application that runs entirely on your local machine and connects to a MySQL database. You can bill customers, manage inventory, track udhar, and do everything without any internet connection. The only features that need internet are software updates and license activation.</div>
+      </div>
+      <div class="faq-item fade-up delay-2">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need a server or cloud account?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">No. Inventory Manager installs directly on your Windows PC and connects to a MySQL database — local or a remote/cloud MySQL server, your choice. All your data stays under your control. If you have more than one billing counter on the same network, they can all connect to the same database — no cloud account needed.</div>
+      </div>
+      <div class="faq-item fade-up delay-3">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I use it on more than one billing counter?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Yes. On the Business plan, you can run Inventory Manager on multiple counters connected to the same MySQL database, so stock and billing stay in sync everywhere in real time.</div>
+      </div>
+      <div class="faq-item fade-up delay-4">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How is data backed up?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Inventory Manager has a built-in one-click backup that exports your entire database as a MySQL <code>.sql</code> file. No command-line tools or technical knowledge needed. Download the file to a USB drive, Google Drive, or email it to yourself, and restore it just as easily.</div>
+      </div>
+      <div class="faq-item fade-up delay-5">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does Inventory Manager support GST invoices?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Yes. Inventory Manager generates GST-compliant invoices with CGST, SGST, and IGST breakdowns, printable instantly on 2-inch or 3-inch thermal printers. You can configure your GSTIN, business name, and address in settings, and export GSTR-1/3B-ready reports for filing.</div>
+      </div>
+      <div class="faq-item fade-up delay-6">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What happens after the 30-day trial ends?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">After the trial, the application will prompt you to purchase a license to continue. Your data is not deleted — it remains safely in your MySQL database. Once you purchase a license and activate it (bound to your machine via a hardware fingerprint), everything continues exactly where you left off.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta section-pad" id="download">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="text-center fade-up">
+      <div class="section-label" style="background:rgba(79,70,229,0.3);color:#a5b4fc;">Get Started Today</div>
+      <h2 class="section-title" style="color:white;max-width:600px;margin:0 auto 16px;">Ready to take control of your business?</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.65);">Join Indian kirana, FMCG and pharmacy stores already using Inventory Manager to run billing, inventory, and customer udhar.</p>
+    </div>
+    <div class="cta-buttons fade-up delay-1">
+      <a href="#" class="btn-primary btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Free Trial
+      </a>
+      <a href="https://wa.me/919999999999" target="_blank" class="btn-accent btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+    <div class="text-center fade-up delay-2">
+      <p class="email-label">Tell us about your store and we'll get back within 24 hours:</p>
+      <form class="lead-form" id="leadForm" onsubmit="submitLead(event)">
+        <div class="lead-form-row">
+          <input type="text" class="email-input" id="leadName" placeholder="Your Name" required />
+          <input type="tel" class="email-input" id="leadPhone" placeholder="Phone Number" required />
+        </div>
+        <div class="lead-form-row">
+          <input type="email" class="email-input" id="leadEmail" placeholder="Email (optional)" />
+          <select class="email-input" id="leadPlan">
+            <option value="">Interested plan (optional)</option>
+            <option value="Free Trial">Free Trial</option>
+            <option value="Standard">Standard — ₹4,999/yr</option>
+            <option value="Business">Business — ₹12,999/yr</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary btn-lg" style="width:100%;justify-content:center;" id="leadSubmitBtn">Request Callback</button>
+        <p class="lead-error" id="leadError"></p>
+      </form>
+      <div class="email-success" id="emailSuccess">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Thanks! Our team will reach out within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <img src="/assets/images/reynrel-logo-png.png" alt="Reynrel Infotech logo" />
+          <span class="footer-brand-name">Reynrel Infotech</span>
+        </div>
+        <p class="footer-tagline">Defining the Future through proven expertise, long-term partnerships, and unwavering support. Your strategic technology partner for digital transformation.</p>
+        <div class="footer-social" id="footerSocial">
+          <a href="https://www.linkedin.com/company/reynrel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="footerLinkedin">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.instagram.com/reynrel_infotech" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="footerInstagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/+919864773099" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" id="footerWhatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 104 16.1L2 22Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/why-choose-us">Why Choose Us</a></li>
+          <li><a href="/client-success">Client Success</a></li>
+          <li><a href="/roi-calculator">ROI Calculator</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="/services">Custom App Development</a></li>
+          <li><a href="/services">Web Development</a></li>
+          <li><a href="/services">Tech Consultation</a></li>
+          <li><a href="/services">Support &amp; Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul class="footer-links">
+          <li><a href="/products">Clinic Management</a></li>
+          <li><a href="/products">CRM Software</a></li>
+          <li><a href="/products">Billing Software</a></li>
+          <li><a href="/products">Inventory Manager</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-contact-row">
+      <div class="footer-contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 01-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0116 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <div class="fc-label">Address</div>
+          <div class="fc-value" id="footerAddress">House No. 46, LKRB Path, Nabin Nagar, Guwahati, Assam 781024, India</div>
+        </div>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+        <div>
+          <div class="fc-label">Email</div>
+          <div class="fc-value"><a href="mailto:info.reynrel@gmail.com" id="footerEmail">info.reynrel@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 001.213-.303l.355-.465A2 2 0 0117 15h3a2 2 0 012 2v3a2 2 0 01-2 2A18 18 0 012 4a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-.633 1.4l-.465.355a1 1 0 00-.302 1.214 14.9 14.9 0 006.232 6.232z"/></svg>
+        <div>
+          <div class="fc-label">Phone</div>
+          <div class="fc-value"><a href="tel:+919864773099" id="footerPhone">+91 9864773099</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Reynrel Infotech. All rights reserved.</p>
+      <div class="fb-legal">
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-of-service">Terms of Service</a>
+        <a href="/cookie-policy">Cookie Policy</a>
+        <a href="/refund-cancellation">Cancellation &amp; Refund</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // INTERSECTION OBSERVER
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // TAB SWITCHING
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      btn.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  // FAQ ACCORDION
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // API BASE — same-origin '/api' in production (single-port serve),
+  // localhost:4000 when this page is opened from the Vite dev server (:5173).
+  const API_BASE = location.port === '5173' ? 'http://localhost:4000/api' : '/api';
+
+  // LEAD FORM — pricing cards pre-select a plan, then scroll to this form.
+  function selectPlan(plan) {
+    const select = document.getElementById('leadPlan');
+    if (select) select.value = plan;
+  }
+
+  async function submitLead(e) {
+    e.preventDefault();
+    const name = document.getElementById('leadName').value.trim();
+    const phone = document.getElementById('leadPhone').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+    const plan = document.getElementById('leadPlan').value;
+    const errorEl = document.getElementById('leadError');
+    const btn = document.getElementById('leadSubmitBtn');
+
+    errorEl.style.display = 'none';
+    if (!name || !phone) {
+      errorEl.textContent = 'Please enter your name and phone number.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    try {
+      const res = await fetch(API_BASE + '/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          service: plan ? ('Inventory Manager — ' + plan) : 'Inventory Manager',
+          message: plan ? ('Interested plan: ' + plan) : '',
+          source: 'product-intro-inventory-manager'
+        })
+      });
+      if (!res.ok) throw new Error('Request failed');
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('emailSuccess').style.display = 'flex';
+    } catch (err) {
+      errorEl.textContent = 'Something went wrong — please try again or contact us on WhatsApp.';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Request Callback';
+    }
+  }
+
+  // FOOTER SETTINGS — keep contact details in sync with the admin panel.
+  fetch(API_BASE + '/settings')
+    .then((res) => (res.ok ? res.json() : null))
+    .then((settings) => {
+      if (!settings) return;
+      if (settings.address) document.getElementById('footerAddress').textContent = settings.address;
+      if (settings.email) {
+        const el = document.getElementById('footerEmail');
+        el.textContent = settings.email;
+        el.href = 'mailto:' + settings.email;
+      }
+      if (settings.phone) {
+        const el = document.getElementById('footerPhone');
+        el.textContent = settings.phone;
+        el.href = 'tel:' + settings.phone.replace(/\s+/g, '');
+      }
+      if (settings.socialLinks?.linkedin) document.getElementById('footerLinkedin').href = settings.socialLinks.linkedin;
+      if (settings.socialLinks?.instagram) document.getElementById('footerInstagram').href = settings.socialLinks.instagram;
+      if (settings.socialLinks?.whatsapp) document.getElementById('footerWhatsapp').href = settings.socialLinks.whatsapp;
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>

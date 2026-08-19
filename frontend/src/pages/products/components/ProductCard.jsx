@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
+import { goToProductIntro } from '../../../utils/productIntro';
 
-const ProductCard = ({ product, onDemoClick, onCalculateROI }) => {
+const ProductCard = ({ product, onDemoClick }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const navigate = useNavigate();
+  const handleProductIntro = () => goToProductIntro(navigate, product);
 
   return (
     <div className="bg-[var(--color-card)] rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[var(--color-border)] h-full flex flex-col">
@@ -32,7 +36,13 @@ const ProductCard = ({ product, onDemoClick, onCalculateROI }) => {
               <Icon name={product?.icon} size={24} color="white" />
             </div>
             <div>
-              <h3 className="text-xl md:text-2xl font-bold text-[var(--color-foreground)] mb-1">
+              <h3
+                role="button"
+                tabIndex={0}
+                onClick={handleProductIntro}
+                onKeyDown={(e) => (e?.key === 'Enter' || e?.key === ' ') && handleProductIntro()}
+                className="text-xl md:text-2xl font-bold text-[var(--color-foreground)] mb-1 cursor-pointer hover:text-[var(--color-accent)] transition-colors duration-200"
+              >
                 {product?.name}
               </h3>
               <p className="text-sm text-[var(--color-muted-foreground)]">{product?.category}</p>
@@ -96,11 +106,11 @@ const ProductCard = ({ product, onDemoClick, onCalculateROI }) => {
           <Button
             variant="outline"
             fullWidth
-            iconName="Calculator"
+            iconName="FileText"
             iconPosition="left"
-            onClick={() => onCalculateROI(product)}
+            onClick={handleProductIntro}
           >
-            Calculate ROI
+            Product Intro
           </Button>
         </div>
       </div>

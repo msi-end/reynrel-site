@@ -33,37 +33,38 @@ const defaultData = {
 
 const seedProducts = [
   {
-    name: 'Clinic Management',
-    category: 'Healthcare Solutions',
-    icon: 'Activity',
-    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_11dd292e2-1764667687408.png',
-    imageAlt: 'Modern medical clinic reception area with digital check-in kiosks, comfortable waiting room seating, and healthcare professionals using tablet devices for patient management',
-    description: 'Comprehensive healthcare workflow optimization platform designed for modern medical practices. Streamline patient management, appointments, billing, and clinical documentation in one integrated system.',
+    name: 'Inventory Manager',
+    category: 'Retail & Inventory',
+    icon: 'Package',
+    image: '',
+    imageAlt: 'Inventory Manager POS and inventory dashboard for Indian kirana, FMCG and pharmacy stores',
+    description: 'Complete offline POS & inventory management system for Indian kirana, FMCG and pharmacy stores. Handle fast billing, stock and batch/expiry tracking, purchases, and customer udhar (khatabook) — all from one desktop app with no monthly subscription.',
     features: [
-      'Electronic Health Records (EHR) Management',
-      'Appointment Scheduling & Reminders',
-      'Patient Portal with Secure Messaging',
-      'Billing & Insurance Claims Processing',
-      'Prescription Management & E-Prescribing',
-      'Lab Integration & Results Tracking',
-      'HIPAA Compliant Data Security',
-      'Multi-Location Support',
-      'Customizable Clinical Templates',
-      'Real-time Analytics Dashboard'
+      'Fast Billing & POS with Barcode Scanning',
+      'Batch & Expiry Tracking',
+      'Vendor & Purchase Order Management',
+      'Customer Udhar (Khatabook) Ledger',
+      'GST Invoice Printing & GSTR-1/3B Exports',
+      'Multi-Store & Multi-Counter Support',
+      'Thermal Receipt Printing (2"/3")',
+      'Offline-First Desktop App',
+      'Auto Backup & Data Security',
+      'Real-time Sales & Inventory Reports'
     ],
-    badges: ['HIPAA Certified', 'Most Popular'],
+    badges: ['Works Offline', 'No Monthly Fees'],
     metrics: [
-      { label: 'Wait Time', value: '-40%' },
-      { label: 'Efficiency', value: '+65%' },
-      { label: 'Satisfaction', value: '98%' }
+      { label: 'Setup Time', value: '<10 min' },
+      { label: 'Monthly Fees', value: '₹0' },
+      { label: 'Works', value: 'Offline' }
     ],
-    pricingAnnual: 12000,
+    pricingAnnual: 4999,
     demoHighlights: [
-      { title: 'Patient Check-in Flow', description: 'See how patients can check-in digitally and update their information seamlessly' },
-      { title: 'Clinical Documentation', description: 'Experience our intuitive EHR system with customizable templates and voice-to-text' },
-      { title: 'Billing Automation', description: 'Watch how insurance claims are processed automatically with error checking' },
-      { title: 'Analytics Dashboard', description: 'Explore real-time insights into practice performance and patient outcomes' }
-    ]
+      { title: 'Dashboard Overview', description: 'See sales, stock and business health at a glance from the main dashboard' },
+      { title: 'POS / New Sale', description: 'Experience fast billing with barcode scanning and instant GST invoice printing' },
+      { title: 'Customer Udhar (Khatabook)', description: 'Track customer credit and payments digitally, replacing the paper khatabook' },
+      { title: 'Reports & Analytics', description: 'Explore sales, stock and GSTR-ready reports in real time' }
+    ],
+    introPage: 'inventory-manager/'
   },
   {
     name: 'CRM Software',

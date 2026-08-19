@@ -31,7 +31,7 @@ const RefundCancellation = () => {
 
       <h2>2. Products & Subscriptions</h2>
       <p>
-        For our standard software products (such as Clinic Management, CRM, or Billing Software)
+        For our standard software products (such as Inventory Manager, CRM, or Billing Software)
         billed on an annual or recurring basis:
       </p>
       <ul>

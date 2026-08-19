@@ -3,6 +3,7 @@ import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import { adminApi } from '../../lib/apiClient';
+import PRODUCT_INTRO_PAGES from '../../data/productIntroPages';
 import {
   linesToArray,
   arrayToLines,
@@ -25,7 +26,8 @@ const emptyForm = {
   badges: '',
   metrics: '',
   pricingAnnual: '',
-  demoHighlights: ''
+  demoHighlights: '',
+  introPage: ''
 };
 
 const toFormState = (product) => ({
@@ -39,7 +41,8 @@ const toFormState = (product) => ({
   badges: arrayToCsv(product.badges),
   metrics: metricsToLines(product.metrics),
   pricingAnnual: product.pricingAnnual ?? '',
-  demoHighlights: highlightsToLines(product.demoHighlights)
+  demoHighlights: highlightsToLines(product.demoHighlights),
+  introPage: product.introPage || ''
 });
 
 const toPayload = (form) => ({
@@ -53,7 +56,8 @@ const toPayload = (form) => ({
   badges: csvToArray(form.badges),
   metrics: linesToMetrics(form.metrics),
   pricingAnnual: Number(form.pricingAnnual) || 0,
-  demoHighlights: linesToHighlights(form.demoHighlights)
+  demoHighlights: linesToHighlights(form.demoHighlights),
+  introPage: form.introPage || ''
 });
 
 const ProductsAdmin = () => {
@@ -161,6 +165,24 @@ const ProductsAdmin = () => {
               onChange={(e) => setForm({ ...form, imageAlt: e.target.value })}
               className="md:col-span-2"
             />
+            <div className="md:col-span-2 space-y-2">
+              <label className="text-sm font-medium text-[var(--color-foreground)] block">Product Intro Page</label>
+              <select
+                value={form.introPage}
+                onChange={(e) => setForm({ ...form, introPage: e.target.value })}
+                className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+              >
+                {PRODUCT_INTRO_PAGES.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+              <p className="text-sm text-[var(--color-muted-foreground)]">
+                Which page opens when a visitor clicks "Product Intro" for this product. "Auto" uses a page built
+                from the fields above.
+              </p>
+            </div>
           </div>
 
           <div>
@@ -246,6 +268,12 @@ const ProductsAdmin = () => {
                 <h3 className="font-semibold text-[var(--color-foreground)]">{product.name}</h3>
                 <p className="text-xs text-[var(--color-muted-foreground)] mb-1">{product.category}</p>
                 <p className="text-sm text-[var(--color-foreground)]/70 line-clamp-2">{product.description}</p>
+                <p className="text-xs text-[var(--color-muted-foreground)] mt-1">
+                  Intro page:{' '}
+                  <span className="font-medium text-[var(--color-foreground)]">
+                    {product.introPage || 'Auto'}
+                  </span>
+                </p>
                 <div className="flex gap-2 mt-3">
                   <Button size="xs" variant="outline" iconName="Pencil" onClick={() => startEdit(product)}>
                     Edit

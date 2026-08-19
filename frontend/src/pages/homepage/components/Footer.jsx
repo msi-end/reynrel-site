@@ -41,7 +41,7 @@ const Footer = () => {
       { label: 'Support & Maintenance', path: '/services' }
     ],
     products: [
-      { label: 'Clinic Management', path: '/products' },
+      { label: 'Inventory Manager', path: '/products' },
       { label: 'CRM Software', path: '/products' },
       { label: 'Billing Software', path: '/products' },
       { label: 'Custom Solutions', path: '/products' }

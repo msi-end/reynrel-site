@@ -132,6 +132,10 @@ module.exports = {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(100%)" },
         },
+        "roi-float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
       },
       animation: {
         "slide-down": "slide-down 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
@@ -140,6 +144,7 @@ module.exports = {
           "slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         "slide-out-right":
           "slide-out-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "roi-float": "roi-float 3s ease-in-out infinite",
       },
     },
   },
