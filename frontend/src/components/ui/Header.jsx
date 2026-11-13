@@ -26,6 +26,7 @@ const Header = () => {
         { label: "Android Apps", path: "/android-apps" },
       ],
     },
+    { label: "Partners", path: "/partners" },
     { label: "Why Choose Us", path: "/why-choose-us" },
     { label: "Client Success", path: "/client-success" },
     { label: "About Us", path: "/about" },
