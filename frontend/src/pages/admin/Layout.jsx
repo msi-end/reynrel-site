@@ -11,6 +11,10 @@ const navItems = [
   { label: 'Android Apps', path: '/admin/android-apps', icon: 'Smartphone' },
   { label: 'Clients', path: '/admin/clients', icon: 'Users' },
   { label: 'Renewals', path: '/admin/renewals', icon: 'RefreshCcw' },
+  { label: 'Partners', path: '/admin/partners', icon: 'Handshake' },
+  { label: 'Partner Customers', path: '/admin/partner-customers', icon: 'ClipboardCheck' },
+  { label: 'Partner Payouts', path: '/admin/partner-withdrawals', icon: 'Landmark' },
+  { label: 'Partner Program', path: '/admin/partner-program', icon: 'Settings2' },
   { label: 'Settings', path: '/admin/settings', icon: 'Settings' }
 ];
 
@@ -59,7 +63,7 @@ const AdminLayout = () => {
       </aside>
 
       <main className="flex-1 overflow-y-auto">
-        <div className="p-6 md:p-8 max-w-6xl mx-auto">
+        <div className="p-6 md:p-8 max-w-7xl mx-auto">
           <Outlet />
         </div>
       </main>

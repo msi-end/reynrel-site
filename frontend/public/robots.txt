@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /client
+Disallow: /partner/
 
 Sitemap: https://reynrel.in/sitemap.xml

@@ -37,6 +37,23 @@ const SettingsAdmin = lazy(() => import('./pages/admin/SettingsAdmin'));
 const RenewalsAdmin = lazy(() => import('./pages/admin/RenewalsAdmin'));
 const LeadsAdmin = lazy(() => import('./pages/admin/LeadsAdmin'));
 
+const PartnersLanding = lazy(() => import('./pages/partners'));
+const PartnerRegister = lazy(() => import('./pages/partners/Register'));
+const PartnerLogin = lazy(() => import('./pages/partners/Login'));
+const PartnerProtectedRoute = lazy(() => import('components/ui/PartnerProtectedRoute'));
+const PartnerLayout = lazy(() => import('./pages/partner-portal/Layout'));
+const PartnerDashboard = lazy(() => import('./pages/partner-portal/Dashboard'));
+const PartnerCustomers = lazy(() => import('./pages/partner-portal/Customers'));
+const PartnerSoftware = lazy(() => import('./pages/partner-portal/Software'));
+const PartnerCommission = lazy(() => import('./pages/partner-portal/Commission'));
+const PartnerWithdrawals = lazy(() => import('./pages/partner-portal/Withdrawals'));
+const PartnerProfile = lazy(() => import('./pages/partner-portal/Profile'));
+const PartnersAdmin = lazy(() => import('./pages/admin/partners/PartnersAdmin'));
+const PartnerDetailAdmin = lazy(() => import('./pages/admin/partners/PartnerDetailAdmin'));
+const PartnerCustomersAdmin = lazy(() => import('./pages/admin/partners/PartnerCustomersAdmin'));
+const PartnerWithdrawalsAdmin = lazy(() => import('./pages/admin/partners/PartnerWithdrawalsAdmin'));
+const PartnerProgramAdmin = lazy(() => import('./pages/admin/partners/PartnerProgramAdmin'));
+
 const ClientLogin = lazy(() => import('./pages/client/Login'));
 const ClientSignup = lazy(() => import('./pages/client/Signup'));
 const ClientDashboard = lazy(() => import('./pages/client/Dashboard'));
@@ -93,6 +110,31 @@ const Routes = () => {
           <Route path="clients/:id" element={<ClientDetail />} />
           <Route path="renewals" element={<RenewalsAdmin />} />
           <Route path="settings" element={<SettingsAdmin />} />
+          <Route path="partners" element={<PartnersAdmin />} />
+          <Route path="partners/:id" element={<PartnerDetailAdmin />} />
+          <Route path="partner-customers" element={<PartnerCustomersAdmin />} />
+          <Route path="partner-withdrawals" element={<PartnerWithdrawalsAdmin />} />
+          <Route path="partner-program" element={<PartnerProgramAdmin />} />
+        </Route>
+
+        {/* Partner Program */}
+        <Route path="/partners" element={<PartnersLanding />} />
+        <Route path="/partners/register" element={<PartnerRegister />} />
+        <Route path="/partners/login" element={<PartnerLogin />} />
+        <Route
+          path="/partner"
+          element={
+            <PartnerProtectedRoute>
+              <PartnerLayout />
+            </PartnerProtectedRoute>
+          }
+        >
+          <Route index element={<PartnerDashboard />} />
+          <Route path="customers" element={<PartnerCustomers />} />
+          <Route path="software" element={<PartnerSoftware />} />
+          <Route path="commission" element={<PartnerCommission />} />
+          <Route path="withdrawals" element={<PartnerWithdrawals />} />
+          <Route path="profile" element={<PartnerProfile />} />
         </Route>
 
         {/* Client Panel */}
