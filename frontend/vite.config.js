@@ -2,20 +2,32 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import fs from "fs";
+import { injectSiteChrome, injectProductPages } from "./site-chrome/inject.js";
 
-// Dev-server parity with the backend: serve public/products/<slug>/index.html at /products/<slug>.
-const productPages = () => ({
-  name: "product-pages",
-  configureServer(server) {
-    server.middlewares.use((req, res, next) => {
-      const m = /^\/products\/([a-z0-9-]+)\/?$/.exec((req.url || "").split("?")[0]);
-      if (m && fs.existsSync(path.resolve(__dirname, "public/products", m[1], "index.html"))) {
-        req.url = `/products/${m[1]}/index.html`;
-      }
-      next();
-    });
-  },
-});
+// Standalone HTML product pages (public/products/<slug>/index.html):
+// - served at /products/<slug> in dev, like the backend does in production;
+// - the main-site header and footer (site-chrome/) are inserted in dev and after each build.
+const productPages = () => {
+  let outDir = "dist";
+  return {
+    name: "product-pages",
+    configResolved(config) {
+      outDir = path.resolve(config.root, config.build.outDir);
+    },
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const m = /^\/products\/([a-z0-9-]+)(?:\/|\/index\.html)?$/.exec((req.url || "").split("?")[0]);
+        const file = m && path.resolve(__dirname, "public/products", m[1], "index.html");
+        if (!file || !fs.existsSync(file)) return next();
+        res.setHeader("Content-Type", "text/html; charset=utf-8");
+        res.end(injectSiteChrome(fs.readFileSync(file, "utf8")));
+      });
+    },
+    closeBundle() {
+      injectProductPages(path.join(outDir, "products"));
+    },
+  };
+};
 
 export default defineConfig({
   plugins: [

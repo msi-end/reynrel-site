@@ -1,3 +1,4 @@
+// Standalone product pages (public/products/*) use a static copy of this footer: frontend/site-chrome/footer.html. Update both together.
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';

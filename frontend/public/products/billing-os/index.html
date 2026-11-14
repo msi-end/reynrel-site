@@ -38,7 +38,7 @@
   --g:#059669;--g-soft:#ecfdf5;--wa:#16a34a;
   --ink:#0f172a;--text:#1e293b;--muted:#64748b;--line:#e2e8f0;--bg:#fff;--bg2:#f8fafc;--dark:#0b1220;
   --r:14px;--r-sm:10px;--sh:0 1px 2px rgba(15,23,42,.06),0 8px 24px -12px rgba(15,23,42,.18);
-  --font:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans','Helvetica Neue',Arial,sans-serif;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans',Arial,sans-serif;--font-h:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -51,7 +51,8 @@ button,input,select{font:inherit;color:inherit}
 .sec{padding:80px 0}
 .sec.alt{background:var(--bg2)}
 .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--p)}
-h1,h2,h3{color:var(--ink);line-height:1.2;letter-spacing:-.015em}
+h1,h2,h3{color:var(--ink);line-height:1.2;letter-spacing:-.015em;font-family:var(--font-h)}
+section[id]{scroll-margin-top:140px}
 h2{font-size:clamp(26px,3.4vw,38px);margin-top:8px}
 .lead{color:var(--muted);font-size:18px;margin-top:12px}
 .head{text-align:center;max-width:720px;margin:0 auto 48px}
@@ -66,24 +67,16 @@ h2{font-size:clamp(26px,3.4vw,38px);margin-top:8px}
 .check{display:flex;gap:10px;align-items:flex-start}
 .check::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--g-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat}
 
-/* Top bar + nav */
-.topbar{background:var(--dark);color:#cbd5e1;font-size:14px}
-.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:40px}
-.topbar a{color:#fff;font-weight:600}
-.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.5) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+/* Product sub-nav (sits under the fixed main-site header) */
+.nav{position:sticky;top:64px;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.5) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
 .nav.scrolled{border-color:var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink)}
 .brand img{width:34px;height:34px;object-fit:contain}
 .brand small{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:-2px}
 .nav-links{display:flex;gap:26px;list-style:none;font-size:15px;color:#334155}
 .nav-links a:hover{color:var(--p)}
 .nav-cta{display:flex;gap:10px;align-items:center}
-.nav-phone{font-weight:600;color:var(--ink);font-size:15px;display:flex;gap:6px;align-items:center}
-.burger{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer}
-.mobile-menu{display:none;border-top:1px solid var(--line);background:#fff}
-.mobile-menu.open{display:block}
-.mobile-menu a{display:block;padding:14px 20px;border-bottom:1px solid var(--bg2);font-weight:500}
 
 /* Hero */
 .hero{background:radial-gradient(1200px 500px at 85% -10%,#ccfbf1 0,rgba(204,251,241,0) 60%),linear-gradient(#fff,#f8fafc);padding:56px 0 72px}
@@ -250,7 +243,7 @@ h2{font-size:clamp(26px,3.4vw,38px);margin-top:8px}
 .lf.ok .done{display:block}
 
 /* Popup */
-.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;visibility:hidden;opacity:0;transition:opacity .2s,visibility 0s .2s}
+.modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px;visibility:hidden;opacity:0;transition:opacity .2s,visibility 0s .2s}
 .modal.open{visibility:visible;opacity:1;transition:opacity .2s}
 .modal .scrim{position:absolute;inset:0;background:rgba(15,23,42,.55)}
 .modal .box{position:relative;width:100%;max-width:480px;max-height:calc(100vh - 32px);overflow:auto;transform:translateY(12px) scale(.98);transition:transform .25s}
@@ -265,17 +258,6 @@ h2{font-size:clamp(26px,3.4vw,38px);margin-top:8px}
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:40;width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -6px rgba(22,163,74,.6)}
 .mbar{display:none}
 
-/* Footer */
-footer{background:var(--dark);color:#94a3b8;font-size:15px}
-.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.3fr;gap:32px;padding:56px 0 40px}
-footer h4{color:#fff;font-size:15px;margin-bottom:14px}
-footer ul{list-style:none;display:grid;gap:9px}
-footer a:hover{color:#fff}
-.fbrand img{height:40px;width:auto;margin-bottom:14px}
-.social{display:flex;gap:10px;margin-top:16px}
-.social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff}
-.fbot{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px}
-.fbot nav{display:flex;flex-wrap:wrap;gap:18px}
 
 /* Reveal on scroll (content stays visible without JS) */
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
@@ -283,24 +265,22 @@ footer a:hover{color:#fff}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}.modal,.modal .box{transition:none}}
 
 /* Responsive */
+@media (min-width:1024px){.nav{top:80px}}
 @media (max-width:1024px){
-  .nav-links,.nav-phone{display:none}
-  .burger{display:flex}
+  .nav-links{display:none}
   .hero .wrap,.frow,.final .wrap{grid-template-columns:1fr;gap:36px}
   .frow.rev .ftext{order:0}
   .inds,.steps{grid-template-columns:repeat(2,1fr)}
   .grid3,.quotes{grid-template-columns:repeat(2,1fr)}
   .prices{grid-template-columns:1fr;max-width:480px;margin:0 auto}
-  .fgrid{grid-template-columns:1fr 1fr}
-  .fbrand{grid-column:1/-1}
   .fc1{left:8px}.fc2{right:8px}
 }
 @media (max-width:640px){
   .sec{padding:56px 0}
   .head{margin-bottom:32px}
-  .topbar .t-right{display:none}
-  .nav .wrap{height:60px}
-  .nav-cta .btn{display:none}
+  .nav .wrap{height:56px}
+  .brand small,.nav .brand img{display:none}
+  .brand{white-space:nowrap}
   .hero{padding:32px 0 48px}
   .quick{flex-direction:column}
   .quick .btn{width:100%}
@@ -312,7 +292,6 @@ footer a:hover{color:#fff}
   .lf{padding:22px}
   .lf .row{grid-template-columns:1fr}
   .float-card{display:none}
-  .fgrid{grid-template-columns:1fr}
   .modal{align-items:flex-end;padding:0}
   .modal .box{max-width:none;max-height:92vh}
   .modal .lf{padding:22px 20px calc(18px + env(safe-area-inset-bottom))}
@@ -325,19 +304,14 @@ footer a:hover{color:#fff}
 }
 </style>
 </head>
-<body>
+<body id="top">
 <script>document.documentElement.classList.add('js')</script>
 
-<div class="topbar">
-  <div class="wrap">
-    <span>✨ Free demo · Retail POS and B2B GST invoicing in one app</span>
-    <span class="t-right">Sales &amp; support: <a href="tel:+919864773099" class="js-phone">+91 98647 73099</a></span>
-  </div>
-</div>
+<!--site:header-->
 
-<header class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Product">
   <div class="wrap">
-    <a href="/" class="brand" aria-label="Reynrel home">
+    <a href="#top" class="brand">
       <img src="/assets/images/reynrel-logo-icon.png" alt="" width="34" height="34">
       <span>Billing OS<small>by Reynrel Infotech</small></span>
     </a>
@@ -349,18 +323,10 @@ footer a:hover{color:#fff}
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="tel:+919864773099" class="nav-phone js-phone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 98647 73099</a>
       <button type="button" class="btn btn-p btn-sm" data-lead="Free demo">Book free demo</button>
-      <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
     </div>
   </div>
-  <nav class="mobile-menu" id="mmenu" aria-label="Mobile">
-    <a href="#features">Features</a><a href="#modes">Retail &amp; B2B</a><a href="#modules">Modules</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
-    <a href="#" data-lead="Free demo">Book free demo</a>
-  </nav>
-</header>
+</nav>
 
 <main>
 <!-- HERO -->
@@ -833,33 +799,7 @@ footer a:hover{color:#fff}
   <button type="button" class="btn btn-p" data-lead="Free demo">Free demo</button>
 </div>
 
-<footer id="contact">
-  <div class="wrap">
-    <div class="fgrid">
-      <div class="fbrand">
-        <img src="/assets/images/reynrel-logo-png.png" alt="Reynrel Infotech" width="160" height="40" loading="lazy">
-        <p>Your technology partner for business software, apps and digital transformation.</p>
-        <div class="social">
-          <a href="https://www.linkedin.com/company/reynrel" target="_blank" rel="noopener" aria-label="LinkedIn" id="footerLinkedin"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a href="https://www.instagram.com/reynrel_infotech" target="_blank" rel="noopener" aria-label="Instagram" id="footerInstagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-          <a href="https://wa.me/+919864773099" target="_blank" rel="noopener" aria-label="WhatsApp" id="footerWhatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.79a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.9 9.9 0 1 1 8.37 4.63m8.42-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg></a>
-        </div>
-      </div>
-      <div><h4>Company</h4><ul><li><a href="/about">About Us</a></li><li><a href="/why-choose-us">Why Choose Us</a></li><li><a href="/client-success">Client Success</a></li><li><a href="/roi-calculator">ROI Calculator</a></li><li><a href="/contact-us">Contact Us</a></li></ul></div>
-      <div><h4>Services</h4><ul><li><a href="/services">Custom App Development</a></li><li><a href="/services">Web Development</a></li><li><a href="/services">Tech Consultation</a></li><li><a href="/services">Support &amp; Maintenance</a></li></ul></div>
-      <div><h4>Products</h4><ul><li><a href="/products/billing-os">Billing OS</a></li><li><a href="/products/inventory-management">Inventory Management</a></li><li><a href="/products">All Products</a></li><li><a href="/android-apps">Android Apps</a></li></ul></div>
-      <div><h4>Contact</h4><ul>
-        <li id="footerAddress">House No. 46, LKRB Path, Nabin Nagar, Guwahati, Assam 781024, India</li>
-        <li><a href="mailto:info.reynrel@gmail.com" id="footerEmail">info.reynrel@gmail.com</a></li>
-        <li><a href="tel:+919864773099" id="footerPhone">+91 9864773099</a></li>
-      </ul></div>
-    </div>
-    <div class="fbot">
-      <span>© <span id="yr">2026</span> Reynrel Infotech. All rights reserved.</span>
-      <nav aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a><a href="/cookie-policy">Cookie Policy</a><a href="/refund-cancellation">Cancellation &amp; Refund</a></nav>
-    </div>
-  </div>
-</footer>
+<!--site:footer-->
 
 <script>
 (function () {
@@ -881,7 +821,6 @@ footer a:hover{color:#fff}
     if (d.length > 10 && d.charAt(0) === '0') d = d.slice(1);
     return d.slice(0, 10);
   };
-  document.getElementById('yr').textContent = new Date().getFullYear();
 
   // Campaign attribution kept with the lead.
   var qs = new URLSearchParams(location.search);
@@ -891,12 +830,6 @@ footer a:hover{color:#fff}
   var nav = $('#nav');
   var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 10); };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  var burger = $('#burger'), mmenu = $('#mmenu');
-  burger.addEventListener('click', function () {
-    var open = mmenu.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open);
-  });
-  $$('#mmenu a').forEach(function (a) { a.addEventListener('click', function () { mmenu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
 
   // ---- Reveal on scroll ----
   if ('IntersectionObserver' in window) {
@@ -1053,21 +986,13 @@ footer a:hover{color:#fff}
     }, POPUP_DELAY_MS);
   }
 
-  // ---- Contact details from the admin panel ----
-  fetch(API + '/settings').then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
-    if (!s) return;
-    if (s.address) $('#footerAddress').textContent = s.address;
-    if (s.email) { var e = $('#footerEmail'); e.textContent = s.email; e.href = 'mailto:' + s.email; }
-    if (s.phone) {
-      var tel = 'tel:' + s.phone.replace(/\s+/g, '');
-      var p = $('#footerPhone'); p.textContent = s.phone; p.href = tel;
-      $$('.js-phone').forEach(function (a) { a.href = tel; if (!a.classList.contains('btn')) a.lastChild.textContent = s.phone; });
-    }
-    var sl = s.socialLinks || {};
-    if (sl.linkedin) $('#footerLinkedin').href = sl.linkedin;
-    if (sl.instagram) $('#footerInstagram').href = sl.instagram;
-    if (sl.whatsapp) $('#footerWhatsapp').href = sl.whatsapp;
-  }).catch(function () {});
+  // ---- Phone number from the admin panel (the main-site footer loads the settings) ----
+  window.addEventListener('site:settings', function (e) {
+    var s = e.detail || {};
+    if (!s.phone) return;
+    var tel = 'tel:' + s.phone.replace(/\s+/g, '');
+    $$('.js-phone').forEach(function (a) { a.href = tel; if (!a.classList.contains('btn')) a.lastChild.textContent = s.phone; });
+  });
 })();
 </script>
 </body>

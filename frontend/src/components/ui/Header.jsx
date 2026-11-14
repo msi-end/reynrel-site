@@ -1,3 +1,4 @@
+// Standalone product pages (public/products/*) use a static copy of this header: frontend/site-chrome/header.html. Update both together.
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Icon from "../AppIcon";

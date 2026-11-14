@@ -1,0 +1,103 @@
+<!-- Main-site header (generated from frontend/site-chrome/header.html — keep in sync with src/components/ui/Header.jsx) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap">
+<style>
+.rs-h{position:fixed;top:0;left:0;right:0;z-index:1030;background:#fff;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);transition:box-shadow .3s;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#2d3748}
+.rs-h.rs-scrolled{box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1)}
+.rs-h *,.rs-mm *,.rs-f *{box-sizing:border-box}
+.rs-hc{max-width:1280px;margin:0 auto;padding:0 16px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.rs-logo{display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform .2s}
+.rs-logo:hover{transform:scale(1.05)}
+.rs-logo-i{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.rs-logo-i img{width:100%;height:100%;object-fit:contain;display:block}
+.rs-logo-t{position:relative;display:inline-grid;text-align:left}
+.rs-logo-t span{grid-area:1/1;white-space:nowrap;font-size:20px;line-height:28px;font-weight:700;background:linear-gradient(to right,#ff7a3d,#b85e23);-webkit-background-clip:text;background-clip:text;color:transparent;transition:opacity .3s ease-in-out,transform .3s ease-in-out}
+.rs-logo-t .rs-ghost{visibility:hidden}
+.rs-logo-t .rs-out{opacity:0;transform:translateY(-4px)}
+.rs-nav{display:none;align-items:center;gap:4px}
+.rs-nl{display:inline-flex;align-items:center;gap:4px;padding:8px 16px;border-radius:6px;font-size:14px;line-height:20px;font-weight:500;color:#2d3748;text-decoration:none;transition:all .2s}
+.rs-nl:hover{background:#f7fafc;color:#2d3748}
+.rs-nl.rs-active{color:#ff7a3d}
+.rs-dd{position:relative}
+.rs-ddm{position:absolute;left:0;top:100%;padding-top:8px;display:none;z-index:50}
+.rs-dd:hover .rs-ddm,.rs-dd:focus-within .rs-ddm{display:block}
+.rs-ddm div{background:#fff;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);padding:8px 0;min-width:180px}
+.rs-ddm a{display:block;padding:8px 16px;font-size:14px;font-weight:500;color:#2d3748;text-decoration:none;transition:color .15s,background .15s}
+.rs-ddm a:hover{background:#f7fafc;color:#ff7a3d}
+.rs-act{display:flex;align-items:center;gap:12px}
+.rs-wa{display:none;width:44px;height:44px;border-radius:50%;background:#25D366;align-items:center;justify-content:center;color:#fff;transition:background .2s}
+.rs-wa:hover{background:#1ebe5d}
+.rs-mb{position:fixed;top:16px;right:16px;z-index:50;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#fff;color:#2d3748;border:1px solid #e2e8f0;cursor:pointer;transition:background .2s}
+.rs-mb:hover{background:#f7fafc}
+.rs-mb .rs-x{display:none}
+.rs-mb[aria-expanded="true"] .rs-x{display:block}
+.rs-mb[aria-expanded="true"] .rs-burger{display:none}
+.rs-mm{position:fixed;inset:0;z-index:1029;overflow:hidden;visibility:hidden;transition:visibility 0s .3s;font-family:"Inter",system-ui,sans-serif}
+.rs-mm.rs-open{visibility:visible;transition:none}
+.rs-mmc{height:100%;overflow-y:auto;padding:80px 24px 24px;background:#fff;transform:translateX(100%);transition:transform .3s}
+.rs-mm.rs-open .rs-mmc{transform:none}
+.rs-mmn{display:flex;flex-direction:column;gap:8px}
+.rs-mml{display:block;width:100%;padding:12px 16px;border-radius:8px;text-align:center;font-size:16px;font-weight:500;color:#2d3748;text-decoration:none;border:1px solid transparent;transition:all .2s}
+.rs-mml:hover{background:#f7fafc}
+.rs-mml.rs-sub{padding-left:32px;font-size:14px}
+.rs-mml.rs-active{color:#ff7a3d}
+.rs-mmcta{margin-top:24px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;padding:12px 0;font-weight:500;color:#fff;background:#25D366;text-decoration:none}
+.rs-mmcta:hover{background:#1ebe5d}
+body{padding-top:64px}
+@media (min-width:640px){.rs-hc{padding:0 24px}}
+@media (min-width:1024px){
+  .rs-hc{padding:0 32px;height:80px}
+  .rs-logo-i{width:64px;height:64px}
+  .rs-logo-t span{font-size:24px;line-height:32px}
+  .rs-nav{display:flex}
+  .rs-wa{display:inline-flex}
+  .rs-mb,.rs-mm{display:none}
+  body{padding-top:80px}
+}
+@media (prefers-reduced-motion:reduce){.rs-logo,.rs-logo-t span,.rs-mm,.rs-mmc{transition:none}}
+</style>
+<header class="rs-h" id="rsHeader">
+  <div class="rs-hc">
+    <a class="rs-logo" href="/homepage" aria-label="Reynrel Infotech home">
+      <span class="rs-logo-i"><img src="/assets/images/reynrel-logo-icon.png" alt="Reynrel Infotech logo" width="64" height="64"></span>
+      <span class="rs-logo-t"><span class="rs-ghost" aria-hidden="true">reynrel infotech</span><span id="rsLogoText">reynrel infotech</span></span>
+    </a>
+    <nav class="rs-nav" aria-label="Main">
+      <a class="rs-nl" href="/homepage">Home</a>
+      <a class="rs-nl" href="/services">Services</a>
+      <div class="rs-dd">
+        <a class="rs-nl rs-active" href="/products">Products <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="rs-ddm"><div><a href="/products">Products</a><a href="/android-apps">Android Apps</a></div></div>
+      </div>
+      <a class="rs-nl" href="/why-choose-us">Why Choose Us</a>
+      <a class="rs-nl" href="/client-success">Client Success</a>
+      <a class="rs-nl" href="/about">About Us</a>
+      <a class="rs-nl" href="/contact-us">Contact Us</a>
+    </nav>
+    <div class="rs-act">
+      <a class="rs-wa" href="https://wa.me/919864773099" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
+      <button type="button" class="rs-mb" id="rsMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="rsMobileMenu">
+        <svg class="rs-burger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+        <svg class="rs-x" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="rs-mm" id="rsMobileMenu" aria-hidden="true">
+  <div class="rs-mmc">
+    <nav class="rs-mmn" aria-label="Mobile">
+      <a class="rs-mml" href="/homepage">Home</a>
+      <a class="rs-mml" href="/services">Services</a>
+      <a class="rs-mml rs-active" href="/products">Products</a>
+      <a class="rs-mml rs-sub" href="/products">Products</a>
+      <a class="rs-mml rs-sub" href="/android-apps">Android Apps</a>
+      <a class="rs-mml" href="/why-choose-us">Why Choose Us</a>
+      <a class="rs-mml" href="/client-success">Client Success</a>
+      <a class="rs-mml" href="/about">About Us</a>
+      <a class="rs-mml" href="/contact-us">Contact Us</a>
+    </nav>
+    <a class="rs-mmcta" href="https://wa.me/919864773099" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Chat on WhatsApp</a>
+  </div>
+</div>
+<!-- /Main-site header -->
