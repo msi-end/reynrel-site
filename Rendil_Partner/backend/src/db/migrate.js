@@ -4,7 +4,7 @@ import { connect } from './index.js';
 import { renderDDL } from './schema.js';
 import { config } from '../config.js';
 import { hashPassword } from '../utils/password.js';
-import { DEFAULT_PROGRAM, DEFAULT_PARTNER_TYPES, DEFAULT_DOCUMENT_TYPES, DEFAULT_TERMS, SEED_PRODUCTS, BILLING_OS_FEATURES } from './defaults.js';
+import { DEFAULT_PROGRAM, DEFAULT_PARTNER_TYPES, DEFAULT_DOCUMENT_TYPES, DEFAULT_TERMS, SEED_PRODUCTS, BILLING_OS_FEATURES, BILLING_OS_OLD_TAGLINE } from './defaults.js';
 
 const now = () => new Date().toISOString();
 
@@ -33,6 +33,21 @@ const MIGRATIONS = [
         for (const [i, [group, title, desc]] of BILLING_OS_FEATURES.entries()) {
           await db.run('INSERT INTO product_features (id, product_id, group_name, title, description, sort_order) VALUES (?, ?, ?, ?, ?, ?)', [nanoid(), p.id, group, title, desc, i]);
         }
+      }
+    }
+  },
+  // v4: Billing OS repositioned as retail + B2B GST billing. Only replaces the earlier starter text,
+  // never content an admin has edited.
+  {
+    version: 4,
+    up: async (db) => {
+      const p = await db.get('SELECT id FROM products WHERE slug = ? AND tagline = ?', ['billing-os', BILLING_OS_OLD_TAGLINE]);
+      if (!p) return;
+      const seed = SEED_PRODUCTS.find((x) => x.slug === 'billing-os');
+      await db.run('UPDATE products SET category = ?, tagline = ?, description = ?, updated_at = ? WHERE id = ?', [seed.category, seed.tagline, seed.description, now(), p.id]);
+      await db.run('DELETE FROM product_features WHERE product_id = ?', [p.id]);
+      for (const [i, [group, title, desc]] of BILLING_OS_FEATURES.entries()) {
+        await db.run('INSERT INTO product_features (id, product_id, group_name, title, description, sort_order) VALUES (?, ?, ?, ?, ?, ?)', [nanoid(), p.id, group, title, desc, i]);
       }
     }
   }

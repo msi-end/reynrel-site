@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Billing OS — POS Billing Software for Salons, Restaurants &amp; Cafés | Reynrel</title>
-<meta name="description" content="Billing OS is fast, touch-first billing software for salons, beauty parlours, restaurants, cafés and juice shops. GST bills, thermal receipts, regular customers, udhaar, expenses, staff salaries and real profit reports.">
+<title>Billing OS — GST Billing, Invoicing &amp; POS Software for Retail and B2B | Reynrel</title>
+<meta name="description" content="Billing OS is offline-first GST billing software for Indian shops and B2B businesses: fast POS counter, Tally-style GST invoices, quotations, credit notes, payment receipts, customer ledger and GSTR-1 / GSTR-3B reports. Inventory and purchases when you need them.">
 <link rel="canonical" href="https://reynrel.in/products/billing-os">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0f766e">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="Reynrel Infotech">
 <meta property="og:locale" content="en_IN">
-<meta property="og:title" content="Billing OS — billing software for salons, restaurants &amp; cafés | Reynrel">
-<meta property="og:description" content="Bill in seconds, recognise regular customers, track udhaar, expenses and salaries, and see your real profit.">
+<meta property="og:title" content="Billing OS — GST billing &amp; invoicing for retail and B2B | Reynrel">
+<meta property="og:description" content="POS counter billing and formal GST invoices in one offline app, with B2B documents, customer ledger and GSTR reports.">
 <meta property="og:url" content="https://reynrel.in/products/billing-os">
 <meta property="og:image" content="https://reynrel.in/assets/images/reynrel-logo-full.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,14 +20,15 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"SoftwareApplication","name":"Billing OS","alternateName":"Reynrel Billing OS POS","applicationCategory":"BusinessApplication","applicationSubCategory":"Point of Sale, Billing","operatingSystem":"Windows, macOS, Linux, Web browser","url":"https://reynrel.in/products/billing-os","description":"Touch-first POS billing software for salons, beauty parlours, restaurants, cafés and beverage shops, with customers, udhaar, expenses, staff salaries and profit reports.","publisher":{"@type":"Organization","name":"Reynrel Infotech","url":"https://reynrel.in"}},
+ {"@type":"SoftwareApplication","name":"Billing OS","alternateName":"Reynrel Billing OS","applicationCategory":"BusinessApplication","applicationSubCategory":"GST Billing, Invoicing, Point of Sale","operatingSystem":"Windows; web browser on the shop network","url":"https://reynrel.in/products/billing-os","description":"Offline-first GST billing software for Indian retail and B2B businesses: POS billing, GST tax invoices, B2B documents, customer ledger and GSTR-1 / GSTR-3B reports, with optional inventory, warehouse, purchase and barcode modules.","publisher":{"@type":"Organization","name":"Reynrel Infotech","url":"https://reynrel.in"},"offers":{"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","description":"Annual licence, quoted for your setup"}},
  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://reynrel.in/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://reynrel.in/products"},{"@type":"ListItem","position":3,"name":"Billing OS","item":"https://reynrel.in/products/billing-os"}]},
  {"@type":"FAQPage","mainEntity":[
-  {"@type":"Question","name":"Which businesses is Billing OS for?","acceptedAnswer":{"@type":"Answer","text":"Salons, beauty parlours, restaurants, cafés, juice and beverage shops and similar businesses that sell services or prepared items."}},
-  {"@type":"Question","name":"Does it work on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"Yes. It runs as a desktop app on one machine, or as a web app on a server that you can use from desktops, tablets and phones."}},
-  {"@type":"Question","name":"What happens if the internet or network goes down?","acceptedAnswer":{"@type":"Answer","text":"Billing continues. Bills are saved in an outbox on the device and sync automatically when the connection returns."}},
-  {"@type":"Question","name":"Does it support GST?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each item has a GST rate, inclusive or exclusive pricing, GST breakup on receipts and a rate-wise and HSN-wise GST report."}},
-  {"@type":"Question","name":"Can I track customer credit (udhaar)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Balances go on a customer credit ledger with credit-limit checks, payments against dues and WhatsApp reminders."}}
+  {"@type":"Question","name":"Does Billing OS work without internet?","acceptedAnswer":{"@type":"Answer","text":"Yes. Billing OS is an offline-first desktop app. Its server runs on your own PC, so billing, invoices, ledgers and reports work without internet."}},
+  {"@type":"Question","name":"Can I use it for both counter billing and B2B GST invoices?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose Retail, Business (B2B) or Both in Settings. Retail gives POS and Standard Billing, B2B gives Standard or Advanced Billing, and Both gives all three billing screens as tabs."}},
+  {"@type":"Question","name":"Does it prepare GSTR-1 and GSTR-3B?","acceptedAnswer":{"@type":"Answer","text":"Yes. Advanced Reports show GSTR-1 (B2B, B2C, credit notes, rate-wise and HSN) and GSTR-3B (output tax against input tax credit) side by side, with CSV export."}},
+  {"@type":"Question","name":"Can I manage stock and purchases?","acceptedAnswer":{"@type":"Answer","text":"Yes. Inventory & Stock, Warehouses, Purchases & Vendors and the Barcode label generator are optional modules. Switch them on in Settings → Modules when you need them."}},
+  {"@type":"Question","name":"Can several counters or phones use it?","acceptedAnswer":{"@type":"Answer","text":"Yes. Several PCs on the shop network can share one database, and phones and tablets can use it over the shop Wi-Fi or install it as an app. It can also run on a cloud server."}},
+  {"@type":"Question","name":"Can I control what my staff can do?","acceptedAnswer":{"@type":"Answer","text":"Yes. There are four roles — Admin, Manager, Employee and Cashier — with permissions you can change per user, plus login hours. The server enforces them on every request."}}
  ]}
 ]}
 </script>
@@ -191,6 +192,7 @@ h2{font-size:clamp(26px,3.4vw,38px);margin-top:8px}
 .cmp thead th:last-child{color:var(--p)}
 .cmp td:nth-child(2){color:#b91c1c}
 .cmp td:nth-child(3){color:#047857;font-weight:600}
+.cmp.perf td:nth-child(2){color:var(--ink);font-weight:600;white-space:nowrap}
 .cmp-wrap{overflow-x:auto;max-width:900px;margin:0 auto;border-radius:var(--r)}
 
 /* Testimonials */
@@ -328,7 +330,7 @@ footer a:hover{color:#fff}
 
 <div class="topbar">
   <div class="wrap">
-    <span>✨ Free demo for salons, restaurants &amp; cafés</span>
+    <span>✨ Free demo · Retail POS and B2B GST invoicing in one app</span>
     <span class="t-right">Sales &amp; support: <a href="tel:+919864773099" class="js-phone">+91 98647 73099</a></span>
   </div>
 </div>
@@ -341,8 +343,8 @@ footer a:hover{color:#fff}
     </a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
-      <li><a href="#industries">Businesses</a></li>
-      <li><a href="#screens">Screenshots</a></li>
+      <li><a href="#modes">Retail &amp; B2B</a></li>
+      <li><a href="#modules">Modules</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -355,7 +357,7 @@ footer a:hover{color:#fff}
     </div>
   </div>
   <nav class="mobile-menu" id="mmenu" aria-label="Mobile">
-    <a href="#features">Features</a><a href="#industries">Businesses</a><a href="#screens">Screenshots</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    <a href="#features">Features</a><a href="#modes">Retail &amp; B2B</a><a href="#modules">Modules</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
     <a href="#" data-lead="Free demo">Book free demo</a>
   </nav>
 </header>
@@ -365,30 +367,30 @@ footer a:hover{color:#fff}
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="pill"><i></i>Billing · Customers · Udhaar · Expenses · Staff</span>
-      <h1>Fast billing software for <span>salons, restaurants &amp; cafés</span></h1>
-      <p class="lead">Billing OS is a touch-first point of sale built around the bill, not the stockroom. Bill in seconds, recognise regular customers, track udhaar, record expenses and salaries, and see what your business actually earns.</p>
+      <span class="pill"><i></i>POS · GST invoices · B2B documents · Works offline</span>
+      <h1>Counter billing and <span>GST invoicing</span> in one app</h1>
+      <p class="lead">Billing OS is offline-first billing software for Indian shops and businesses. Ring up walk-in customers on a fast POS, raise Tally-style GST invoices for business buyers, track every customer's account and get GSTR-1 and GSTR-3B ready — on your own PC, without internet.</p>
       <form class="quick" id="quickForm" novalidate>
         <input type="text" name="name" placeholder="Your name" autocomplete="name" aria-label="Your name" required>
         <input type="tel" name="phone" placeholder="Mobile number" inputmode="tel" autocomplete="tel-national" aria-label="Mobile number" required>
         <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn btn-p" type="submit">Get free demo</button>
       </form>
-      <p class="quick-note">We'll call you within 1 working day and show Billing OS set up for your business.</p>
+      <p class="quick-note">We'll call you within 1 working day and show Billing OS with your kind of bills.</p>
       <p class="quick-msg" id="quickMsg" role="status"></p>
       <ul class="hero-points">
-        <li class="check">Desktop, tablet &amp; phone</li>
-        <li class="check">GST bills &amp; thermal receipts</li>
-        <li class="check">Keeps billing when the network drops</li>
+        <li class="check">Works without internet</li>
+        <li class="check">GSTR-1 &amp; GSTR-3B ready</li>
+        <li class="check">Tally-style invoice templates</li>
       </ul>
     </div>
     <div class="hero-visual">
-      <figure class="shot" data-label="Screenshot: POS billing screen — 1600 × 1000 px (hero-pos.png)">
+      <figure class="shot" data-label="Screenshot: Billing screen — 1600 × 1000 px (hero-billing.png)">
         <div class="bar"><i></i><i></i><i></i></div>
-        <img src="/products/billing-os/images/hero-pos.png" alt="Billing OS POS screen with product grid, categories, customer and bill" width="1600" height="1000" fetchpriority="high" onerror="this.parentNode.classList.add('missing')">
+        <img src="/products/billing-os/images/hero-billing.png" alt="Billing OS billing screen with POS, Standard and Advanced billing tabs" width="1600" height="1000" fetchpriority="high" onerror="this.parentNode.classList.add('missing')">
       </figure>
-      <div class="float-card fc1"><span class="dot" style="background:#ecfdf5;color:#059669">✓</span><span>Bill paid · UPI<b>₹759</b></span></div>
-      <div class="float-card fc2"><span class="dot" style="background:#eef2ff;color:#4338ca">★</span><span>Regular customer<b>14th visit</b></span></div>
+      <div class="float-card fc1"><span class="dot" style="background:#ecfdf5;color:#059669">✓</span><span>Invoice saved<b>INV/2026-27/0042</b></span></div>
+      <div class="float-card fc2"><span class="dot" style="background:#f0fdfa;color:#0f766e">₹</span><span>GST returns<b>GSTR-1 · GSTR-3B</b></span></div>
     </div>
   </div>
 </section>
@@ -396,57 +398,72 @@ footer a:hover{color:#fff}
 <!-- TRUST STRIP -->
 <section class="strip" aria-label="Highlights">
   <div class="wrap">
-    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg><span><b>Bill in seconds</b>Touch, search or scan</span></div>
-    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><b>No duplicate bills</b>Even on double taps</span></div>
-    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg><span><b>Thermal receipts</b>2" (58 mm) · 3" (80 mm)</span></div>
-    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg><span><b>Real profit</b>After cost &amp; expenses</span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/><path d="M2 2l20 20"/></svg><span><b>Offline first</b>Runs on your own PC</span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20M8 4v16"/></svg><span><b>3 billing screens</b>POS · Standard · Advanced</span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span><b>4 invoice templates</b>Incl. Tally-style</span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><b>Staff roles</b>Permissions per user</span></div>
   </div>
 </section>
 
-<!-- BUSINESSES -->
-<section class="sec" id="industries">
+<!-- BUSINESS MODE -->
+<section class="sec" id="modes">
   <div class="wrap">
     <div class="head rv">
-      <span class="eyebrow">Made for consumption businesses</span>
-      <h2>For businesses that sell services and fresh items</h2>
-      <p class="lead">No batches, no stock registers, no purchase entries slowing down the counter. Just fast bills, happy regulars and clear numbers.</p>
+      <span class="eyebrow">Retail, B2B or both</span>
+      <h2>One app that fits the way you sell</h2>
+      <p class="lead">Pick a business mode in Settings. It sets the menus, the words on screen and the billing screens — your data stays in one place whatever you choose.</p>
+    </div>
+    <div class="grid3 rv">
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Retail</h3><p>For walk-in customers. <b>POS Billing</b> for a fast counter with barcode and thermal receipt, and <b>Standard Billing</b> for a GST invoice when a customer asks for one.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><h3>Business (B2B)</h3><p>For distributors, traders and service providers. <b>Standard Billing</b> or <b>Advanced Billing</b> with buyer's order, dispatch and delivery details on the main screen.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><h3>Both</h3><p>A shop that also supplies businesses. POS, Standard and Advanced Billing sit side by side as tabs — the last one you used opens next time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="sec alt" id="industries">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Built for Indian businesses</span>
+      <h2>From the kirana counter to the wholesale invoice</h2>
     </div>
     <div class="inds rv">
-      <div class="ind"><div class="em">💇</div><h3>Salons</h3><p>Services, staff "served by" and commission.</p></div>
-      <div class="ind"><div class="em">💅</div><h3>Beauty parlours &amp; spas</h3><p>Regular clients, visit history and dues.</p></div>
-      <div class="ind"><div class="em">🍽️</div><h3>Restaurants</h3><p>Dine-in, takeaway, tables and running bills.</p></div>
-      <div class="ind"><div class="em">☕</div><h3>Cafés</h3><p>Quick touch billing with item notes.</p></div>
-      <div class="ind"><div class="em">🥤</div><h3>Juice &amp; beverage shops</h3><p>Popular items one tap away at rush hour.</p></div>
-      <div class="ind"><div class="em">🍰</div><h3>Bakeries &amp; sweet shops</h3><p>Photos, categories and simple stock counts.</p></div>
-      <div class="ind"><div class="em">🍔</div><h3>Food stalls &amp; QSR</h3><p>Billing on a phone or tablet at the counter.</p></div>
-      <div class="ind"><div class="em">🍨</div><h3>Ice-cream &amp; desserts</h3><p>Split payments and UPI QR on screen.</p></div>
+      <div class="ind"><div class="em">🛒</div><h3>Kirana &amp; General Stores</h3><p>Fast counter bills, udhar and daily sales.</p></div>
+      <div class="ind"><div class="em">📦</div><h3>FMCG Distributors</h3><p>GST invoices, retailer accounts and dues.</p></div>
+      <div class="ind"><div class="em">🏭</div><h3>Wholesalers &amp; Traders</h3><p>Quotations, orders, dispatch and e-way bill details.</p></div>
+      <div class="ind"><div class="em">💊</div><h3>Pharmacies</h3><p>HSN-wise GST bills and customer credit.</p></div>
+      <div class="ind"><div class="em">🔌</div><h3>Electronics &amp; Mobile</h3><p>Barcode billing and high-value invoices.</p></div>
+      <div class="ind"><div class="em">🔩</div><h3>Hardware &amp; Building Material</h3><p>Large catalogues and B2B credit terms.</p></div>
+      <div class="ind"><div class="em">🧰</div><h3>Service Providers</h3><p>SAC-coded service invoices and receipts.</p></div>
+      <div class="ind"><div class="em">🏬</div><h3>Multi-counter Stores</h3><p>Several counters and phones on one database.</p></div>
     </div>
   </div>
 </section>
 
 <!-- PROBLEM / SOLUTION -->
-<section class="sec alt" id="why">
+<section class="sec" id="why">
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow">Why Billing OS</span>
-      <h2>Busy counter, but no idea what you really earn?</h2>
-      <p class="lead">Most billing software is built for shops with stockrooms. Salons, restaurants and cafés need something faster and simpler.</p>
+      <h2>Billing is easy. Keeping every account right is not.</h2>
+      <p class="lead">Billing OS keeps bills, payments, customer accounts and GST in step automatically.</p>
     </div>
     <div class="ps rv">
       <div class="ps-col bad">
         <h3>The usual problems</h3>
         <ul>
-          <li><span><b>Slow, complicated billing screens</b>Queues build up while staff search through menus.</span></li>
-          <li><span><b>Regulars and their dues forgotten</b>No record of who visits often or who owes money.</span></li>
-          <li><span><b>Sales known, profit unknown</b>Rent, salaries and purchases sit in a separate notebook.</span></li>
+          <li><span><b>One app for the counter, another for GST invoices</b>Two places to look, and the numbers never match.</span></li>
+          <li><span><b>Payments recorded, but bills still show "due"</b>Customer balances and bill status drift apart.</span></li>
+          <li><span><b>GST return time means days of compiling</b>Sales, credit notes and purchases collected by hand.</span></li>
         </ul>
       </div>
       <div class="ps-col good">
         <h3>With Billing OS</h3>
         <ul>
-          <li class="check"><span><b>One touch-first billing screen</b>Popular items, photos, big buttons and keyboard shortcuts.</span></li>
-          <li class="check"><span><b>Customers recognised on every bill</b>Visits, usual items and udhaar show as you bill.</span></li>
-          <li class="check"><span><b>Net profit on the dashboard</b>Sales minus cost of items and every expense, including salaries.</span></li>
+          <li class="check"><span><b>POS and GST invoices in one app</b>Same products, customers and reports behind every screen.</span></li>
+          <li class="check"><span><b>Payments settle bills automatically</b>The chosen bill first, then the oldest open bills; any extra is kept as advance.</span></li>
+          <li class="check"><span><b>GSTR-1 and GSTR-3B ready</b>Output tax, credit notes and input tax credit worked out for you.</span></li>
         </ul>
       </div>
     </div>
@@ -454,122 +471,157 @@ footer a:hover{color:#fff}
 </section>
 
 <!-- FEATURE ROWS -->
-<section class="sec" id="features">
+<section class="sec alt" id="features">
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow">Features</span>
-      <h2>Everything from the first bill to the monthly P&amp;L</h2>
-      <p class="lead">One simple app for the counter, the customers, the expenses and the staff.</p>
+      <h2>Everything from the first bill to the GST return</h2>
     </div>
 
     <div class="frow rv">
       <div class="ftext">
         <span class="tag">POS billing</span>
-        <h3>One screen. Tap, bill, done.</h3>
-        <p>Product grid with pictures, category tabs and a Popular tab of your best sellers from the last 30 days. Search instantly or scan a barcode or short code.</p>
+        <h3>A counter that keeps up with the queue</h3>
+        <p>Search or scan, take payment, print. Built for the keyboard, with a touch grid for tablets.</p>
         <ul>
-          <li class="check">Big quantity steppers, line discounts and item notes like "less sugar"</li>
-          <li class="check">Bill discount in ₹ or %, GST inclusive or exclusive, round-off</li>
-          <li class="check">Cash with quick tender and change, UPI with on-screen QR, card, split or udhaar</li>
-          <li class="check">Hold and resume bills for running tables, pre-bill and reprint</li>
-          <li class="check">Shortcuts: F1 search, F2 pay, F3 hold, F6 customer, F10 reprint</li>
+          <li class="check">F1 search, F2 pay, F3 hold, F10 print, Esc clear — plus fullscreen till mode</li>
+          <li class="check">Barcode scans add items; repeat scans increase the quantity</li>
+          <li class="check">Cash, UPI QR, card or credit — or split one bill across them</li>
+          <li class="check">Hold a bill, serve the next customer, resume later</li>
         </ul>
       </div>
       <figure class="shot" data-label="Screenshot: POS billing — 1600 × 1000 px (pos.png)">
         <div class="bar"><i></i><i></i><i></i></div>
-        <img src="/products/billing-os/images/pos.png" alt="Touch POS screen with popular items, cart, discount and payment options" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+        <img src="/products/billing-os/images/pos.png" alt="POS billing with product list, cart, split payment and UPI QR" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
       </figure>
     </div>
 
     <div class="frow rev rv">
       <div class="ftext">
-        <span class="tag">Customers &amp; udhaar</span>
-        <h3>Know your regulars — and what they owe</h3>
-        <p>Bills are walk-in by default. Look up a regular by phone or name, or add one in two taps. Their visits and dues show right on the bill.</p>
+        <span class="tag">GST tax invoices</span>
+        <h3>Professional GST invoices, Tally-style if you like</h3>
+        <p>Standard Billing for everyday invoices; Advanced Billing adds buyer's order, dispatch and delivery details. CGST + SGST or IGST is decided by the buyer's state.</p>
         <ul>
-          <li class="check">Repeat, top-buyer, with-dues, new and lapsed customer lists</li>
-          <li class="check">Visits, lifetime spend, average bill and usual items</li>
-          <li class="check">Credit ledger with credit limits and payments against dues</li>
-          <li class="check">One-tap WhatsApp payment reminders</li>
+          <li class="check">Templates: Normal, Classic, Tally Standard and Tally Professional</li>
+          <li class="check">Real A4 pages; long bills carry forward with "Page X of Y"</li>
+          <li class="check">Payment terms (NET 7 to 90, COD, advance…) with automatic due date</li>
+          <li class="check">1–4 copies: Original, Duplicate, Triplicate, Extra</li>
+          <li class="check">Back-dated bills for managers, numbered in the right financial year</li>
         </ul>
       </div>
-      <figure class="shot" data-label="Screenshot: Customer profile — 1600 × 1000 px (customers.png)">
+      <figure class="shot" data-label="Screenshot: GST invoice — 1600 × 1000 px (invoice.png)">
         <div class="bar"><i></i><i></i><i></i></div>
-        <img src="/products/billing-os/images/customers.png" alt="Customer profile with visits, lifetime spend, usual items and credit ledger" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+        <img src="/products/billing-os/images/invoice.png" alt="A4 GST tax invoice in the Tally Professional template" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
       </figure>
     </div>
 
     <div class="frow rv">
       <div class="ftext">
-        <span class="tag">Expenses &amp; staff</span>
-        <h3>Expenses and salaries in the same place as sales</h3>
-        <p>Record rent, utilities, purchases, marketing and your own categories. Pay salaries, advances and bonuses, and they flow straight into your profit.</p>
+        <span class="tag">B2B documents</span>
+        <h3>Quotation to invoice, without retyping</h3>
+        <p>Make quotations, estimates, proforma invoices and sales orders — even for someone who isn't a customer yet — and convert them to an invoice when the deal closes.</p>
         <ul>
-          <li class="check">Filter expenses by date, category, payment method or text; export to CSV</li>
-          <li class="check">Monthly, weekly, daily, hourly or commission-based pay</li>
-          <li class="check">Suggested salary for any period and full payment history</li>
-          <li class="check">Sales served per staff member and staff commission report</li>
+          <li class="check">Quotation, estimate, proforma, sales order, purchase order, GRN</li>
+          <li class="check">Credit and debit notes against the original invoice</li>
+          <li class="check">Payment receipts on half A4 or full A4</li>
+          <li class="check">Your own numbering, e.g. QUO/2026-27/00007</li>
         </ul>
       </div>
-      <figure class="shot" data-label="Screenshot: Expenses &amp; employees — 1600 × 1000 px (expenses.png)">
+      <figure class="shot" data-label="Screenshot: Documents — 1600 × 1000 px (documents.png)">
         <div class="bar"><i></i><i></i><i></i></div>
-        <img src="/products/billing-os/images/expenses.png" alt="Expenses list and employee salary screen" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+        <img src="/products/billing-os/images/documents.png" alt="Documents list with quotations, sales orders and credit notes" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
       </figure>
     </div>
 
     <div class="frow rev rv">
       <div class="ftext">
-        <span class="tag">Dashboard &amp; reports</span>
-        <h3>See what the business actually earns</h3>
-        <p>Net sales, bills, average bill, net profit after cost and expenses, and credit due — each compared with the previous period.</p>
+        <span class="tag">Customers &amp; udhar</span>
+        <h3>Every customer's account, always correct</h3>
+        <p>Sales, payments, returns and credit notes post to a simple ledger. A payment settles the bill you choose first, then the oldest open bills, and keeps anything extra as advance.</p>
         <ul>
-          <li class="check">Sales by hour, day and month; busy hours and order types</li>
-          <li class="check">Top items, top customers, categories and highest dues</li>
-          <li class="check">Profit &amp; loss, day-wise close, item profitability</li>
-          <li class="check">GST report rate-wise and HSN-wise; everything exports to CSV</li>
+          <li class="check">Ledger: Date · Transaction · Debit · Credit · Balance</li>
+          <li class="check">Numbered payment receipts for every payment</li>
+          <li class="check">Last bills, totals and dues at a glance</li>
+          <li class="check">One-click WhatsApp reminders for due balances</li>
+          <li class="check">Print or download a Tally-style ledger as PDF or Excel</li>
         </ul>
       </div>
-      <figure class="shot" data-label="Screenshot: Dashboard — 1600 × 1000 px (dashboard.png)">
+      <figure class="shot" data-label="Screenshot: Customer ledger — 1600 × 1000 px (customers.png)">
         <div class="bar"><i></i><i></i><i></i></div>
-        <img src="/products/billing-os/images/dashboard.png" alt="Dashboard with net sales, net profit, expenses, credit due and charts" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+        <img src="/products/billing-os/images/customers.png" alt="Customer ledger with debit, credit and running balance" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
       </figure>
     </div>
 
     <div class="frow rv">
       <div class="ftext">
-        <span class="tag">Thermal receipts</span>
-        <h3>Clean, professional receipts</h3>
-        <p>Layouts for 2-inch (58 mm) and 3-inch (80 mm) printers with a live preview in Settings.</p>
+        <span class="tag">Reports &amp; GST</span>
+        <h3>See your business, file your GST</h3>
+        <p>A dashboard for the day, and Advanced Reports for the accountant.</p>
         <ul>
-          <li class="check">Logo, business details, GSTIN, bill number, cashier, table and order type</li>
-          <li class="check">Items with notes, discount and GST breakup, bold total</li>
-          <li class="check">Payments with change, credit on this bill and total outstanding</li>
-          <li class="check">Optional UPI QR for the unpaid amount, custom header and footer</li>
+          <li class="check">GSTR-1 (B2B, B2C, credit notes, rate-wise, HSN) and GSTR-3B side by side</li>
+          <li class="check">Sales and Purchase Registers with Excel-ready CSV</li>
+          <li class="check">Profit, top products, top customers, payments due</li>
+          <li class="check">Privacy mode hides amounts on screen with one tap</li>
         </ul>
       </div>
-      <figure class="shot" data-label="Screenshot: Receipt preview — 1600 × 1000 px (receipt.png)">
+      <figure class="shot" data-label="Screenshot: Reports &amp; GST — 1600 × 1000 px (reports.png)">
         <div class="bar"><i></i><i></i><i></i></div>
-        <img src="/products/billing-os/images/receipt.png" alt="Thermal receipt preview with logo, items, GST and UPI QR" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+        <img src="/products/billing-os/images/reports.png" alt="Advanced reports with GSTR-1 and GSTR-3B" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
       </figure>
     </div>
   </div>
 </section>
 
-<!-- RELIABILITY & MORE -->
+<!-- OPTIONAL MODULES -->
+<section class="sec" id="modules">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Optional modules</span>
+      <h2>Start simple. Switch on more when you need it.</h2>
+      <p class="lead">These modules are off by default, so the menu stays clean. Turn them on in Settings → Modules — your data is kept even if you turn them off again.</p>
+    </div>
+    <div class="grid3 rv">
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></div><h3>Inventory &amp; Stock</h3><p>Current stock, average buying price, stock value, low-stock alerts and add / subtract adjustments with reasons.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><h3>Warehouses &amp; Locations</h3><p>Warehouse-wise stock, stock transfers and low-stock alerts per location.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h3>Purchases &amp; Vendors</h3><p>Purchases that update stock, vendor payments that settle bills, vendor ledger and input tax credit for GSTR-3B.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5v14M7 5v14M11 5v14M15 5v14M19 5v14"/></svg></div><h3>Barcode Labels</h3><p>EAN-13, UPC-A, Code-39 and ITF with automatic check digits. Download as PNG or SVG.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><h3>B2B Documents</h3><p>Quotations, orders, proforma, credit and debit notes, GRN and payment receipts.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Payment Receipts</h3><p>A sidebar list of every payment received, with print, search and receipt numbering.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE -->
 <section class="sec alt">
   <div class="wrap">
     <div class="head rv">
-      <span class="eyebrow">Built to be reliable</span>
-      <h2>Rush hour proof</h2>
-      <p class="lead">Billing OS is designed for busy counters, flaky networks and staff in a hurry.</p>
+      <span class="eyebrow">And much more</span>
+      <h2>Safe, controlled and fast with years of data</h2>
     </div>
     <div class="grid3 rv">
-      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></div><h3>No duplicate bills</h3><p>Double taps, retries and slow networks can never create a second bill, payment or expense.</p></div>
-      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/><path d="M2 2l20 20"/></svg></div><h3>Keeps billing offline</h3><p>If the server can't be reached, bills wait in an outbox on the device and sync automatically.</p></div>
-      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Opens instantly</h3><p>Menu, categories and settings are cached on the device, so the POS is ready the moment you open it.</p></div>
-      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Bills can't be edited</h3><p>Issued bills are locked. Voids need a reason and returns are separate, audited records.</p></div>
-      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Roles &amp; permissions</h3><p>Admin, Manager, Cashier, Accountant and Employee, with an editable permission matrix.</p></div>
-      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4z"/></svg></div><h3>Fits your business</h3><p>Switch on order types, table numbers, "served by" staff and your own custom fields.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Staff roles &amp; login hours</h3><p>Admin, Manager, Employee and Cashier, with permissions you can change per user and set working hours.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Secure licence &amp; login</h3><p>Encrypted, machine-bound licence; repeated wrong passwords lock the login for 15 minutes.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div><h3>Returns, voids &amp; safe delete</h3><p>Item-level returns, voided bills kept on record, and customers with history deactivated — never lost.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><h3>Phones &amp; tablets</h3><p>Use it over the shop Wi-Fi, install it as an app, and share bills as PDF on WhatsApp.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg></div><h3>Thermal &amp; A4 printing</h3><p>Silent 2" and 3" receipts in the desktop app; A4 invoices through the normal print dialog.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div><h3>One-click backup</h3><p>Export and restore the whole database. A failed backup never leaves a half-written file.</p></div>
+    </div>
+
+    <div class="rv" style="margin-top:56px">
+      <h3 style="text-align:center;font-size:22px">Tested with 300,000 sales and 20,000 customers</h3>
+      <p class="lead" style="text-align:center;font-size:16px;margin-bottom:22px">Measured on a local MySQL 8 database with 600,000 invoice lines and 5,000 products.</p>
+      <div class="cmp-wrap">
+        <table class="cmp perf">
+          <thead><tr><th scope="col">Operation</th><th scope="col">Time</th></tr></thead>
+          <tbody>
+            <tr><td>Product / customer search, open &amp; print an invoice, customer ledger</td><td>10–30 ms</td></tr>
+            <tr><td>Sales list (latest, date range or search)</td><td>15–25 ms</td></tr>
+            <tr><td>Dashboard</td><td>~15 ms</td></tr>
+            <tr><td>Month reports (sales, profit, GSTR-1 / 3B, top products)</td><td>40–300 ms</td></tr>
+            <tr><td>Day-by-day sales summary for a full year</td><td>~2 s</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -582,26 +634,26 @@ footer a:hover{color:#fff}
       <h2>Works on desktop, tablet and phone</h2>
     </div>
     <div class="tabs" role="tablist" aria-label="Screenshots">
-      <button class="tab" role="tab" id="t-pos" aria-controls="p-pos" aria-selected="true">POS</button>
-      <button class="tab" role="tab" id="t-dash" aria-controls="p-dash" aria-selected="false" tabindex="-1">Dashboard</button>
-      <button class="tab" role="tab" id="t-cust" aria-controls="p-cust" aria-selected="false" tabindex="-1">Customers</button>
-      <button class="tab" role="tab" id="t-rep" aria-controls="p-rep" aria-selected="false" tabindex="-1">Reports</button>
+      <button class="tab" role="tab" id="t-dash" aria-controls="p-dash" aria-selected="true">Dashboard</button>
+      <button class="tab" role="tab" id="t-inv" aria-controls="p-inv" aria-selected="false" tabindex="-1">Invoice</button>
+      <button class="tab" role="tab" id="t-ledger" aria-controls="p-ledger" aria-selected="false" tabindex="-1">Customer ledger</button>
+      <button class="tab" role="tab" id="t-mob" aria-controls="p-mob" aria-selected="false" tabindex="-1">Mobile</button>
     </div>
-    <div class="panel" role="tabpanel" id="p-pos" aria-labelledby="t-pos">
-      <figure class="shot" data-label="Screenshot: POS — 1600 × 1000 px (pos.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/pos.png" alt="Billing OS POS screen" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
-      <p>Touch-first billing with photos, categories and a Popular tab.</p>
+    <div class="panel" role="tabpanel" id="p-dash" aria-labelledby="t-dash">
+      <figure class="shot" data-label="Screenshot: Dashboard — 1600 × 1000 px (dashboard.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/dashboard.png" alt="Dashboard with sales, profit and payments due" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Daily sales, profit and payments due — with privacy mode for busy counters.</p>
     </div>
-    <div class="panel" role="tabpanel" id="p-dash" aria-labelledby="t-dash" hidden>
-      <figure class="shot" data-label="Screenshot: Dashboard — 1600 × 1000 px (dashboard.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/dashboard.png" alt="Billing OS dashboard" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
-      <p>Net sales, net profit, expenses and credit due at a glance.</p>
+    <div class="panel" role="tabpanel" id="p-inv" aria-labelledby="t-inv" hidden>
+      <figure class="shot" data-label="Screenshot: Advanced Billing — 1600 × 1000 px (advanced-billing.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/advanced-billing.png" alt="Advanced Billing with dispatch, order and payment terms" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Advanced Billing with buyer's order, dispatch details and payment terms.</p>
     </div>
-    <div class="panel" role="tabpanel" id="p-cust" aria-labelledby="t-cust" hidden>
-      <figure class="shot" data-label="Screenshot: Customers — 1600 × 1000 px (customers.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/customers.png" alt="Billing OS customer segments and profile" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
-      <p>Repeat, top, with-dues, new and lapsed customers.</p>
+    <div class="panel" role="tabpanel" id="p-ledger" aria-labelledby="t-ledger" hidden>
+      <figure class="shot" data-label="Screenshot: Customer ledger — 1600 × 1000 px (customers.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/customers.png" alt="Customer ledger and payment receipts" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Ledger, receive payment and numbered receipts.</p>
     </div>
-    <div class="panel" role="tabpanel" id="p-rep" aria-labelledby="t-rep" hidden>
-      <figure class="shot" data-label="Screenshot: Reports — 1600 × 1000 px (reports.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/reports.png" alt="Billing OS profit and loss, day close and GST reports" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
-      <p>Profit &amp; loss, day-wise close, item profitability and GST.</p>
+    <div class="panel" role="tabpanel" id="p-mob" aria-labelledby="t-mob" hidden>
+      <figure class="shot" data-label="Screenshot: Billing on a phone — 1600 × 1000 px (mobile.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/mobile.png" alt="Billing OS on a phone with bottom tab bar" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Bottom tab bar, Products | Bill switch and full-width sheets on phones.</p>
     </div>
   </div>
 </section>
@@ -611,14 +663,14 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow">Get started</span>
-      <h2>Billing from day one</h2>
-      <p class="lead">Runs as a desktop app on one machine, or on a server for use from any device.</p>
+      <h2>Set up the way your business runs</h2>
+      <p class="lead">One PC offline, several counters on the shop network, or online on a cloud server.</p>
     </div>
     <ol class="steps rv">
-      <li><h3>Book a free demo</h3><p>We understand your business and show Billing OS with a sample menu like yours.</p></li>
-      <li><h3>We set it up</h3><p>Installation on your PC or server, with your thermal printer configured.</p></li>
-      <li><h3>Add your menu</h3><p>Items with photos, categories, prices and GST — or start from a café or salon demo catalogue.</p></li>
-      <li><h3>Start billing</h3><p>Bill, track customers, record expenses and watch your profit from day one.</p></li>
+      <li><h3>Book a free demo</h3><p>We understand how you bill and show Billing OS in Retail, B2B or Both mode.</p></li>
+      <li><h3>We install it</h3><p>On one PC, across your shop network or on a cloud server, with your printers set up.</p></li>
+      <li><h3>Add your details</h3><p>Shop GSTIN, invoice template, numbering, products and customers — import or add.</p></li>
+      <li><h3>Start billing</h3><p>POS, GST invoices and receipts from day one. Switch on modules as you grow.</p></li>
     </ol>
   </div>
 </section>
@@ -628,49 +680,49 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow">Pricing</span>
-      <h2>Simple yearly licence. No per-bill fees.</h2>
-      <p class="lead">Pricing depends on how many counters and devices you use. Tell us about your business and we'll send a quote.</p>
+      <h2>Annual licence. No per-bill fees.</h2>
+      <p class="lead">Priced for your setup. Tell us how you work and we'll send a quote.</p>
     </div>
     <div class="prices rv">
       <div class="price">
-        <h3>Free demo</h3>
-        <p class="desc">See Billing OS set up for your business.</p>
-        <div class="amt">₹0</div>
+        <h3>Single PC</h3>
+        <p class="desc">One computer, fully offline.</p>
+        <div class="amt" style="font-size:28px">Ask for price</div>
         <ul>
-          <li class="check">Live demo on call or video</li>
-          <li class="check">Sample café or salon menu</li>
-          <li class="check">Answers to all your questions</li>
+          <li class="check">All core billing features</li>
+          <li class="check">POS, Standard &amp; Advanced Billing</li>
+          <li class="check">GSTR-1 / GSTR-3B reports</li>
+          <li class="check">Thermal &amp; A4 printing</li>
         </ul>
-        <button type="button" class="btn btn-o" data-lead="Free demo">Book free demo</button>
+        <button type="button" class="btn btn-o" data-lead="Single PC">Get a quote</button>
       </div>
       <div class="price hot">
-        <span class="badge">Most popular</span>
-        <h3>Single counter</h3>
-        <p class="desc">Desktop app for one billing counter.</p>
-        <div class="amt" style="font-size:28px">Ask for price <small>/ year</small></div>
+        <span class="badge">For growing shops</span>
+        <h3>Shop network</h3>
+        <p class="desc">Several counters and phones on your Wi-Fi.</p>
+        <div class="amt" style="font-size:28px">Ask for price</div>
         <ul>
-          <li class="check">All features included</li>
-          <li class="check">Thermal receipts (2" / 3")</li>
-          <li class="check">Customers, udhaar, expenses &amp; staff</li>
-          <li class="check">Reports with CSV export</li>
-          <li class="check">Installation &amp; support</li>
+          <li class="check">Everything in Single PC</li>
+          <li class="check">Multiple counters on one database</li>
+          <li class="check">Phones &amp; tablets over shop Wi-Fi</li>
+          <li class="check">Staff roles &amp; login hours</li>
         </ul>
-        <button type="button" class="btn btn-p" data-lead="Single counter">Get a quote</button>
+        <button type="button" class="btn btn-p" data-lead="Shop network">Get a quote</button>
       </div>
       <div class="price">
-        <h3>Multi-device</h3>
-        <p class="desc">Billing from several counters, tablets or phones.</p>
-        <div class="amt" style="font-size:28px">Ask for price <small>/ year</small></div>
+        <h3>Cloud</h3>
+        <p class="desc">Online access from anywhere.</p>
+        <div class="amt" style="font-size:28px">Ask for price</div>
         <ul>
-          <li class="check">Everything in Single counter</li>
-          <li class="check">Web app on your server</li>
-          <li class="check">Roles and permissions per user</li>
-          <li class="check">Staff training</li>
+          <li class="check">Everything in Shop network</li>
+          <li class="check">Runs on a cloud MySQL server</li>
+          <li class="check">Access from any location</li>
+          <li class="check">Setup and migration help</li>
         </ul>
-        <button type="button" class="btn btn-o" data-lead="Multi-device">Talk to sales</button>
+        <button type="button" class="btn btn-o" data-lead="Cloud">Get a quote</button>
       </div>
     </div>
-    <p class="price-note">Questions? Call <a href="tel:+919864773099" class="js-phone" style="color:var(--p);font-weight:600">+91 98647 73099</a> or <a href="#" data-lead="Pricing question" style="color:var(--p);font-weight:600">request a callback</a>.</p>
+    <p class="price-note">Optional modules — inventory, warehouses, purchases, barcode labels — can be added to any plan. Questions? Call <a href="tel:+919864773099" class="js-phone" style="color:var(--p);font-weight:600">+91 98647 73099</a> or <a href="#" data-lead="Pricing question" style="color:var(--p);font-weight:600">request a callback</a>.</p>
   </div>
 </section>
 
@@ -679,18 +731,18 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow">Compare</span>
-      <h2>Retail billing software vs Billing OS</h2>
+      <h2>Bill book &amp; spreadsheets vs Billing OS</h2>
     </div>
     <div class="cmp-wrap rv">
       <table class="cmp">
-        <thead><tr><th scope="col"></th><th scope="col">Typical retail software</th><th scope="col">Billing OS</th></tr></thead>
+        <thead><tr><th scope="col">Task</th><th scope="col">Bill book / spreadsheet</th><th scope="col">Billing OS</th></tr></thead>
         <tbody>
-          <tr><td>Billing screen</td><td>Forms, batches and stock pickers</td><td>One touch-first screen</td></tr>
-          <tr><td>Regular customers</td><td>Just a name on an invoice</td><td>Visits, spend, usual items, dues</td></tr>
-          <tr><td>Expenses &amp; salaries</td><td>Kept somewhere else</td><td>Built in, part of profit</td></tr>
-          <tr><td>Staff</td><td>User logins only</td><td>Salary, advances, commission</td></tr>
-          <tr><td>Network drops</td><td>Billing stops</td><td>Bills queue and sync later</td></tr>
-          <tr><td>Profit</td><td>Sales only</td><td>Net profit after cost &amp; expenses</td></tr>
+          <tr><td>Counter bill</td><td>Handwritten, slow</td><td>Seconds, with barcode</td></tr>
+          <tr><td>GST invoice for a business</td><td>Separate tool or Word file</td><td>Same app, Tally-style print</td></tr>
+          <tr><td>Quotation to invoice</td><td>Typed again</td><td>Converted in one step</td></tr>
+          <tr><td>Customer payment</td><td>Bill still shows due</td><td>Bills settled automatically</td></tr>
+          <tr><td>GSTR-1 / GSTR-3B</td><td>Days of compiling</td><td>Ready in Advanced Reports</td></tr>
+          <tr><td>Staff access</td><td>Everyone sees everything</td><td>Roles, permissions, login hours</td></tr>
         </tbody>
       </table>
     </div>
@@ -705,13 +757,13 @@ footer a:hover{color:#fff}
       <h2>Common questions</h2>
     </div>
     <div class="faq">
-      <details><summary>Which businesses is Billing OS for?</summary><p>Salons, beauty parlours, restaurants, cafés, juice and beverage shops and similar businesses that sell services or prepared items. For shops that need batch, expiry and purchase tracking, see our Inventory Management software.</p></details>
-      <details><summary>Does it work on a phone or tablet?</summary><p>Yes. It runs as a desktop app on one machine, or as a web app on a server that you can use from desktops, tablets and phones.</p></details>
-      <details><summary>What happens if the internet or network goes down?</summary><p>Billing continues. Bills are saved in an outbox on the device and sync automatically when the connection returns, and a provisional receipt can still be printed.</p></details>
-      <details><summary>Does it support GST?</summary><p>Yes. Each item has a GST rate and can be priced inclusive or exclusive of GST. Receipts show the GST breakup and the GST report is available rate-wise and HSN-wise.</p></details>
-      <details><summary>Can I track customer credit (udhaar)?</summary><p>Yes. Put the balance on a customer's credit ledger with credit-limit checks, receive payments against dues and send WhatsApp reminders.</p></details>
-      <details><summary>Can I manage staff salaries?</summary><p>Yes. Set each employee's pay basis, see a suggested salary for any period and record salary, advance and bonus payments. They count as expenses in your profit.</p></details>
-      <details><summary>Which printers are supported?</summary><p>2-inch (58 mm) and 3-inch (80 mm) thermal receipt printers. Receipts print silently from the desktop app.</p></details>
+      <details><summary>Does Billing OS work without internet?</summary><p>Yes. Billing OS is an offline-first desktop app. Its server runs on your own PC, so billing, invoices, ledgers and reports work without internet.</p></details>
+      <details><summary>Can I use it for both counter billing and B2B GST invoices?</summary><p>Yes. Choose Retail, Business (B2B) or Both in Settings. Retail gives POS and Standard Billing, B2B gives Standard or Advanced Billing, and Both gives all three billing screens as tabs.</p></details>
+      <details><summary>Does it prepare GSTR-1 and GSTR-3B?</summary><p>Yes. Advanced Reports show GSTR-1 (B2B, B2C, credit notes, rate-wise and HSN) and GSTR-3B (output tax against input tax credit) side by side, with CSV export.</p></details>
+      <details><summary>Can I manage stock and purchases?</summary><p>Yes. Inventory &amp; Stock, Warehouses, Purchases &amp; Vendors and the Barcode label generator are optional modules. Switch them on in Settings → Modules when you need them.</p></details>
+      <details><summary>Can several counters or phones use it?</summary><p>Yes. Several PCs on the shop network can share one database, and phones and tablets can use it over the shop Wi-Fi or install it as an app. It can also run on a cloud server.</p></details>
+      <details><summary>Can I control what my staff can do?</summary><p>Yes. There are four roles — Admin, Manager, Employee and Cashier — with permissions you can change per user, plus login hours. The server enforces them on every request.</p></details>
+      <details><summary>How is my data backed up?</summary><p>One click exports the whole database to a file you can keep on a USB drive or cloud storage, and restore it at any time.</p></details>
     </div>
   </div>
 </section>
@@ -720,11 +772,11 @@ footer a:hover{color:#fff}
 <section class="sec final" id="demo">
   <div class="wrap">
     <div class="rv">
-      <h2>Ready for faster billing?</h2>
-      <p class="lead">Tell us about your business. We'll call you, show a live demo and help you get started.</p>
+      <h2>See Billing OS with your own kind of bills</h2>
+      <p class="lead">Tell us about your business. We'll call you, show a live demo in Retail or B2B mode and suggest the right setup.</p>
       <ul>
         <li class="check">Free demo on call or video</li>
-        <li class="check">Setup and printer configuration</li>
+        <li class="check">Installation and printer setup</li>
         <li class="check">Training for you and your staff</li>
       </ul>
       <p style="margin-top:26px"><a class="btn btn-wa js-wa" href="https://wa.me/919864773099?text=Hi%2C%20I%27m%20interested%20in%20Billing%20OS" target="_blank" rel="noopener">
@@ -755,7 +807,7 @@ footer a:hover{color:#fff}
     <div class="fld"><label>Your name</label><input name="name" autocomplete="name" maxlength="100" required><div class="em">Please enter your name</div></div>
     <div class="fld"><label>Mobile number</label><div class="tel"><span>+91</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="10-digit mobile" required></div><div class="em">Enter a valid 10-digit mobile number</div></div>
     <div class="row">
-      <div class="fld"><label>Business type</label><select name="businessType"><option value="">Select</option><option>Salon</option><option>Beauty parlour / Spa</option><option>Restaurant</option><option>Café</option><option>Juice &amp; beverage shop</option><option>Bakery / Sweet shop</option><option>Food stall / QSR</option><option>Other</option></select></div>
+      <div class="fld"><label>Business type</label><select name="businessType"><option value="">Select</option><option>Kirana / General store</option><option>FMCG distributor / Wholesale</option><option>Trader / B2B supplier</option><option>Pharmacy / Medical</option><option>Electronics &amp; mobile</option><option>Hardware &amp; building material</option><option>Service provider</option><option>Other</option></select></div>
       <div class="fld fld-opt"><label>City <em>(optional)</em></label><input name="city" autocomplete="address-level2" maxlength="80"></div>
     </div>
     <div class="fld fld-opt"><label>Email <em>(optional)</em></label><input name="email" type="email" autocomplete="email" maxlength="150"><div class="em">Enter a valid email address</div></div>

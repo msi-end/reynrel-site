@@ -69,20 +69,21 @@ export const DEFAULT_TERMS = `RENDIL PARTNER PROGRAM — TERMS & CONDITIONS
 13. Governing law. Laws of India; courts at Guwahati, Assam.`;
 
 // Starter catalogue. Edit, extend or delete in Admin > Products.
-// From the Billing OS (Consumption POS) README.
+// From the Billing OS README (retail + B2B GST billing).
+export const BILLING_OS_OLD_TAGLINE = 'Touch-first billing for salons, restaurants, cafés and beverage shops';
 export const BILLING_OS_FEATURES = [
-  ['Billing', 'Touch-first POS', 'Product grid with pictures, category tabs, Popular tab, instant search and barcode / short-code scanning'],
-  ['Billing', 'Payments', 'Cash with change, UPI with on-screen QR, card, split payments or udhaar with credit-limit checks'],
-  ['Billing', 'Hold & resume bills', 'Running tables, pre-bill printing, reprint, order types, table numbers and served-by staff'],
-  ['Billing', 'GST & discounts', 'Line and bill discounts, GST inclusive or exclusive per item, round-off'],
-  ['Customers', 'Regular customers', 'Repeat, top, with-dues, new and lapsed segments; visits, lifetime spend and usual items'],
-  ['Customers', 'Udhaar ledger', 'Credit ledger, payments against dues and WhatsApp reminders'],
-  ['Business', 'Expenses', 'Salary, purchases, rent, utilities, marketing and custom categories with CSV export'],
-  ['Business', 'Employees & salaries', 'Monthly, weekly, daily, hourly or commission pay; advances and bonuses'],
-  ['Reports', 'Dashboard & reports', 'Net sales, net profit, P&L, day-wise close, item profitability, GST and staff commission'],
-  ['System', 'Reliable billing', 'No duplicate bills, offline outbox that syncs automatically, immutable bills with audited voids and returns'],
-  ['System', 'Thermal receipts', '2-inch and 3-inch layouts with logo, GST breakup, dues and optional UPI QR'],
-  ['System', 'Roles & permissions', 'Admin, Manager, Cashier, Accountant and Employee with an editable permission matrix']
+  ['Billing', 'Retail, B2B or both', 'Business mode sets menus and billing screens: POS, Standard and Advanced Billing as tabs'],
+  ['Billing', 'Fast POS counter', 'Keyboard shortcuts, list and touch grid, barcode scanning, hold bills, split payments and UPI QR'],
+  ['Billing', 'GST tax invoices', 'CGST/SGST or IGST by buyer state, payment terms and due dates, back-dated bills, 1–4 copies'],
+  ['Billing', 'Invoice templates', 'Normal, Classic, Tally Standard and Tally Professional on real A4 pages, long bills carried forward'],
+  ['Documents', 'B2B documents', 'Quotation, estimate, proforma, sales order, purchase order and GRN, converted to invoices'],
+  ['Documents', 'Credit / debit notes & receipts', 'Notes against original invoices and numbered payment receipts on A5 or A4'],
+  ['Customers', 'Customer ledger & udhar', 'Payments settle bills automatically, advances, Tally-style ledger PDF/Excel and WhatsApp reminders'],
+  ['Reports', 'GST & reports', 'GSTR-1 and GSTR-3B, Sales and Purchase Registers with CSV, profit, top products and customers'],
+  ['Modules', 'Optional inventory', 'Inventory & Stock, Warehouses, Purchases & Vendors with ITC, and barcode labels — off by default'],
+  ['System', 'Staff roles & permissions', 'Admin, Manager, Employee and Cashier with per-user permissions and login hours'],
+  ['System', 'Offline first', 'Runs on the shop PC without internet; shop network and cloud setups also supported'],
+  ['System', 'Phones & tablets', 'Mobile layout, install as an app, share bills as PDF on WhatsApp']
 ];
 
 export const SEED_PRODUCTS = [
@@ -117,12 +118,12 @@ export const SEED_PRODUCTS = [
   {
     slug: 'billing-os',
     name: 'Billing OS',
-    category: 'Billing & POS',
+    category: 'Billing & GST',
     icon: 'Receipt',
     status: 'draft',
-    tagline: 'Touch-first billing for salons, restaurants, cafés and beverage shops',
+    tagline: 'Offline GST billing, POS and B2B invoicing for Indian businesses',
     description:
-      'A fast point of sale built around the bill, not the stockroom. Bill quickly, recognise regular customers, track udhaar, record expenses and salaries, and see what the business actually earns. Runs as a desktop app or a web app on desktop, tablet and phone.',
+      'Offline-first billing software for retail and small businesses: a fast POS counter and formal GST invoicing in one app, with B2B documents, customer ledger and GSTR-1 / GSTR-3B reports. Inventory, warehouses, purchases and barcode labels are optional modules.',
     website_url: 'https://reynrel.in/products/billing-os',
     default_commission_pct: 20,
     renewal_commission_pct: 10,
