@@ -31,7 +31,7 @@ export default function Login() {
       <form onSubmit={submit} className="w-full max-w-sm bg-white rounded-2xl p-7 space-y-5 shadow-2xl">
         <div className="flex items-center gap-3">
           <img src="/logo.png" alt="" className="w-9 h-9" />
-          <div><h1 className="text-lg font-bold text-slate-900">Rendil Partner</h1><p className="text-xs text-slate-500">Admin panel</p></div>
+          <div><h1 className="text-lg font-bold text-slate-900">Reynrel Partner</h1><p className="text-xs text-slate-500">Admin panel</p></div>
         </div>
         {error && <Alert>{error}</Alert>}
         <Field label="Email"><Input type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} required /></Field>

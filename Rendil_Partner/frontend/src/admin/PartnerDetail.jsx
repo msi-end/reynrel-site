@@ -67,8 +67,8 @@ function StatusActions({ partner: p, docs, onDone, products }) {
         <div className="space-y-4 text-sm">
           {modal === 'approved' && (
             <>
-              {docs.verified < docs.required && <Alert tone="amber">Only {docs.verified} of {docs.required} required documents are verified.</Alert>}
-              <p className="text-slate-600">The partner gets dashboard access. Their bank account is marked verified (if provided).</p>
+              {docs.required > 0 && docs.verified < docs.required && <Alert tone="amber">Only {docs.verified} of {docs.required} required documents are verified.</Alert>}
+              <p className="text-slate-600">The partner can log in to their dashboard straight away with the password they chose.</p>
               {unassigned && <Checkbox checked={assign} onChange={(e) => setAssign(e.target.checked)} label="Give access to all active products at default rates (refine under Products & commission)" />}
             </>
           )}
@@ -91,14 +91,22 @@ function Overview({ d }) {
         <Stat label="Approved orders" value={t.approved} hint={`${t.pending} pending · ${t.approvalRate ?? '—'}% approval rate`} tone="violet" />
         <Stat label="Sales value" value={t.sales} money hint={`expected ${p.expectedMonthlyCustomers || '—'} customers/month`} tone="slate" />
       </div>
+      {(p.profile.message || p.profile.interestedProducts?.length > 0) && (
+        <Card title="Application">
+          <Dl items={[
+            ['Interested in', (p.profile.interestedProducts || []).map((id) => d.products.find((x) => x.productId === id)?.name).filter(Boolean).join(', ') || '—'],
+            ['Message', p.profile.message || '—']
+          ]} />
+        </Card>
+      )}
       <div className="grid lg:grid-cols-3 gap-6">
         <Card title="Commission, last 12 months" className="lg:col-span-2">
           <BarChart data={d.performance.months} valueKey="earnings" detail={(m) => `${m.orders} approved orders`} />
         </Card>
         <Card title="Checklist">
           <ul className="space-y-3 text-sm">
-            <Check2 ok={d.documentSummary.verified >= d.documentSummary.required} label={`Documents verified ${d.documentSummary.verified}/${d.documentSummary.required}`} />
-            <Check2 ok={p.bank.verified} label={p.bank.accountMasked ? `Bank ${p.bank.accountMasked} ${p.bank.verified ? 'verified' : 'not verified'}` : 'No bank account yet'} />
+            {d.documentSummary.required > 0 && <Check2 ok={d.documentSummary.verified >= d.documentSummary.required} label={`Documents verified ${d.documentSummary.verified}/${d.documentSummary.required}`} />}
+            <Check2 ok={p.bank.verified} label={p.bank.accountMasked ? `Bank ${p.bank.accountMasked} ${p.bank.verified ? 'verified' : '(confirmed at first payout)'}` : 'Payout details not added yet'} />
             <Check2 ok={!!p.pan.masked} label={p.pan.masked ? `PAN ${p.pan.masked}` : 'No PAN yet'} />
             <Check2 ok={d.termsAccepted.length > 0} label={d.termsAccepted[0] ? `Terms v${d.termsAccepted[0].version} accepted ${date(d.termsAccepted[0].accepted_at)}` : 'Terms not accepted'} />
             <Check2 ok={d.products.some((x) => x.assigned && x.enabled)} label={`${d.products.filter((x) => x.assigned && x.enabled).length} product(s) assigned`} />

@@ -10,7 +10,17 @@ const now = () => new Date().toISOString();
 
 // Future schema changes: append { version, up: async (db) => {...} }. Each runs once, in order.
 const MIGRATIONS = [
-  { version: 1, up: async (db) => db.exec(renderDDL(db.dialect)) }
+  { version: 1, up: async (db) => db.exec(renderDDL(db.dialect)) },
+  // v2: simple onboarding. Documents become optional; PAN and bank are collected after approval.
+  {
+    version: 2,
+    up: async (db) => {
+      const row = await db.get("SELECT v FROM settings WHERE k = 'document_types'");
+      if (!row) return;
+      const types = JSON.parse(row.v).map((t) => ({ ...t, required: false, requiredIfGstin: false }));
+      await db.run("UPDATE settings SET v = ? WHERE k = 'document_types'", [JSON.stringify(types)]);
+    }
+  }
 ];
 
 async function seed(db) {

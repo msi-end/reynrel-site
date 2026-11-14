@@ -20,7 +20,7 @@ export default function Commission() {
   };
   return (
     <>
-      <PageHeader title="Commission" subtitle="Credited automatically when Reynrel approves your customers' orders" />
+      <PageHeader title="Earnings" subtitle="Credited automatically when Reynrel approves and onboards your customers" />
       {data && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
           <Stat label="Total earned" value={data.balance.totalEarned} money />

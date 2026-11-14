@@ -12,6 +12,8 @@ const statusStyles = {
 const sourceLabels = {
   homepage: 'Homepage',
   'contact-page': 'Contact Page',
+  'product-inventory-management': 'Inventory page',
+  'product-inventory-management-popup': 'Inventory page (popup)',
   unknown: 'Unknown'
 };
 
@@ -100,10 +102,12 @@ const LeadsAdmin = () => {
                     </span>
                   </div>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[var(--color-muted-foreground)] mb-2">
-                    <a href={`mailto:${lead.email}`} className="hover:text-[var(--color-primary)] flex items-center gap-1">
-                      <Icon name="Mail" size={14} />
-                      {lead.email}
-                    </a>
+                    {lead.email && (
+                      <a href={`mailto:${lead.email}`} className="hover:text-[var(--color-primary)] flex items-center gap-1">
+                        <Icon name="Mail" size={14} />
+                        {lead.email}
+                      </a>
+                    )}
                     {lead.phone && (
                       <a href={`tel:${lead.phone}`} className="hover:text-[var(--color-primary)] flex items-center gap-1">
                         <Icon name="Phone" size={14} />
@@ -114,6 +118,12 @@ const LeadsAdmin = () => {
                       <span className="flex items-center gap-1">
                         <Icon name="Building2" size={14} />
                         {lead.company}
+                      </span>
+                    )}
+                    {(lead.businessType || lead.city) && (
+                      <span className="flex items-center gap-1">
+                        <Icon name="Store" size={14} />
+                        {[lead.businessType, lead.city].filter(Boolean).join(' · ')}
                       </span>
                     )}
                     {lead.service && (

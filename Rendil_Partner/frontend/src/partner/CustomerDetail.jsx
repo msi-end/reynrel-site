@@ -21,7 +21,7 @@ export default function CustomerDetail() {
   return (
     <>
       <PageHeader title={c.business_name} subtitle={`${c.contact_name} · ${c.mobile} · ${c.city}, ${c.state}`}
-        back={<Link to="/customers" className="text-sm text-slate-500 inline-flex items-center gap-1 mb-1"><ArrowLeft size={14} />Customers</Link>}
+        back={<Link to="/portal/customers" className="text-sm text-slate-500 inline-flex items-center gap-1 mb-1"><ArrowLeft size={14} />Customers</Link>}
         actions={me.permissions.addCustomers && <><Button variant="outline" icon={Pencil} onClick={() => setModal({ kind: 'edit' })}>Edit details</Button><Button icon={Plus} onClick={() => setModal({ kind: 'order' })}>Add product</Button></>} />
       <div className="grid lg:grid-cols-3 gap-6 items-start">
         <div className="lg:col-span-2 space-y-4">

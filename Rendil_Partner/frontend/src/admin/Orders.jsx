@@ -23,7 +23,7 @@ export default function Orders() {
 
   return (
     <>
-      <PageHeader title="Customer orders" subtitle="Approve after payment is received — commission is credited to the partner automatically." />
+      <PageHeader title="Customer approvals" subtitle="Customers added by partners. Approve once the customer is verified and onboarded — the partner's commission is credited automatically." />
       <Card padded={false}>
         <div className="flex flex-col lg:flex-row gap-3 lg:items-center justify-between p-4 border-b border-slate-100">
           <Pills value={view} onChange={setView} options={[['submitted', 'Awaiting approval'], ['approved', 'Approved'], ['active', 'Active subscriptions'], ['expiring', 'Expiring in 30 days'], ['rejected', 'Rejected'], ['cancelled', 'Cancelled'], ['', 'All']]} />

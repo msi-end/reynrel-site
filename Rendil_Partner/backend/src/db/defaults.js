@@ -23,10 +23,10 @@ export const DEFAULT_PARTNER_TYPES = [
 ];
 
 export const DEFAULT_DOCUMENT_TYPES = [
-  { key: 'pan_card', label: 'PAN card', required: true },
-  { key: 'bank_proof', label: 'Cancelled cheque / bank passbook', required: true },
-  { key: 'address_proof', label: 'Address proof (Aadhaar with first 8 digits masked, utility bill, rent agreement)', required: true },
-  { key: 'gst_certificate', label: 'GST registration certificate', required: false, requiredIfGstin: true },
+  { key: 'pan_card', label: 'PAN card', required: false },
+  { key: 'bank_proof', label: 'Cancelled cheque / bank passbook', required: false },
+  { key: 'address_proof', label: 'Address proof (Aadhaar with first 8 digits masked, utility bill, rent agreement)', required: false },
+  { key: 'gst_certificate', label: 'GST registration certificate', required: false },
   { key: 'qualification', label: 'Professional / qualification certificate', required: false },
   { key: 'photo', label: 'Passport-size photo', required: false },
   { key: 'agreement', label: 'Signed partner agreement', required: false }

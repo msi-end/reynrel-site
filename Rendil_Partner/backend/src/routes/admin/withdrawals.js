@@ -14,7 +14,7 @@ router.get('/', h(async (req, res) => {
   let where = '1 = 1';
   if (req.query.status) { where = 'w.status = ?'; params.push(str(req.query.status, 20)); }
   res.json(await db.all(
-    `SELECT w.*, p.code AS partner_code, p.full_name AS partner_name, p.email AS partner_email, p.mobile AS partner_mobile
+    `SELECT w.*, p.code AS partner_code, p.full_name AS partner_name, p.email AS partner_email, p.mobile AS partner_mobile, p.bank_verified
      FROM withdrawals w JOIN partners p ON p.id = w.partner_id WHERE ${where} ORDER BY w.requested_at DESC LIMIT 500`, params));
 }));
 
@@ -55,6 +55,8 @@ router.put('/:id', requireAdmin('manager'), h(async (req, res) => {
         utr, ['NEFT', 'RTGS', 'IMPS', 'UPI', 'Cheque'].includes(req.body?.mode) ? req.body.mode : 'NEFT',
         RE.date.test(req.body?.paidOn || '') ? req.body.paidOn : ts.slice(0, 10), note || w.review_note, ts, req.actor, w.id
       ]);
+      // A completed transfer confirms the account works.
+      await t.run('UPDATE partners SET bank_verified = 1 WHERE id = ? AND bank_last4 = ?', [w.partner_id, w.bank_last4]);
     }
     await audit(req.actor, `withdrawal.${action}`, { type: 'withdrawal', id: w.id }, { amount: Number(w.amount), partner: w.partner_id }, t);
   });

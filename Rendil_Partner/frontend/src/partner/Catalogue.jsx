@@ -86,7 +86,7 @@ export default function Catalogue() {
               <div className="rounded-lg bg-violet-50 p-3"><div className="text-xs text-violet-700">Renewal</div><div className="text-2xl font-semibold text-violet-800">{pct(p.renewalPct)}</div></div>
             </div>
             <p className="mt-3 text-xs text-slate-500">On the amount received, excluding GST. Credited when Reynrel approves the order.</p>
-            {me.permissions.addCustomers && <Link to={`/customers/new?product=${p.id}`}><Button icon={UserPlus} className="w-full mt-4">Add a customer for {p.name}</Button></Link>}
+            {me.permissions.addCustomers && <Link to={`/portal/customers/new?product=${p.id}`}><Button icon={UserPlus} className="w-full mt-4">Add a customer for {p.name}</Button></Link>}
           </Card>
           {p.services.length > 0 && (
             <Card title="Add-on services">

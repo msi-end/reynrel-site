@@ -20,6 +20,8 @@ import leadsRoutes from './routes/leads.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
+// Real client IPs behind nginx on the same machine (used by the lead form rate limit).
+app.set('trust proxy', process.env.TRUST_PROXY || 'loopback');
 
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled rejection (server stays up):', err);
