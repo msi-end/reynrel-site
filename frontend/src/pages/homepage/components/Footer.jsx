@@ -32,8 +32,6 @@ const Footer = () => {
       { label: 'Why Choose Us', path: '/why-choose-us' },
       { label: 'Client Success', path: '/client-success' },
       { label: 'ROI Calculator', path: '/roi-calculator' },
-      { label: 'Partner Program', path: '/partners' },
-      { label: 'Partner Login', path: '/partners/login' },
       { label: 'Contact Us', path: '/contact-us' }
     ],
     services: [

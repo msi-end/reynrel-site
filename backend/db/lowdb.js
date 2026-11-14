@@ -28,56 +28,8 @@ const defaultData = {
   clients: [],
   subscriptions: [],
   renewalRequests: [],
-  leads: [],
-  partners: [],
-  partnerCustomers: [],
-  commissionLedger: [],
-  withdrawals: [],
-  partnerTerms: [],
-  partnerProgram: null,
-  auditLog: []
+  leads: []
 };
-
-export const DEFAULT_PARTNER_PROGRAM = {
-  minWithdrawal: 5000,
-  tdsPercent: 2,
-  defaultCommissionPercent: 20,
-  defaultRenewalPercent: 10,
-  payoutCycleDays: 7,
-  tiers: [
-    { name: 'Associate', minCustomersPerQuarter: 0, commissionPercent: 20, renewalPercent: 10 },
-    { name: 'Silver', minCustomersPerQuarter: 10, commissionPercent: 25, renewalPercent: 12 },
-    { name: 'Gold', minCustomersPerQuarter: 30, commissionPercent: 30, renewalPercent: 15 }
-  ]
-};
-
-export const DEFAULT_PARTNER_TERMS = `REYNREL PARTNER PROGRAM — TERMS & CONDITIONS
-
-1. Relationship. You join as an independent, non-exclusive partner of Reynrel Infotech ("Reynrel"). Nothing in these terms creates employment, agency, franchise or joint venture. You may not bind Reynrel to any contract or make commitments on its behalf.
-
-2. Eligibility & verification. Your application, PAN, bank details and documents are verified by Reynrel before approval. Reynrel may approve, reject, suspend or terminate any partner account at its discretion, including for incorrect information.
-
-3. Customers. A customer is credited to you only when you register them through your Partner Dashboard before they purchase, and Reynrel approves the registration. Duplicate customers already in Reynrel's records, self-purchases and customers obtained through misleading claims are not eligible.
-
-4. Commission. Commission is calculated on the license / subscription value actually received by Reynrel, excluding GST and third-party charges, at the percentage assigned to you for that product in your dashboard. Rates may be revised prospectively with notice in the dashboard. Renewal commission applies only where a renewal rate is assigned.
-
-5. Refunds & reversals. If a sale is refunded, cancelled or charged back, the related commission is reversed and adjusted against your balance.
-
-6. Withdrawals. You may request a withdrawal once your available commission is at least the minimum threshold (currently ₹5,000). Payouts are made by bank transfer only to the verified account in your name or your business's name. TDS and other deductions applicable under Indian tax law (e.g. Section 194H) are deducted, and a TDS certificate is provided as required.
-
-7. Taxes. You are responsible for your own income tax and, where applicable, GST registration and invoicing on commission received.
-
-8. No guarantees. Reynrel does not guarantee any minimum number of customers, sales or income. Any figures shown on the website or in the dashboard are illustrations only.
-
-9. Conduct. You will describe Reynrel products accurately, not offer unauthorised discounts, not use Reynrel's trademarks except as permitted, and comply with applicable law, including data protection obligations for customer information you collect.
-
-10. Confidentiality & data. Customer and pricing information shared with you is confidential. You confirm you have each customer's consent to share their details with Reynrel for onboarding and installation.
-
-11. Termination. Either party may end the partnership with 30 days' notice through email. Approved commission earned up to termination is payable unless termination is due to fraud or breach.
-
-12. Changes. Reynrel may update these terms; the version you accepted and any later version you accept are recorded in your account.
-
-13. Governing law. These terms are governed by the laws of India, with courts at Guwahati, Assam having jurisdiction.`;
 
 const seedProducts = [
   {
@@ -426,21 +378,6 @@ export async function initDb() {
   db.data.subscriptions ||= [];
   db.data.renewalRequests ||= [];
   db.data.leads ||= [];
-  db.data.partners ||= [];
-  db.data.partnerCustomers ||= [];
-  db.data.commissionLedger ||= [];
-  db.data.withdrawals ||= [];
-  db.data.auditLog ||= [];
-  if (!db.data.partnerProgram) {
-    db.data.partnerProgram = structuredClone(DEFAULT_PARTNER_PROGRAM);
-    changed = true;
-  }
-  if (!db.data.partnerTerms || db.data.partnerTerms.length === 0) {
-    db.data.partnerTerms = [
-      { version: 1, content: DEFAULT_PARTNER_TERMS, effectiveFrom: new Date().toISOString(), createdAt: new Date().toISOString() }
-    ];
-    changed = true;
-  }
 
   if (changed) {
     await db.write();
