@@ -4,6 +4,7 @@
 const PRODUCT_INTRO_PAGES = [
   { value: '', label: 'Auto (generated from product data)' },
   { value: 'inventory-management', label: 'Inventory Management (custom page) — /products/inventory-management' },
+  { value: 'billing-os', label: 'Billing OS (custom page) — /products/billing-os' },
 ];
 
 export default PRODUCT_INTRO_PAGES;

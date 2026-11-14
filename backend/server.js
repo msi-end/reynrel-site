@@ -20,6 +20,8 @@ import leadsRoutes from './routes/leads.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
+// Real client IPs behind nginx on the same machine (used by the lead form rate limit).
+app.set('trust proxy', process.env.TRUST_PROXY || 'loopback');
 
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled rejection (server stays up):', err);
@@ -94,6 +96,11 @@ app.get('/sitemap.xml', async (req, res, next) => {
   try {
     await db.read();
     const slugs = new Set((db.data.products || []).map((p) => productSlug(p)).filter(isSlug));
+    // Every standalone product page on disk is indexed too, even before it is linked to a product.
+    const pagesDir = path.join(frontendDist, 'products');
+    if (fs.existsSync(pagesDir)) {
+      for (const d of fs.readdirSync(pagesDir)) if (isSlug(d) && fs.existsSync(productPageFile(d))) slugs.add(d);
+    }
     const urls = [
       ...STATIC_SITEMAP.map(([loc, priority]) => ({ loc, priority })),
       ...[...slugs].map((s) => ({ loc: `/products/${s}`, priority: '0.9' }))

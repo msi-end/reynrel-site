@@ -23,7 +23,7 @@ export default function Withdrawals() {
   const blockers = [
     !me.permissions.requestWithdrawals && 'Withdrawals are not enabled for your account.',
     b.available < b.minWithdrawal && `Withdrawals unlock at ${inr(b.minWithdrawal)} available (you have ${inr(b.available)}).`,
-    !data.bankVerified && 'Your bank account is not verified yet.',
+    !data.payoutReady && 'Add your PAN and bank account in Profile → Payout details.',
     data.bankChangePending && 'Your new bank account is awaiting verification.',
     open && `Withdrawal ${open.reference} is already in process.`
   ].filter(Boolean);
@@ -33,7 +33,7 @@ export default function Withdrawals() {
   };
   return (
     <>
-      <PageHeader title="Withdrawals" subtitle={`Transfer available commission to your verified bank account. Minimum ${inr(b.minWithdrawal)}.`} />
+      <PageHeader title="Withdrawals" subtitle={`Transfer available commission to your bank account. Minimum ${inr(b.minWithdrawal)}.`} />
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         <Stat label="Available" value={b.available} money tone="green" />
         <Stat label="In process" value={b.inProcess} money tone="amber" />
@@ -64,8 +64,8 @@ export default function Withdrawals() {
           )}
         </Card>
         <Card title="Payout account" className="lg:col-span-2">
-          <Dl items={[['Name', me.bank.holder], ['Account', <span className="font-mono">{me.bank.accountMasked || '—'}</span>], ['IFSC', <span className="font-mono">{me.bank.ifsc}</span>], ['Bank', me.bank.bankName], ['Status', <Badge status={me.bank.verified ? 'verified' : 'pending'}>{me.bank.verified ? 'Verified' : 'Not verified'}</Badge>]]} />
-          <Link to="/profile" className="inline-block mt-4 text-sm text-brand-600">Change bank account</Link>
+          <Dl items={[['Name', me.bank.holder], ['Account', <span className="font-mono">{me.bank.accountMasked || '—'}</span>], ['IFSC', <span className="font-mono">{me.bank.ifsc}</span>], ['Bank', me.bank.bankName], ['Status', <Badge status={me.bank.verified ? 'verified' : 'pending'}>{me.bank.verified ? 'Verified' : 'Checked at first payout'}</Badge>]]} />
+          <Link to="/portal/profile" className="inline-block mt-4 text-sm text-brand-600">{data.payoutReady ? 'Change payout details' : 'Add payout details'}</Link>
         </Card>
       </div>
       <Card title="History" className="mt-6" padded={false}>

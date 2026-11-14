@@ -13,7 +13,7 @@ export default function Dashboard() {
     [o.partners.pending, 'partner applications to review', '/admin/partners?status=pending', Users],
     [o.documentsPending, 'documents waiting for verification', '/admin/partners', FileCheck2],
     [o.bankChangesPending, 'bank-account changes to verify', '/admin/partners', Landmark],
-    [o.orders.pending, 'customer orders to approve', '/admin/orders', ClipboardCheck],
+    [o.orders.pending, 'customers to approve', '/admin/orders', ClipboardCheck],
     [o.installationsOpen, 'installations open', '/admin/installations', Wrench],
     [o.withdrawals.requested + o.withdrawals.approved, 'payouts to process', '/admin/withdrawals', IndianRupee]
   ].filter(([n]) => n > 0);

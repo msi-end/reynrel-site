@@ -4,10 +4,9 @@ import { PartnerAuth } from '../auth';
 import { partnerApi } from '../lib/api';
 import { date } from '../lib/format';
 import { Card, Badge, Button, Field, Input, Alert, Dl, useAction } from '../components/ui';
-import { DocumentList } from './Documents';
 
 const STATES = {
-  pending: { icon: Clock, tone: 'bg-amber-50 text-amber-600', title: 'Application under review', text: 'We are verifying your details and documents. You will get full access once approved. Make sure every required document is uploaded.' },
+  pending: { icon: Clock, tone: 'bg-amber-50 text-amber-600', title: 'Application under review', text: 'Thank you for applying. Our team will review your application and contact you on your mobile number. You will get full access to your dashboard as soon as you are approved.' },
   rejected: { icon: XCircle, tone: 'bg-red-50 text-red-600', title: 'Application not approved', text: 'We could not approve your application.' },
   suspended: { icon: Ban, tone: 'bg-red-50 text-red-600', title: 'Account suspended', text: 'Your partner account is suspended. Contact Reynrel for details.' }
 };
@@ -18,7 +17,7 @@ export default function StatusScreen({ me, onLogout }) {
     <div className="min-h-screen bg-slate-50">
       <header className="bg-white border-b border-slate-200">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2"><img src="/logo.png" alt="" className="w-7 h-7" /><span className="font-semibold">Rendil Partner</span></div>
+          <div className="flex items-center gap-2"><img src="/logo.png" alt="" className="w-7 h-7" /><span className="font-semibold">Reynrel Partner</span></div>
           <Button size="sm" variant="ghost" icon={LogOut} onClick={onLogout}>Log out</Button>
         </div>
       </header>
@@ -33,10 +32,9 @@ export default function StatusScreen({ me, onLogout }) {
             </div>
           </div>
           <div className="mt-5 pt-5 border-t border-slate-100">
-            <Dl items={[['Partner ID', <span className="font-mono">{me.code}</span>], ['Applied on', date(me.createdAt)], ['Status', <Badge status={me.status} />], ['Documents', `${me.documents.uploaded}/${me.documents.required} required uploaded · ${me.documents.verified} verified`]]} />
+            <Dl items={[['Partner ID', <span className="font-mono">{me.code}</span>], ['Applied on', date(me.createdAt)], ['Status', <Badge status={me.status} />]]} />
           </div>
         </Card>
-        {me.status !== 'suspended' && <Card title="Your documents"><DocumentList /></Card>}
       </main>
     </div>
   );

@@ -6,7 +6,7 @@ import { documentUpload, filesOf, discard } from '../../middleware/upload.js';
 import { h, bad, notFound, nowIso, paginate, parseJSON } from '../../utils/http.js';
 import { RE, str, up, mobile, money, round2, FieldErrors } from '../../utils/validators.js';
 import { checkPassword } from '../../utils/password.js';
-import { encrypt } from '../../utils/crypto.js';
+import { encrypt, blindIndex } from '../../utils/crypto.js';
 import { partnerView, documentSummary, documentTypes, insertDocuments, recordTermsAcceptance } from '../../services/partners.js';
 import { latestTerms, getProgram } from '../../services/settings.js';
 import { partnerCatalogue, quote } from '../../services/pricing.js';
@@ -316,7 +316,7 @@ router.get('/withdrawals', h(async (req, res) => {
     balance(req.partner.id),
     db.get("SELECT id FROM partner_bank_requests WHERE partner_id = ? AND status = 'pending'", [req.partner.id])
   ]);
-  res.json({ balance: bal, rows, bankVerified: !!req.partner.bank_verified, bankChangePending: !!pendingBank });
+  res.json({ balance: bal, rows, payoutReady: !!(req.partner.pan_enc && req.partner.bank_account_enc), bankVerified: !!req.partner.bank_verified, bankChangePending: !!pendingBank });
 }));
 
 router.post('/withdrawals', requirePermission('requestWithdrawals'), h(async (req, res) => {
@@ -324,7 +324,7 @@ router.post('/withdrawals', requirePermission('requestWithdrawals'), h(async (re
   const program = await getProgram();
   const row = await db.tx(async (t) => {
     const p = await t.get(`SELECT * FROM partners WHERE id = ?${db.forUpdate}`, [req.partner.id]); // serialises concurrent requests
-    if (!p.bank_verified) throw bad('Your bank account has not been verified yet.');
+    if (!p.pan_enc || !p.bank_account_enc) throw bad('Add your PAN and bank account in Profile → Payout details first.');
     if (await t.get("SELECT id FROM partner_bank_requests WHERE partner_id = ? AND status = 'pending'", [p.id])) throw bad('A bank account change is awaiting verification.');
     if (await t.get("SELECT id FROM withdrawals WHERE partner_id = ? AND status IN ('requested','approved')", [p.id])) throw bad('You already have a withdrawal in process.');
     const bal = await balance(p.id, t);
@@ -397,6 +397,36 @@ router.post('/bank-change', documentUpload.fields([{ name: 'bank_proof', maxCoun
     await discard(files);
     throw err;
   }
+}));
+
+// PAN and bank account for payouts, entered by the partner after approval.
+// Password-confirmed; a change resets verification and is blocked while a payout is in process.
+router.put('/payout', h(async (req, res) => {
+  const b = req.body || {};
+  const p = req.partner;
+  const pan = up(b.pan, 10);
+  const acct = str(b.accountNumber, 20).replace(/\s/g, '');
+  const ifsc = up(b.ifsc, 11);
+  const e = new FieldErrors();
+  e.check(RE.pan.test(pan), 'pan', 'Enter a valid PAN (ABCDE1234F)')
+    .check(str(b.accountHolder), 'accountHolder', 'Required')
+    .check(RE.account.test(acct), 'accountNumber', 'Account number must be 9–18 digits')
+    .check(acct === str(b.accountNumberConfirm, 20).replace(/\s/g, ''), 'accountNumberConfirm', 'Account numbers do not match')
+    .check(RE.ifsc.test(ifsc), 'ifsc', 'Enter a valid IFSC (SBIN0001234)')
+    .check(str(b.bankName), 'bankName', 'Required')
+    .check(checkPassword(b.password, p.password_hash), 'password', 'Password is incorrect').throwIfAny();
+  await db.tx(async (t) => {
+    if (await t.get("SELECT id FROM withdrawals WHERE partner_id = ? AND status IN ('requested','approved')", [p.id])) throw bad('You cannot change payout details while a withdrawal is in process.');
+    if (await t.get('SELECT id FROM partners WHERE pan_hash = ? AND id <> ?', [blindIndex(pan), p.id])) throw bad('This PAN is registered to another partner account.');
+    await t.run(
+      `UPDATE partners SET pan_enc = ?, pan_hash = ?, pan_last4 = ?, pan_name = ?, bank_holder = ?, bank_account_enc = ?, bank_last4 = ?, bank_ifsc = ?, bank_name = ?, bank_branch = ?,
+        bank_account_type = ?, bank_verified = 0, updated_at = ? WHERE id = ?`,
+      [encrypt(pan), blindIndex(pan), pan.slice(-4), str(b.accountHolder, 120), str(b.accountHolder, 120), encrypt(acct), acct.slice(-4), ifsc, str(b.bankName, 120), str(b.branch, 120),
+        b.accountType === 'current' ? 'current' : 'savings', nowIso(), p.id]
+    );
+    await audit(req.actor, 'partner.payout_details', { type: 'partner', id: p.id }, { first: !p.bank_account_enc }, t);
+  });
+  res.json(partnerView(await db.get('SELECT * FROM partners WHERE id = ?', [p.id])));
 }));
 
 router.get('/bank-change', h(async (req, res) => {

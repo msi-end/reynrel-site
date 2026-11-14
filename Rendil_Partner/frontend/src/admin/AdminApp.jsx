@@ -30,7 +30,7 @@ function Guarded() {
     { to: '/admin/partners', label: 'Partners', icon: Users, badge: o ? o.partners.pending + o.documentsPending + o.bankChangesPending : 0 },
     { to: '/admin/partners/new', label: 'Add partner', icon: UserPlus },
     { section: 'Sales' },
-    { to: '/admin/orders', label: 'Customer orders', icon: ClipboardCheck, badge: o?.orders.pending },
+    { to: '/admin/orders', label: 'Customer approvals', icon: ClipboardCheck, badge: o?.orders.pending },
     { to: '/admin/installations', label: 'Installations', icon: Wrench, badge: o?.installationsOpen },
     { to: '/admin/withdrawals', label: 'Payouts', icon: Landmark, badge: o ? o.withdrawals.requested + o.withdrawals.approved : 0 },
     { section: 'Catalogue' },
@@ -39,7 +39,7 @@ function Guarded() {
   ];
   return (
     <Shell
-      brand={{ title: 'Rendil Partner', subtitle: 'Admin panel' }}
+      brand={{ title: 'Reynrel Partner', subtitle: 'Admin panel' }}
       items={items}
       user={{ name: user.name, sub: `${user.email} · ${user.role}` }}
       onLogout={() => { logout(); navigate('/admin/login'); }}

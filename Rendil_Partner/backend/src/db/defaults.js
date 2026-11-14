@@ -23,10 +23,10 @@ export const DEFAULT_PARTNER_TYPES = [
 ];
 
 export const DEFAULT_DOCUMENT_TYPES = [
-  { key: 'pan_card', label: 'PAN card', required: true },
-  { key: 'bank_proof', label: 'Cancelled cheque / bank passbook', required: true },
-  { key: 'address_proof', label: 'Address proof (Aadhaar with first 8 digits masked, utility bill, rent agreement)', required: true },
-  { key: 'gst_certificate', label: 'GST registration certificate', required: false, requiredIfGstin: true },
+  { key: 'pan_card', label: 'PAN card', required: false },
+  { key: 'bank_proof', label: 'Cancelled cheque / bank passbook', required: false },
+  { key: 'address_proof', label: 'Address proof (Aadhaar with first 8 digits masked, utility bill, rent agreement)', required: false },
+  { key: 'gst_certificate', label: 'GST registration certificate', required: false },
   { key: 'qualification', label: 'Professional / qualification certificate', required: false },
   { key: 'photo', label: 'Passport-size photo', required: false },
   { key: 'agreement', label: 'Signed partner agreement', required: false }
@@ -69,6 +69,23 @@ export const DEFAULT_TERMS = `RENDIL PARTNER PROGRAM — TERMS & CONDITIONS
 13. Governing law. Laws of India; courts at Guwahati, Assam.`;
 
 // Starter catalogue. Edit, extend or delete in Admin > Products.
+// From the Billing OS README (retail + B2B GST billing).
+export const BILLING_OS_OLD_TAGLINE = 'Touch-first billing for salons, restaurants, cafés and beverage shops';
+export const BILLING_OS_FEATURES = [
+  ['Billing', 'Retail, B2B or both', 'Business mode sets menus and billing screens: POS, Standard and Advanced Billing as tabs'],
+  ['Billing', 'Fast POS counter', 'Keyboard shortcuts, list and touch grid, barcode scanning, hold bills, split payments and UPI QR'],
+  ['Billing', 'GST tax invoices', 'CGST/SGST or IGST by buyer state, payment terms and due dates, back-dated bills, 1–4 copies'],
+  ['Billing', 'Invoice templates', 'Normal, Classic, Tally Standard and Tally Professional on real A4 pages, long bills carried forward'],
+  ['Documents', 'B2B documents', 'Quotation, estimate, proforma, sales order, purchase order and GRN, converted to invoices'],
+  ['Documents', 'Credit / debit notes & receipts', 'Notes against original invoices and numbered payment receipts on A5 or A4'],
+  ['Customers', 'Customer ledger & udhar', 'Payments settle bills automatically, advances, Tally-style ledger PDF/Excel and WhatsApp reminders'],
+  ['Reports', 'GST & reports', 'GSTR-1 and GSTR-3B, Sales and Purchase Registers with CSV, profit, top products and customers'],
+  ['Modules', 'Optional inventory', 'Inventory & Stock, Warehouses, Purchases & Vendors with ITC, and barcode labels — off by default'],
+  ['System', 'Staff roles & permissions', 'Admin, Manager, Employee and Cashier with per-user permissions and login hours'],
+  ['System', 'Offline first', 'Runs on the shop PC without internet; shop network and cloud setups also supported'],
+  ['System', 'Phones & tablets', 'Mobile layout, install as an app, share bills as PDF on WhatsApp']
+];
+
 export const SEED_PRODUCTS = [
   {
     slug: 'inventory-management',
@@ -104,13 +121,14 @@ export const SEED_PRODUCTS = [
     category: 'Billing & GST',
     icon: 'Receipt',
     status: 'draft',
-    tagline: 'Add the Billing OS tagline',
-    description: 'Draft — add the Billing OS description, plans, services, features and screenshots in Admin > Products. Drafts are hidden from partners.',
+    tagline: 'Offline GST billing, POS and B2B invoicing for Indian businesses',
+    description:
+      'Offline-first billing software for retail and small businesses: a fast POS counter and formal GST invoicing in one app, with B2B documents, customer ledger and GSTR-1 / GSTR-3B reports. Inventory, warehouses, purchases and barcode labels are optional modules.',
     website_url: 'https://reynrel.in/products/billing-os',
     default_commission_pct: 20,
     renewal_commission_pct: 10,
     plans: [],
     services: [],
-    features: []
+    features: BILLING_OS_FEATURES
   }
 ];

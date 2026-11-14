@@ -6,10 +6,23 @@ and is independent of the main website in the repository root. Nothing in the ma
 ```
 Rendil_Partner/
 ├─ backend/    Node.js + Express API (MySQL, or a single-file SQLite DB as fallback)
-└─ frontend/   React (Vite) — Admin Panel at /admin, Partner Portal at /
+└─ frontend/   React (Vite) — public homepage at /, application at /apply,
+               partner dashboard at /portal (login at /login), Admin Panel at /admin
 ```
 
 ## What it does
+
+**Onboarding flow**
+1. A visitor reads the homepage (`/`) and applies at `/apply`: name, mobile, email, city, state, partner type and a password. No documents are needed.
+2. The application is stored as a pending partner. You approve or reject it in Admin → Partners.
+3. Once approved, the partner logs in at `/login` with the password they chose and sees their dashboard.
+4. The partner adds a customer and the product the customer wants (Customers → Add customer).
+5. You review it in Admin → Customer approvals. Approving it credits the partner's commission using their commission settings.
+6. The partner adds PAN and bank details under Profile → Payout details and withdraws once the balance reaches the minimum.
+
+**Public homepage (`/`)**
+- Benefits, who the programme is for, live product list (features, plans, commission per sale) from the admin catalogue, an earnings estimator, market research on typical partner income in India (estimates, not promises), how it works, FAQ and an Apply button.
+- Only `/` and `/apply` are indexed; `/admin`, `/portal` and `/login` are `noindex` and disallowed in `robots.txt`.
 
 **Admin Panel (`/admin`)**
 - Dashboard of things needing review, sales, commission, payouts, top partners and recent activity.
@@ -17,19 +30,19 @@ Rendil_Partner/
   - approve, reject, suspend or reactivate them;
   - edit their profile;
   - reset their password.
-- KYC & documents: view uploads, mark each as verified or rejected (with the reason shown to the partner), upload on their behalf, reveal PAN and account number (every view is logged), and approve bank-account changes.
+- KYC & documents (optional): view or upload documents, reveal PAN and account number (every view is logged). A bank account is marked verified after the first successful payout.
 - Products & commission per partner: assign products, switch selling on/off, set per-product commission and renewal overrides, set partner-wide defaults, and give demo logins.
 - Negotiated pricing per partner: a special price for any plan or service, with an optional expiry. The price can't go below the plan's minimum partner price.
 - Permissions per partner: add customers, request installations, request withdrawals, see list prices, see demo logins.
 - Product catalogue, all fully dynamic: products, plans (list, renewal and minimum partner price, inclusions), add-on services (with their own commission %), grouped features, screenshots (upload or URL), and draft/active/archived status.
-- Customer orders: approve after payment and commission is credited automatically, line by line. You can also reject orders, record renewals (renewal commission is credited), process refunds/reversals, and edit subscriptions and licence keys.
+- Customer approvals: approve once the customer is verified and onboarded; commission is credited automatically, line by line. You can also reject orders, record renewals (renewal commission is credited), process refunds/reversals, and edit subscriptions and licence keys.
 - Installations: schedule, assign an engineer, and add notes and status updates visible to the partner.
 - Payouts: approve, reject, or mark paid with a UTR; there is also a bank bulk-transfer CSV of approved payouts.
 - Settings: programme defaults, minimum withdrawal (₹5,000), TDS %, partner types, required document types, versioned terms, admin users (owner/manager/viewer roles) and the audit log.
 
-**Partner Portal (`/`)**
-- Multi-step registration with PAN, bank and document uploads. Pending partners see their status and can fix rejected documents.
-- Dashboard, Software & pricing (their own prices, special prices, what they earn, features, screenshots, demo logins), Customers (add a customer with order and installation request, add more products, edit), Installations, Commission ledger (CSV export), Withdrawals (₹5,000 minimum, TDS preview), Documents, Profile (bank change goes to admin verification) and password.
+**Partner dashboard (`/portal`)**
+- Five sections: Dashboard, Customers (add a customer with the product they want), Earnings (rates and commission ledger with CSV export), Withdrawals (₹5,000 minimum, TDS preview) and Profile (details, payout details, password).
+- Pending partners see an "application under review" screen until approved.
 
 ### Commission rules
 The most specific rate wins:
@@ -69,7 +82,7 @@ For a quick start without MySQL, set `DB_CLIENT=sqlite` in `.env`. Data then liv
 3. Build the frontend: `cd frontend && npm ci && npm run build`. The backend serves `frontend/dist` itself.
 4. Start the backend: `cd backend && npm ci --omit=dev && npm start` (use pm2/systemd). Tables are created on first start.
 5. Serve it on its own subdomain, e.g. `partners.reynrel.in`, with nginx proxying to `127.0.0.1:5100`. Set `TRUST_PROXY=1`.
-   Use `client_max_body_size 40m;` for document uploads.
+   Use `client_max_body_size 40m;` for product image and document uploads.
 6. Back up the MySQL database, `backend/storage/documents/` (private KYC files, never web-served) and `backend/public/uploads/`.
 7. Log in at `/admin` with `ADMIN_EMAIL` / `ADMIN_PASSWORD`, then change the password under Settings → My account.
 

@@ -18,7 +18,7 @@ export default function Customers() {
   return (
     <>
       <PageHeader title="Customers" subtitle="Everyone you have registered, their orders and installations"
-        actions={me.permissions.addCustomers && <Link to="/customers/new"><Button icon={UserPlus}>Add customer</Button></Link>} />
+        actions={me.permissions.addCustomers && <Link to="/portal/customers/new"><Button icon={UserPlus}>Add customer</Button></Link>} />
       <Card padded={false}>
         <div className="flex flex-col md:flex-row gap-3 md:items-center justify-between p-4 border-b border-slate-100">
           <Pills value={status} onChange={(s) => { setStatus(s); setPage(1); }} options={[['', 'All'], ['submitted', 'Pending approval'], ['approved', 'Approved'], ['rejected', 'Rejected']]} />
@@ -28,7 +28,7 @@ export default function Customers() {
           <Table head={['Customer', 'Location', 'Orders', 'Status', 'Added']} empty={data.rows.length === 0 && <Empty icon={UserPlus} title="No customers found" />}>
             {data.rows.map((c) => (
               <tr key={c.id} className="hover:bg-slate-50">
-                <Td><Link to={`/customers/${c.id}`} className="font-medium text-slate-900 hover:text-brand-600">{c.business_name}</Link><div className="text-xs text-slate-500">{c.contact_name} · {c.mobile}</div></Td>
+                <Td><Link to={`/portal/customers/${c.id}`} className="font-medium text-slate-900 hover:text-brand-600">{c.business_name}</Link><div className="text-xs text-slate-500">{c.contact_name} · {c.mobile}</div></Td>
                 <Td className="text-slate-600">{c.city}, {c.state}</Td>
                 <Td className="tabular">{c.orders}</Td>
                 <Td><div className="flex flex-wrap gap-1">{c.approved > 0 && <Badge status="approved">{c.approved} approved</Badge>}{c.pending > 0 && <Badge status="submitted">{c.pending} pending</Badge>}{c.open_installs > 0 && <Badge status="scheduled">Installation open</Badge>}</div></Td>
