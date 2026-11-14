@@ -3,5 +3,3 @@ node_modules
 db.json
 uploads/screenshots/*
 !uploads/screenshots/.gitkeep
-private/partner-docs/*
-!private/partner-docs/.gitkeep

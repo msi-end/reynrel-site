@@ -1,24 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
-import Layer from 'express/lib/router/layer.js';
-
-// Express 4 does not forward rejected promises from async handlers to the
-// error middleware; patch Layer so they reach it instead of hanging the request.
-const origHandle = Layer.prototype.handle_request;
-Layer.prototype.handle_request = function patched(req, res, next) {
-  if (this.handle.length > 3) return origHandle.call(this, req, res, next);
-  try {
-    const ret = this.handle(req, res, next);
-    if (ret && typeof ret.catch === 'function') ret.catch(next);
-  } catch (err) {
-    next(err);
-  }
-};
 import cors from 'cors';
 import compression from 'compression';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { initDb } from './db/lowdb.js';
+import fs from 'fs';
+import { initDb, db, productSlug } from './db/lowdb.js';
 
 import adminAuthRoutes from './routes/adminAuth.routes.js';
 import productsRoutes from './routes/products.routes.js';
@@ -30,10 +17,6 @@ import renewalsRoutes from './routes/renewals.routes.js';
 import clientAuthRoutes from './routes/clientAuth.routes.js';
 import clientRoutes from './routes/client.routes.js';
 import leadsRoutes from './routes/leads.routes.js';
-import partnerPublicRoutes from './routes/partnerPublic.routes.js';
-import partnerRoutes from './routes/partner.routes.js';
-import partnersAdminRoutes from './routes/partnersAdmin.routes.js';
-import partnerOpsAdminRoutes from './routes/partnerOpsAdmin.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -45,8 +28,7 @@ process.on('unhandledRejection', (err) => {
 const corsOrigin = process.env.CORS_ORIGIN || '*';
 app.use(compression());
 app.use(cors({ origin: corsOrigin === '*' ? true : corsOrigin.split(',') }));
-app.set('trust proxy', process.env.TRUST_PROXY || 'loopback');
-app.use(express.json({ limit: '200kb' }));
+app.use(express.json());
 app.use(
   '/uploads',
   express.static(path.join(__dirname, 'uploads'), {
@@ -67,24 +49,72 @@ app.use('/api/settings', settingsRoutes);
 app.use('/api/client', clientAuthRoutes);
 app.use('/api/client', clientRoutes);
 app.use('/api/leads', leadsRoutes);
-app.use('/api/partners', partnerPublicRoutes);
-app.use('/api/partner', partnerRoutes);
-// Mount the cross-partner ops router before the "/:id" partner router.
-app.use('/api/admin/partner-ops', partnerOpsAdminRoutes);
-app.use('/api/admin/partners', partnersAdminRoutes);
 
 const frontendDist = path.join(__dirname, '../frontend/dist');
-app.use(express.static(frontendDist));
+const SITE_URL = (process.env.SITE_URL || 'https://reynrel.in').replace(/\/$/, '');
+
+// ---- SEO: product pages live at /products/<slug> (no trailing slash) ----
+// Old standalone intro URLs -> new canonical product URLs (301, permanent).
+const LEGACY_PRODUCT_PAGES = {
+  'inventory-manager': 'inventory-management'
+};
+const productPageFile = (slug) => path.join(frontendDist, 'products', slug, 'index.html');
+const isSlug = (s) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s);
+
+app.get(/^\/product-intro\/([^/]+)\/?(?:index\.html)?$/, (req, res, next) => {
+  const slug = LEGACY_PRODUCT_PAGES[req.params[0]] || req.params[0];
+  if (!isSlug(slug)) return next();
+  res.redirect(301, `/products/${slug}`);
+});
+
+// Screenshots for a migrated page may still sit in the old folder on the server.
+for (const [oldSlug, newSlug] of Object.entries(LEGACY_PRODUCT_PAGES)) {
+  app.use(`/products/${newSlug}/images`, express.static(path.join(frontendDist, 'products', newSlug, 'images')));
+  app.use(`/products/${newSlug}/images`, express.static(path.join(frontendDist, 'product-intro', oldSlug, 'images')));
+}
+
+// Custom HTML product page if one exists, otherwise fall through to the React app.
+app.get(/^\/products\/([a-z0-9-]+)(\/|\/index\.html)?$/, (req, res, next) => {
+  const slug = req.params[0];
+  if (!isSlug(slug) || !fs.existsSync(productPageFile(slug))) {
+    if (req.params[1]) return res.redirect(301, `/products/${slug}`);
+    return next();
+  }
+  if (req.params[1]) return res.redirect(301, `/products/${slug}`);
+  res.sendFile(productPageFile(slug));
+});
+
+// Sitemap generated from the live product list so new products are indexed automatically.
+const STATIC_SITEMAP = [
+  ['/', '1.0'], ['/services', '0.9'], ['/products', '0.9'], ['/android-apps', '0.7'], ['/roi-calculator', '0.6'],
+  ['/why-choose-us', '0.7'], ['/client-success', '0.7'], ['/about', '0.6'], ['/contact-us', '0.8'],
+  ['/privacy-policy', '0.3'], ['/terms-of-service', '0.3'], ['/cookie-policy', '0.3']
+];
+app.get('/sitemap.xml', async (req, res, next) => {
+  try {
+    await db.read();
+    const slugs = new Set((db.data.products || []).map((p) => productSlug(p)).filter(isSlug));
+    const urls = [
+      ...STATIC_SITEMAP.map(([loc, priority]) => ({ loc, priority })),
+      ...[...slugs].map((s) => ({ loc: `/products/${s}`, priority: '0.9' }))
+    ];
+    res.type('application/xml').send(
+      `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
+        .map((u) => `  <url><loc>${SITE_URL}${u.loc}</loc><priority>${u.priority}</priority></url>`)
+        .join('\n')}\n</urlset>\n`
+    );
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.use(express.static(frontendDist, { redirect: false }));
 app.get(/^(?!\/api).*/, (req, res) => {
   res.sendFile(path.join(frontendDist, 'index.html'));
 });
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  if (err?.name === 'MulterError' || /only PDF, JPG/.test(err?.message || '')) {
-    const msg = err.code === 'LIMIT_FILE_SIZE' ? 'Each document must be 5 MB or smaller' : err.message;
-    return res.status(400).json({ error: msg });
-  }
   console.error(err);
   res.status(500).json({ error: err.message || 'Internal server error' });
 });

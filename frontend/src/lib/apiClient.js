@@ -3,7 +3,6 @@ import axios from 'axios';
 export const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 export const ADMIN_TOKEN_KEY = 'reynrel_admin_token';
 export const CLIENT_TOKEN_KEY = 'reynrel_client_token';
-export const PARTNER_TOKEN_KEY = 'reynrel_partner_token';
 
 export const publicApi = axios.create({ baseURL: BASE_URL });
 
@@ -36,4 +35,3 @@ function createAuthedApi(tokenKey, loginPath) {
 
 export const adminApi = createAuthedApi(ADMIN_TOKEN_KEY, '/admin/login');
 export const clientApi = createAuthedApi(CLIENT_TOKEN_KEY, '/client/login');
-export const partnerApi = createAuthedApi(PARTNER_TOKEN_KEY, '/partners/login');

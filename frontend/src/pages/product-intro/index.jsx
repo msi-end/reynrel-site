@@ -7,7 +7,8 @@ import Icon from '../../components/AppIcon';
 import Image from '../../components/AppImage';
 import Button from '../../components/ui/Button';
 import { publicApi } from '../../lib/apiClient';
-import { getProductSlug } from '../../utils/productIntro';
+import { getProductSlug, normalizeIntroPage } from '../../utils/productIntro';
+import slugify from '../../utils/slugify';
 
 // Fallback, per-product Product Intro page: renders a dedicated introduction
 // for a single product using its own live data. Used for any product that
@@ -22,10 +23,18 @@ const ProductIntro = () => {
     publicApi
       .get('/products')
       .then((res) => {
-        const match = res?.data?.find((p) => getProductSlug(p) === slug);
+        const list = res?.data || [];
+        const match = list.find((p) => getProductSlug(p) === slug);
+        // Product that has a custom page but was reached by its name-based slug: go to the canonical URL.
+        const byName = !match && list.find((p) => normalizeIntroPage(p.introPage) && slugify(p.slug || p.name) === slug);
+        if (byName) {
+          window.location.replace(`/products/${normalizeIntroPage(byName.introPage)}`);
+          return;
+        }
         setProduct(match || null);
+        setLoading(false);
       })
-      .finally(() => setLoading(false));
+      .catch(() => setLoading(false));
   }, [slug]);
 
   if (!loading && !product) {

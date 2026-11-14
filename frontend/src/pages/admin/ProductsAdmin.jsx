@@ -4,6 +4,8 @@ import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import { adminApi } from '../../lib/apiClient';
 import PRODUCT_INTRO_PAGES from '../../data/productIntroPages';
+import { normalizeIntroPage, getProductSlug } from '../../utils/productIntro';
+import slugify from '../../utils/slugify';
 import {
   linesToArray,
   arrayToLines,
@@ -27,7 +29,8 @@ const emptyForm = {
   metrics: '',
   pricingAnnual: '',
   demoHighlights: '',
-  introPage: ''
+  introPage: '',
+  slug: ''
 };
 
 const toFormState = (product) => ({
@@ -42,7 +45,8 @@ const toFormState = (product) => ({
   metrics: metricsToLines(product.metrics),
   pricingAnnual: product.pricingAnnual ?? '',
   demoHighlights: highlightsToLines(product.demoHighlights),
-  introPage: product.introPage || ''
+  introPage: normalizeIntroPage(product.introPage),
+  slug: product.slug || ''
 });
 
 const toPayload = (form) => ({
@@ -57,7 +61,8 @@ const toPayload = (form) => ({
   metrics: linesToMetrics(form.metrics),
   pricingAnnual: Number(form.pricingAnnual) || 0,
   demoHighlights: linesToHighlights(form.demoHighlights),
-  introPage: form.introPage || ''
+  introPage: form.introPage || '',
+  slug: slugify(form.slug || '')
 });
 
 const ProductsAdmin = () => {
@@ -166,6 +171,18 @@ const ProductsAdmin = () => {
               className="md:col-span-2"
             />
             <div className="md:col-span-2 space-y-2">
+              <Input
+                label="URL slug"
+                value={form.slug}
+                placeholder={slugify(form.name) || 'billing-os'}
+                onChange={(e) => setForm({ ...form, slug: e.target.value })}
+              />
+              <p className="text-sm text-[var(--color-muted-foreground)]">
+                Page address: /products/{form.introPage || slugify(form.slug || form.name) || '…'} — leave blank to use the
+                product name. Changing it later changes the URL, so set it once.
+              </p>
+            </div>
+            <div className="md:col-span-2 space-y-2">
               <label className="text-sm font-medium text-[var(--color-foreground)] block">Product Intro Page</label>
               <select
                 value={form.introPage}
@@ -271,7 +288,7 @@ const ProductsAdmin = () => {
                 <p className="text-xs text-[var(--color-muted-foreground)] mt-1">
                   Intro page:{' '}
                   <span className="font-medium text-[var(--color-foreground)]">
-                    {product.introPage || 'Auto'}
+                    {`/products/${getProductSlug(product)}`}{product.introPage ? ' (custom)' : ''}
                   </span>
                 </p>
                 <div className="flex gap-2 mt-3">

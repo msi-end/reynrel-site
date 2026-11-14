@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { -webkit-text-size-adjust: 100%; }
+body { font-feature-settings: 'cv11', 'ss01'; }
+.tabular { font-variant-numeric: tabular-nums; }
+.scrollbar-thin::-webkit-scrollbar { height: 6px; width: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+@keyframes rp-progress { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+.rp-progress { animation: rp-progress 1s ease-in-out infinite; }
+@keyframes rp-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.rp-fade { animation: rp-fade .15s ease-out; }
+@media (prefers-reduced-motion: reduce) { .rp-fade, .rp-progress { animation: none; } }
