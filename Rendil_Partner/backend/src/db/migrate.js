@@ -4,7 +4,7 @@ import { connect } from './index.js';
 import { renderDDL } from './schema.js';
 import { config } from '../config.js';
 import { hashPassword } from '../utils/password.js';
-import { DEFAULT_PROGRAM, DEFAULT_PARTNER_TYPES, DEFAULT_DOCUMENT_TYPES, DEFAULT_TERMS, SEED_PRODUCTS } from './defaults.js';
+import { DEFAULT_PROGRAM, DEFAULT_PARTNER_TYPES, DEFAULT_DOCUMENT_TYPES, DEFAULT_TERMS, SEED_PRODUCTS, BILLING_OS_FEATURES } from './defaults.js';
 
 const now = () => new Date().toISOString();
 
@@ -19,6 +19,21 @@ const MIGRATIONS = [
       if (!row) return;
       const types = JSON.parse(row.v).map((t) => ({ ...t, required: false, requiredIfGstin: false }));
       await db.run("UPDATE settings SET v = ? WHERE k = 'document_types'", [JSON.stringify(types)]);
+    }
+  },
+  // v3: fill the Billing OS draft from its README, only if it still holds the original placeholder text.
+  {
+    version: 3,
+    up: async (db) => {
+      const p = await db.get("SELECT id FROM products WHERE slug = 'billing-os' AND tagline = 'Add the Billing OS tagline'");
+      if (!p) return;
+      const seed = SEED_PRODUCTS.find((x) => x.slug === 'billing-os');
+      await db.run('UPDATE products SET category = ?, tagline = ?, description = ?, updated_at = ? WHERE id = ?', [seed.category, seed.tagline, seed.description, now(), p.id]);
+      if (!(await db.get('SELECT id FROM product_features WHERE product_id = ? LIMIT 1', [p.id]))) {
+        for (const [i, [group, title, desc]] of BILLING_OS_FEATURES.entries()) {
+          await db.run('INSERT INTO product_features (id, product_id, group_name, title, description, sort_order) VALUES (?, ?, ?, ?, ?, ?)', [nanoid(), p.id, group, title, desc, i]);
+        }
+      }
     }
   }
 ];

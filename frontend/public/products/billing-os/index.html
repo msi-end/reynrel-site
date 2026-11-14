@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billing OS — POS Billing Software for Salons, Restaurants &amp; Cafés | Reynrel</title>
+<meta name="description" content="Billing OS is fast, touch-first billing software for salons, beauty parlours, restaurants, cafés and juice shops. GST bills, thermal receipts, regular customers, udhaar, expenses, staff salaries and real profit reports.">
+<link rel="canonical" href="https://reynrel.in/products/billing-os">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="Reynrel Infotech">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Billing OS — billing software for salons, restaurants &amp; cafés | Reynrel">
+<meta property="og:description" content="Bill in seconds, recognise regular customers, track udhaar, expenses and salaries, and see your real profit.">
+<meta property="og:url" content="https://reynrel.in/products/billing-os">
+<meta property="og:image" content="https://reynrel.in/assets/images/reynrel-logo-full.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"SoftwareApplication","name":"Billing OS","alternateName":"Reynrel Billing OS POS","applicationCategory":"BusinessApplication","applicationSubCategory":"Point of Sale, Billing","operatingSystem":"Windows, macOS, Linux, Web browser","url":"https://reynrel.in/products/billing-os","description":"Touch-first POS billing software for salons, beauty parlours, restaurants, cafés and beverage shops, with customers, udhaar, expenses, staff salaries and profit reports.","publisher":{"@type":"Organization","name":"Reynrel Infotech","url":"https://reynrel.in"}},
+ {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://reynrel.in/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://reynrel.in/products"},{"@type":"ListItem","position":3,"name":"Billing OS","item":"https://reynrel.in/products/billing-os"}]},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Which businesses is Billing OS for?","acceptedAnswer":{"@type":"Answer","text":"Salons, beauty parlours, restaurants, cafés, juice and beverage shops and similar businesses that sell services or prepared items."}},
+  {"@type":"Question","name":"Does it work on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"Yes. It runs as a desktop app on one machine, or as a web app on a server that you can use from desktops, tablets and phones."}},
+  {"@type":"Question","name":"What happens if the internet or network goes down?","acceptedAnswer":{"@type":"Answer","text":"Billing continues. Bills are saved in an outbox on the device and sync automatically when the connection returns."}},
+  {"@type":"Question","name":"Does it support GST?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each item has a GST rate, inclusive or exclusive pricing, GST breakup on receipts and a rate-wise and HSN-wise GST report."}},
+  {"@type":"Question","name":"Can I track customer credit (udhaar)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Balances go on a customer credit ledger with credit-limit checks, payments against dues and WhatsApp reminders."}}
+ ]}
+]}
+</script>
+<style>
+:root{
+  --p:#0f766e;--p-dark:#115e59;--p-soft:#f0fdfa;--p-line:#99f6e4;
+  --g:#059669;--g-soft:#ecfdf5;--wa:#16a34a;
+  --ink:#0f172a;--text:#1e293b;--muted:#64748b;--line:#e2e8f0;--bg:#fff;--bg2:#f8fafc;--dark:#0b1220;
+  --r:14px;--r-sm:10px;--sh:0 1px 2px rgba(15,23,42,.06),0 8px 24px -12px rgba(15,23,42,.18);
+  --font:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans','Helvetica Neue',Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--p-line);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.sec{padding:80px 0}
+.sec.alt{background:var(--bg2)}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--p)}
+h1,h2,h3{color:var(--ink);line-height:1.2;letter-spacing:-.015em}
+h2{font-size:clamp(26px,3.4vw,38px);margin-top:8px}
+.lead{color:var(--muted);font-size:18px;margin-top:12px}
+.head{text-align:center;max-width:720px;margin:0 auto 48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;font-weight:600;border:1px solid transparent;cursor:pointer;transition:background .15s,box-shadow .15s,transform .15s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-p{background:var(--p);color:#fff}.btn-p:hover{background:var(--p-dark)}
+.btn-o{background:#fff;border-color:var(--line);color:var(--ink)}.btn-o:hover{background:var(--bg2)}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#15803d}
+.btn-sm{height:40px;padding:0 16px;font-size:15px}
+.btn[disabled]{opacity:.6;cursor:wait}
+.ic{width:20px;height:20px;flex:none}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--g-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat}
+
+/* Top bar + nav */
+.topbar{background:var(--dark);color:#cbd5e1;font-size:14px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:40px}
+.topbar a{color:#fff;font-weight:600}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.5) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.nav.scrolled{border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink)}
+.brand img{width:34px;height:34px;object-fit:contain}
+.brand small{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:-2px}
+.nav-links{display:flex;gap:26px;list-style:none;font-size:15px;color:#334155}
+.nav-links a:hover{color:var(--p)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-phone{font-weight:600;color:var(--ink);font-size:15px;display:flex;gap:6px;align-items:center}
+.burger{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer}
+.mobile-menu{display:none;border-top:1px solid var(--line);background:#fff}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 20px;border-bottom:1px solid var(--bg2);font-weight:500}
+
+/* Hero */
+.hero{background:radial-gradient(1200px 500px at 85% -10%,#ccfbf1 0,rgba(204,251,241,0) 60%),linear-gradient(#fff,#f8fafc);padding:56px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.pill{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--p-line);color:var(--p-dark);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--g)}
+.hero h1{font-size:clamp(32px,4.6vw,52px);margin-top:18px}
+.hero h1 span{color:var(--p)}
+.hero .lead{max-width:560px}
+.quick{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:8px;display:flex;gap:8px;box-shadow:var(--sh);max-width:560px}
+.quick input{flex:1;min-width:0;height:48px;border:0;padding:0 14px;border-radius:8px;background:var(--bg2);font-size:16px}
+.quick input:focus{outline:2px solid var(--p-line);background:#fff}
+.quick-note{font-size:14px;color:var(--muted);margin-top:10px}
+.quick-msg{font-size:14px;margin-top:10px;display:none}
+.hero-points{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;list-style:none;font-size:15px;color:#334155}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.hero-visual{position:relative}
+.float-card{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh);padding:10px 14px;font-size:13px;display:flex;gap:10px;align-items:center}
+.float-card b{display:block;color:var(--ink);font-size:15px}
+.float-card .dot{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.fc1{left:-18px;bottom:28px}.fc2{right:-14px;top:24px}
+
+/* Screenshot frame with placeholder fallback */
+.shot{position:relative;border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(30,41,59,.35)}
+.shot .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line);background:#f8fafc}
+.shot .bar i{width:10px;height:10px;border-radius:50%;background:#e2e8f0}
+.shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;background:var(--bg2)}
+.shot.missing img{display:none}
+.shot.missing::after{content:attr(data-label);display:flex;align-items:center;justify-content:center;text-align:center;aspect-ratio:16/10;padding:24px;color:#64748b;font-size:14px;font-weight:500;background:repeating-linear-gradient(45deg,#f8fafc 0 14px,#f1f5f9 14px 28px)}
+
+/* Trust strip */
+.strip{border-block:1px solid var(--line);background:#fff}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-block:22px}
+.strip div{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--muted)}
+.strip b{display:block;color:var(--ink);font-size:16px}
+.strip svg{color:var(--p)}
+
+/* Industries */
+.inds{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ind{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;transition:border-color .15s,box-shadow .15s}
+.ind:hover{border-color:var(--p-line);box-shadow:var(--sh)}
+.ind .em{font-size:28px;line-height:1}
+.ind h3{font-size:17px;margin-top:12px}
+.ind p{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* Problem/solution */
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ps-col{border-radius:var(--r);padding:28px;border:1px solid var(--line);background:#fff}
+.ps-col h3{font-size:18px;display:flex;gap:10px;align-items:center}
+.ps-col ul{list-style:none;margin-top:18px;display:grid;gap:16px}
+.ps-col li b{display:block;color:var(--ink)}
+.ps-col li span{font-size:15px;color:var(--muted)}
+.ps-col.bad{background:#fff7f7;border-color:#fecaca}
+.ps-col.bad li{display:flex;gap:10px}
+.ps-col.bad li::before{content:"✕";flex:none;width:20px;height:20px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ps-col.good{background:var(--g-soft);border-color:#a7f3d0}
+
+/* Feature rows */
+.frow{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.frow+.frow{margin-top:88px}
+.frow.rev .ftext{order:2}
+.ftext .tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--p);background:var(--p-soft);border-radius:999px;padding:5px 12px}
+.ftext h3{font-size:clamp(22px,2.6vw,30px);margin-top:14px}
+.ftext p{color:var(--muted);margin-top:10px}
+.ftext ul{list-style:none;margin-top:18px;display:grid;gap:10px;font-size:15px}
+
+/* All-features grid */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.card .ico{width:44px;height:44px;border-radius:12px;background:var(--p-soft);color:var(--p);display:flex;align-items:center;justify-content:center}
+.card h3{font-size:17px;margin-top:14px}
+.card p{font-size:15px;color:var(--muted);margin-top:6px}
+
+/* Screenshot tabs */
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.tab{height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;font-size:15px;cursor:pointer;color:#334155}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.panel{max-width:980px;margin:0 auto}
+.panel[hidden]{display:none}
+.panel p{text-align:center;color:var(--muted);margin-top:16px;font-size:15px}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s;list-style:none}
+.steps li{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.steps li::before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--p);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps h3{font-size:17px;margin-top:14px}
+.steps p{font-size:15px;color:var(--muted);margin-top:6px}
+
+/* Pricing */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.price{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;position:relative}
+.price.hot{border:2px solid var(--p);box-shadow:0 24px 48px -24px rgba(15,118,110,.45)}
+.price .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;white-space:nowrap}
+.price h3{font-size:19px}
+.price .desc{color:var(--muted);font-size:15px;margin-top:4px;min-height:48px}
+.amt{margin-top:16px;font-size:42px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.amt small{font-size:16px;font-weight:500;color:var(--muted)}
+.price ul{list-style:none;display:grid;gap:10px;margin:22px 0 26px;font-size:15px}
+.price .btn{margin-top:auto;width:100%}
+.price-note{text-align:center;color:var(--muted);font-size:14px;margin-top:22px}
+
+/* Comparison */
+.cmp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:15px}
+.cmp th,.cmp td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left}
+.cmp thead th{background:var(--bg2);font-size:14px;color:#334155}
+.cmp thead th:last-child{color:var(--p)}
+.cmp td:nth-child(2){color:#b91c1c}
+.cmp td:nth-child(3){color:#047857;font-weight:600}
+.cmp-wrap{overflow-x:auto;max-width:900px;margin:0 auto;border-radius:var(--r)}
+
+/* Testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+.stars{color:#f59e0b;letter-spacing:2px}
+.quote p{margin-top:12px;font-size:15px;color:#334155;flex:1}
+.who{display:flex;gap:12px;align-items:center;margin-top:18px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--p-soft);color:var(--p);font-weight:700;display:flex;align-items:center;justify-content:center}
+.who b{display:block;color:var(--ink);font-size:15px}
+.who span{font-size:13px;color:var(--muted)}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 20px}
+.faq summary{list-style:none;cursor:pointer;padding:18px 0;font-weight:600;color:var(--ink);display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--muted);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:18px;color:var(--muted);font-size:15px}
+
+/* Final CTA */
+.final{background:linear-gradient(135deg,#134e4a,#0f766e 55%,#0d9488);color:#fff}
+.final .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.final h2{color:#fff}
+.final .lead{color:#ccfbf1}
+.final ul{list-style:none;display:grid;gap:10px;margin-top:22px}
+.final .check::before{background-color:rgba(255,255,255,.15);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E")}
+
+/* Lead form (page + popup) */
+.lf{background:#fff;color:var(--text);border-radius:18px;padding:28px;box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
+.lf h3{font-size:21px}
+.lf .sub{color:var(--muted);font-size:15px;margin-top:4px}
+.lf form{display:grid;gap:14px;margin-top:20px}
+.lf .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fld label{display:block;font-size:14px;font-weight:600;color:#334155;margin-bottom:6px}
+.fld label em{font-style:normal;color:var(--muted);font-weight:400}
+.fld input,.fld select{width:100%;height:48px;border:1px solid #cbd5e1;border-radius:10px;padding:0 14px;background:#fff;font-size:16px}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px var(--p-soft)}
+.fld.err input,.fld.err select{border-color:#dc2626}
+.fld .em{display:none;color:#dc2626;font-size:13px;margin-top:4px}
+.fld.err .em{display:block}
+.tel{display:flex}
+.tel span{display:flex;align-items:center;padding:0 12px;border:1px solid #cbd5e1;border-right:0;border-radius:10px 0 0 10px;background:var(--bg2);color:#334155;font-weight:600}
+.tel input{border-radius:0 10px 10px 0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.consent{font-size:13px;color:var(--muted)}
+.form-err{display:none;background:#fef2f2;color:#991b1b;border:1px solid #fecaca;border-radius:10px;padding:10px 12px;font-size:14px}
+.done{display:none;text-align:center;padding:12px 0}
+.done .tick{width:56px;height:56px;margin:0 auto;border-radius:50%;background:var(--g-soft);color:var(--g);display:flex;align-items:center;justify-content:center}
+.done h3{margin-top:14px}
+.done p{color:var(--muted);margin-top:6px;font-size:15px}
+.done .btn{margin-top:18px}
+.lf.ok form,.lf.ok .lf-head{display:none}
+.lf.ok .done{display:block}
+
+/* Popup */
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;visibility:hidden;opacity:0;transition:opacity .2s,visibility 0s .2s}
+.modal.open{visibility:visible;opacity:1;transition:opacity .2s}
+.modal .scrim{position:absolute;inset:0;background:rgba(15,23,42,.55)}
+.modal .box{position:relative;width:100%;max-width:480px;max-height:calc(100vh - 32px);overflow:auto;transform:translateY(12px) scale(.98);transition:transform .25s}
+.modal.open .box{transform:none}
+.modal .lf{padding-top:26px}
+.modal .fld-opt{display:none}
+.modal .row{grid-template-columns:1fr}
+.modal .x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:var(--bg2);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1}
+.modal .offer{display:inline-flex;gap:6px;align-items:center;font-size:13px;font-weight:700;color:var(--g);background:var(--g-soft);padding:4px 10px;border-radius:999px;margin-bottom:10px}
+
+/* Floating actions */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:40;width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -6px rgba(22,163,74,.6)}
+.mbar{display:none}
+
+/* Footer */
+footer{background:var(--dark);color:#94a3b8;font-size:15px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.3fr;gap:32px;padding:56px 0 40px}
+footer h4{color:#fff;font-size:15px;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:9px}
+footer a:hover{color:#fff}
+.fbrand img{height:40px;width:auto;margin-bottom:14px}
+.social{display:flex;gap:10px;margin-top:16px}
+.social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px}
+.fbot nav{display:flex;flex-wrap:wrap;gap:18px}
+
+/* Reveal on scroll (content stays visible without JS) */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}.modal,.modal .box{transition:none}}
+
+/* Responsive */
+@media (max-width:1024px){
+  .nav-links,.nav-phone{display:none}
+  .burger{display:flex}
+  .hero .wrap,.frow,.final .wrap{grid-template-columns:1fr;gap:36px}
+  .frow.rev .ftext{order:0}
+  .inds,.steps{grid-template-columns:repeat(2,1fr)}
+  .grid3,.quotes{grid-template-columns:repeat(2,1fr)}
+  .prices{grid-template-columns:1fr;max-width:480px;margin:0 auto}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fbrand{grid-column:1/-1}
+  .fc1{left:8px}.fc2{right:8px}
+}
+@media (max-width:640px){
+  .sec{padding:56px 0}
+  .head{margin-bottom:32px}
+  .topbar .t-right{display:none}
+  .nav .wrap{height:60px}
+  .nav-cta .btn{display:none}
+  .hero{padding:32px 0 48px}
+  .quick{flex-direction:column}
+  .quick .btn{width:100%}
+  .strip .wrap,.ps{grid-template-columns:1fr 1fr}
+  .ps{grid-template-columns:1fr}
+  .inds{grid-template-columns:1fr 1fr;gap:12px}
+  .ind{padding:16px}
+  .grid3,.quotes,.steps{grid-template-columns:1fr}
+  .lf{padding:22px}
+  .lf .row{grid-template-columns:1fr}
+  .float-card{display:none}
+  .fgrid{grid-template-columns:1fr}
+  .modal{align-items:flex-end;padding:0}
+  .modal .box{max-width:none;max-height:92vh}
+  .modal .lf{padding:22px 20px calc(18px + env(safe-area-inset-bottom))}
+  .modal .lf form{gap:12px;margin-top:14px}
+  .modal .lf{border-radius:20px 20px 0 0}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
+  .mbar .btn{height:46px;width:100%}
+  .wa-float{bottom:84px;width:52px;height:52px}
+  body{padding-bottom:70px}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>✨ Free demo for salons, restaurants &amp; cafés</span>
+    <span class="t-right">Sales &amp; support: <a href="tel:+919864773099" class="js-phone">+91 98647 73099</a></span>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="Reynrel home">
+      <img src="/assets/images/reynrel-logo-icon.png" alt="" width="34" height="34">
+      <span>Billing OS<small>by Reynrel Infotech</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#industries">Businesses</a></li>
+      <li><a href="#screens">Screenshots</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+919864773099" class="nav-phone js-phone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 98647 73099</a>
+      <button type="button" class="btn btn-p btn-sm" data-lead="Free demo">Book free demo</button>
+      <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mmenu" aria-label="Mobile">
+    <a href="#features">Features</a><a href="#industries">Businesses</a><a href="#screens">Screenshots</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    <a href="#" data-lead="Free demo">Book free demo</a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><i></i>Billing · Customers · Udhaar · Expenses · Staff</span>
+      <h1>Fast billing software for <span>salons, restaurants &amp; cafés</span></h1>
+      <p class="lead">Billing OS is a touch-first point of sale built around the bill, not the stockroom. Bill in seconds, recognise regular customers, track udhaar, record expenses and salaries, and see what your business actually earns.</p>
+      <form class="quick" id="quickForm" novalidate>
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" aria-label="Your name" required>
+        <input type="tel" name="phone" placeholder="Mobile number" inputmode="tel" autocomplete="tel-national" aria-label="Mobile number" required>
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-p" type="submit">Get free demo</button>
+      </form>
+      <p class="quick-note">We'll call you within 1 working day and show Billing OS set up for your business.</p>
+      <p class="quick-msg" id="quickMsg" role="status"></p>
+      <ul class="hero-points">
+        <li class="check">Desktop, tablet &amp; phone</li>
+        <li class="check">GST bills &amp; thermal receipts</li>
+        <li class="check">Keeps billing when the network drops</li>
+      </ul>
+    </div>
+    <div class="hero-visual">
+      <figure class="shot" data-label="Screenshot: POS billing screen — 1600 × 1000 px (hero-pos.png)">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="/products/billing-os/images/hero-pos.png" alt="Billing OS POS screen with product grid, categories, customer and bill" width="1600" height="1000" fetchpriority="high" onerror="this.parentNode.classList.add('missing')">
+      </figure>
+      <div class="float-card fc1"><span class="dot" style="background:#ecfdf5;color:#059669">✓</span><span>Bill paid · UPI<b>₹759</b></span></div>
+      <div class="float-card fc2"><span class="dot" style="background:#eef2ff;color:#4338ca">★</span><span>Regular customer<b>14th visit</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="strip" aria-label="Highlights">
+  <div class="wrap">
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg><span><b>Bill in seconds</b>Touch, search or scan</span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><b>No duplicate bills</b>Even on double taps</span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg><span><b>Thermal receipts</b>2" (58 mm) · 3" (80 mm)</span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg><span><b>Real profit</b>After cost &amp; expenses</span></div>
+  </div>
+</section>
+
+<!-- BUSINESSES -->
+<section class="sec" id="industries">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Made for consumption businesses</span>
+      <h2>For businesses that sell services and fresh items</h2>
+      <p class="lead">No batches, no stock registers, no purchase entries slowing down the counter. Just fast bills, happy regulars and clear numbers.</p>
+    </div>
+    <div class="inds rv">
+      <div class="ind"><div class="em">💇</div><h3>Salons</h3><p>Services, staff "served by" and commission.</p></div>
+      <div class="ind"><div class="em">💅</div><h3>Beauty parlours &amp; spas</h3><p>Regular clients, visit history and dues.</p></div>
+      <div class="ind"><div class="em">🍽️</div><h3>Restaurants</h3><p>Dine-in, takeaway, tables and running bills.</p></div>
+      <div class="ind"><div class="em">☕</div><h3>Cafés</h3><p>Quick touch billing with item notes.</p></div>
+      <div class="ind"><div class="em">🥤</div><h3>Juice &amp; beverage shops</h3><p>Popular items one tap away at rush hour.</p></div>
+      <div class="ind"><div class="em">🍰</div><h3>Bakeries &amp; sweet shops</h3><p>Photos, categories and simple stock counts.</p></div>
+      <div class="ind"><div class="em">🍔</div><h3>Food stalls &amp; QSR</h3><p>Billing on a phone or tablet at the counter.</p></div>
+      <div class="ind"><div class="em">🍨</div><h3>Ice-cream &amp; desserts</h3><p>Split payments and UPI QR on screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="sec alt" id="why">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Why Billing OS</span>
+      <h2>Busy counter, but no idea what you really earn?</h2>
+      <p class="lead">Most billing software is built for shops with stockrooms. Salons, restaurants and cafés need something faster and simpler.</p>
+    </div>
+    <div class="ps rv">
+      <div class="ps-col bad">
+        <h3>The usual problems</h3>
+        <ul>
+          <li><span><b>Slow, complicated billing screens</b>Queues build up while staff search through menus.</span></li>
+          <li><span><b>Regulars and their dues forgotten</b>No record of who visits often or who owes money.</span></li>
+          <li><span><b>Sales known, profit unknown</b>Rent, salaries and purchases sit in a separate notebook.</span></li>
+        </ul>
+      </div>
+      <div class="ps-col good">
+        <h3>With Billing OS</h3>
+        <ul>
+          <li class="check"><span><b>One touch-first billing screen</b>Popular items, photos, big buttons and keyboard shortcuts.</span></li>
+          <li class="check"><span><b>Customers recognised on every bill</b>Visits, usual items and udhaar show as you bill.</span></li>
+          <li class="check"><span><b>Net profit on the dashboard</b>Sales minus cost of items and every expense, including salaries.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE ROWS -->
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Features</span>
+      <h2>Everything from the first bill to the monthly P&amp;L</h2>
+      <p class="lead">One simple app for the counter, the customers, the expenses and the staff.</p>
+    </div>
+
+    <div class="frow rv">
+      <div class="ftext">
+        <span class="tag">POS billing</span>
+        <h3>One screen. Tap, bill, done.</h3>
+        <p>Product grid with pictures, category tabs and a Popular tab of your best sellers from the last 30 days. Search instantly or scan a barcode or short code.</p>
+        <ul>
+          <li class="check">Big quantity steppers, line discounts and item notes like "less sugar"</li>
+          <li class="check">Bill discount in ₹ or %, GST inclusive or exclusive, round-off</li>
+          <li class="check">Cash with quick tender and change, UPI with on-screen QR, card, split or udhaar</li>
+          <li class="check">Hold and resume bills for running tables, pre-bill and reprint</li>
+          <li class="check">Shortcuts: F1 search, F2 pay, F3 hold, F6 customer, F10 reprint</li>
+        </ul>
+      </div>
+      <figure class="shot" data-label="Screenshot: POS billing — 1600 × 1000 px (pos.png)">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="/products/billing-os/images/pos.png" alt="Touch POS screen with popular items, cart, discount and payment options" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+      </figure>
+    </div>
+
+    <div class="frow rev rv">
+      <div class="ftext">
+        <span class="tag">Customers &amp; udhaar</span>
+        <h3>Know your regulars — and what they owe</h3>
+        <p>Bills are walk-in by default. Look up a regular by phone or name, or add one in two taps. Their visits and dues show right on the bill.</p>
+        <ul>
+          <li class="check">Repeat, top-buyer, with-dues, new and lapsed customer lists</li>
+          <li class="check">Visits, lifetime spend, average bill and usual items</li>
+          <li class="check">Credit ledger with credit limits and payments against dues</li>
+          <li class="check">One-tap WhatsApp payment reminders</li>
+        </ul>
+      </div>
+      <figure class="shot" data-label="Screenshot: Customer profile — 1600 × 1000 px (customers.png)">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="/products/billing-os/images/customers.png" alt="Customer profile with visits, lifetime spend, usual items and credit ledger" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+      </figure>
+    </div>
+
+    <div class="frow rv">
+      <div class="ftext">
+        <span class="tag">Expenses &amp; staff</span>
+        <h3>Expenses and salaries in the same place as sales</h3>
+        <p>Record rent, utilities, purchases, marketing and your own categories. Pay salaries, advances and bonuses, and they flow straight into your profit.</p>
+        <ul>
+          <li class="check">Filter expenses by date, category, payment method or text; export to CSV</li>
+          <li class="check">Monthly, weekly, daily, hourly or commission-based pay</li>
+          <li class="check">Suggested salary for any period and full payment history</li>
+          <li class="check">Sales served per staff member and staff commission report</li>
+        </ul>
+      </div>
+      <figure class="shot" data-label="Screenshot: Expenses &amp; employees — 1600 × 1000 px (expenses.png)">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="/products/billing-os/images/expenses.png" alt="Expenses list and employee salary screen" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+      </figure>
+    </div>
+
+    <div class="frow rev rv">
+      <div class="ftext">
+        <span class="tag">Dashboard &amp; reports</span>
+        <h3>See what the business actually earns</h3>
+        <p>Net sales, bills, average bill, net profit after cost and expenses, and credit due — each compared with the previous period.</p>
+        <ul>
+          <li class="check">Sales by hour, day and month; busy hours and order types</li>
+          <li class="check">Top items, top customers, categories and highest dues</li>
+          <li class="check">Profit &amp; loss, day-wise close, item profitability</li>
+          <li class="check">GST report rate-wise and HSN-wise; everything exports to CSV</li>
+        </ul>
+      </div>
+      <figure class="shot" data-label="Screenshot: Dashboard — 1600 × 1000 px (dashboard.png)">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="/products/billing-os/images/dashboard.png" alt="Dashboard with net sales, net profit, expenses, credit due and charts" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+      </figure>
+    </div>
+
+    <div class="frow rv">
+      <div class="ftext">
+        <span class="tag">Thermal receipts</span>
+        <h3>Clean, professional receipts</h3>
+        <p>Layouts for 2-inch (58 mm) and 3-inch (80 mm) printers with a live preview in Settings.</p>
+        <ul>
+          <li class="check">Logo, business details, GSTIN, bill number, cashier, table and order type</li>
+          <li class="check">Items with notes, discount and GST breakup, bold total</li>
+          <li class="check">Payments with change, credit on this bill and total outstanding</li>
+          <li class="check">Optional UPI QR for the unpaid amount, custom header and footer</li>
+        </ul>
+      </div>
+      <figure class="shot" data-label="Screenshot: Receipt preview — 1600 × 1000 px (receipt.png)">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="/products/billing-os/images/receipt.png" alt="Thermal receipt preview with logo, items, GST and UPI QR" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- RELIABILITY & MORE -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Built to be reliable</span>
+      <h2>Rush hour proof</h2>
+      <p class="lead">Billing OS is designed for busy counters, flaky networks and staff in a hurry.</p>
+    </div>
+    <div class="grid3 rv">
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></div><h3>No duplicate bills</h3><p>Double taps, retries and slow networks can never create a second bill, payment or expense.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/><path d="M2 2l20 20"/></svg></div><h3>Keeps billing offline</h3><p>If the server can't be reached, bills wait in an outbox on the device and sync automatically.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Opens instantly</h3><p>Menu, categories and settings are cached on the device, so the POS is ready the moment you open it.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Bills can't be edited</h3><p>Issued bills are locked. Voids need a reason and returns are separate, audited records.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Roles &amp; permissions</h3><p>Admin, Manager, Cashier, Accountant and Employee, with an editable permission matrix.</p></div>
+      <div class="card"><div class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4z"/></svg></div><h3>Fits your business</h3><p>Switch on order types, table numbers, "served by" staff and your own custom fields.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="sec" id="screens">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Screenshots</span>
+      <h2>Works on desktop, tablet and phone</h2>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Screenshots">
+      <button class="tab" role="tab" id="t-pos" aria-controls="p-pos" aria-selected="true">POS</button>
+      <button class="tab" role="tab" id="t-dash" aria-controls="p-dash" aria-selected="false" tabindex="-1">Dashboard</button>
+      <button class="tab" role="tab" id="t-cust" aria-controls="p-cust" aria-selected="false" tabindex="-1">Customers</button>
+      <button class="tab" role="tab" id="t-rep" aria-controls="p-rep" aria-selected="false" tabindex="-1">Reports</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p-pos" aria-labelledby="t-pos">
+      <figure class="shot" data-label="Screenshot: POS — 1600 × 1000 px (pos.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/pos.png" alt="Billing OS POS screen" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Touch-first billing with photos, categories and a Popular tab.</p>
+    </div>
+    <div class="panel" role="tabpanel" id="p-dash" aria-labelledby="t-dash" hidden>
+      <figure class="shot" data-label="Screenshot: Dashboard — 1600 × 1000 px (dashboard.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/dashboard.png" alt="Billing OS dashboard" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Net sales, net profit, expenses and credit due at a glance.</p>
+    </div>
+    <div class="panel" role="tabpanel" id="p-cust" aria-labelledby="t-cust" hidden>
+      <figure class="shot" data-label="Screenshot: Customers — 1600 × 1000 px (customers.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/customers.png" alt="Billing OS customer segments and profile" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Repeat, top, with-dues, new and lapsed customers.</p>
+    </div>
+    <div class="panel" role="tabpanel" id="p-rep" aria-labelledby="t-rep" hidden>
+      <figure class="shot" data-label="Screenshot: Reports — 1600 × 1000 px (reports.png)"><div class="bar"><i></i><i></i><i></i></div><img src="/products/billing-os/images/reports.png" alt="Billing OS profit and loss, day close and GST reports" width="1600" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></figure>
+      <p>Profit &amp; loss, day-wise close, item profitability and GST.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec alt" id="how">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Get started</span>
+      <h2>Billing from day one</h2>
+      <p class="lead">Runs as a desktop app on one machine, or on a server for use from any device.</p>
+    </div>
+    <ol class="steps rv">
+      <li><h3>Book a free demo</h3><p>We understand your business and show Billing OS with a sample menu like yours.</p></li>
+      <li><h3>We set it up</h3><p>Installation on your PC or server, with your thermal printer configured.</p></li>
+      <li><h3>Add your menu</h3><p>Items with photos, categories, prices and GST — or start from a café or salon demo catalogue.</p></li>
+      <li><h3>Start billing</h3><p>Bill, track customers, record expenses and watch your profit from day one.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Pricing</span>
+      <h2>Simple yearly licence. No per-bill fees.</h2>
+      <p class="lead">Pricing depends on how many counters and devices you use. Tell us about your business and we'll send a quote.</p>
+    </div>
+    <div class="prices rv">
+      <div class="price">
+        <h3>Free demo</h3>
+        <p class="desc">See Billing OS set up for your business.</p>
+        <div class="amt">₹0</div>
+        <ul>
+          <li class="check">Live demo on call or video</li>
+          <li class="check">Sample café or salon menu</li>
+          <li class="check">Answers to all your questions</li>
+        </ul>
+        <button type="button" class="btn btn-o" data-lead="Free demo">Book free demo</button>
+      </div>
+      <div class="price hot">
+        <span class="badge">Most popular</span>
+        <h3>Single counter</h3>
+        <p class="desc">Desktop app for one billing counter.</p>
+        <div class="amt" style="font-size:28px">Ask for price <small>/ year</small></div>
+        <ul>
+          <li class="check">All features included</li>
+          <li class="check">Thermal receipts (2" / 3")</li>
+          <li class="check">Customers, udhaar, expenses &amp; staff</li>
+          <li class="check">Reports with CSV export</li>
+          <li class="check">Installation &amp; support</li>
+        </ul>
+        <button type="button" class="btn btn-p" data-lead="Single counter">Get a quote</button>
+      </div>
+      <div class="price">
+        <h3>Multi-device</h3>
+        <p class="desc">Billing from several counters, tablets or phones.</p>
+        <div class="amt" style="font-size:28px">Ask for price <small>/ year</small></div>
+        <ul>
+          <li class="check">Everything in Single counter</li>
+          <li class="check">Web app on your server</li>
+          <li class="check">Roles and permissions per user</li>
+          <li class="check">Staff training</li>
+        </ul>
+        <button type="button" class="btn btn-o" data-lead="Multi-device">Talk to sales</button>
+      </div>
+    </div>
+    <p class="price-note">Questions? Call <a href="tel:+919864773099" class="js-phone" style="color:var(--p);font-weight:600">+91 98647 73099</a> or <a href="#" data-lead="Pricing question" style="color:var(--p);font-weight:600">request a callback</a>.</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Compare</span>
+      <h2>Retail billing software vs Billing OS</h2>
+    </div>
+    <div class="cmp-wrap rv">
+      <table class="cmp">
+        <thead><tr><th scope="col"></th><th scope="col">Typical retail software</th><th scope="col">Billing OS</th></tr></thead>
+        <tbody>
+          <tr><td>Billing screen</td><td>Forms, batches and stock pickers</td><td>One touch-first screen</td></tr>
+          <tr><td>Regular customers</td><td>Just a name on an invoice</td><td>Visits, spend, usual items, dues</td></tr>
+          <tr><td>Expenses &amp; salaries</td><td>Kept somewhere else</td><td>Built in, part of profit</td></tr>
+          <tr><td>Staff</td><td>User logins only</td><td>Salary, advances, commission</td></tr>
+          <tr><td>Network drops</td><td>Billing stops</td><td>Bills queue and sync later</td></tr>
+          <tr><td>Profit</td><td>Sales only</td><td>Net profit after cost &amp; expenses</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Which businesses is Billing OS for?</summary><p>Salons, beauty parlours, restaurants, cafés, juice and beverage shops and similar businesses that sell services or prepared items. For shops that need batch, expiry and purchase tracking, see our Inventory Management software.</p></details>
+      <details><summary>Does it work on a phone or tablet?</summary><p>Yes. It runs as a desktop app on one machine, or as a web app on a server that you can use from desktops, tablets and phones.</p></details>
+      <details><summary>What happens if the internet or network goes down?</summary><p>Billing continues. Bills are saved in an outbox on the device and sync automatically when the connection returns, and a provisional receipt can still be printed.</p></details>
+      <details><summary>Does it support GST?</summary><p>Yes. Each item has a GST rate and can be priced inclusive or exclusive of GST. Receipts show the GST breakup and the GST report is available rate-wise and HSN-wise.</p></details>
+      <details><summary>Can I track customer credit (udhaar)?</summary><p>Yes. Put the balance on a customer's credit ledger with credit-limit checks, receive payments against dues and send WhatsApp reminders.</p></details>
+      <details><summary>Can I manage staff salaries?</summary><p>Yes. Set each employee's pay basis, see a suggested salary for any period and record salary, advance and bonus payments. They count as expenses in your profit.</p></details>
+      <details><summary>Which printers are supported?</summary><p>2-inch (58 mm) and 3-inch (80 mm) thermal receipt printers. Receipts print silently from the desktop app.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA + LEAD FORM -->
+<section class="sec final" id="demo">
+  <div class="wrap">
+    <div class="rv">
+      <h2>Ready for faster billing?</h2>
+      <p class="lead">Tell us about your business. We'll call you, show a live demo and help you get started.</p>
+      <ul>
+        <li class="check">Free demo on call or video</li>
+        <li class="check">Setup and printer configuration</li>
+        <li class="check">Training for you and your staff</li>
+      </ul>
+      <p style="margin-top:26px"><a class="btn btn-wa js-wa" href="https://wa.me/919864773099?text=Hi%2C%20I%27m%20interested%20in%20Billing%20OS" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.9 9.9 0 1 1 8.37 4.63m8.42-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+        Chat on WhatsApp</a></p>
+    </div>
+    <div class="lf rv" id="pageLead"></div>
+  </div>
+</section>
+</main>
+
+<!-- Popup lead form -->
+<div class="modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="box" tabindex="-1">
+    <button type="button" class="x" data-close aria-label="Close"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <div class="lf" id="popupLead"></div>
+  </div>
+</div>
+
+<template id="leadTpl">
+  <div class="lf-head">
+    <span class="offer">✓ Free demo · No obligation</span>
+    <h3 data-title>Get a free demo</h3>
+    <p class="sub">Our team will call you within 1 working day.</p>
+  </div>
+  <form novalidate>
+    <div class="fld"><label>Your name</label><input name="name" autocomplete="name" maxlength="100" required><div class="em">Please enter your name</div></div>
+    <div class="fld"><label>Mobile number</label><div class="tel"><span>+91</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="10-digit mobile" required></div><div class="em">Enter a valid 10-digit mobile number</div></div>
+    <div class="row">
+      <div class="fld"><label>Business type</label><select name="businessType"><option value="">Select</option><option>Salon</option><option>Beauty parlour / Spa</option><option>Restaurant</option><option>Café</option><option>Juice &amp; beverage shop</option><option>Bakery / Sweet shop</option><option>Food stall / QSR</option><option>Other</option></select></div>
+      <div class="fld fld-opt"><label>City <em>(optional)</em></label><input name="city" autocomplete="address-level2" maxlength="80"></div>
+    </div>
+    <div class="fld fld-opt"><label>Email <em>(optional)</em></label><input name="email" type="email" autocomplete="email" maxlength="150"><div class="em">Enter a valid email address</div></div>
+    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="form-err" role="alert"></div>
+    <button type="submit" class="btn btn-p">Request free demo</button>
+    <p class="consent">By submitting, you agree that Reynrel may call or WhatsApp you about this request. We never share your details.</p>
+  </form>
+  <div class="done" role="status">
+    <div class="tick"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h3>Thank you! We'll call you soon.</h3>
+    <p>Our team will contact you within 1 working day. Want a faster reply?</p>
+    <a class="btn btn-wa js-wa" href="https://wa.me/919864773099?text=Hi%2C%20I%27m%20interested%20in%20Billing%20OS" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</template>
+
+<a class="wa-float js-wa" href="https://wa.me/919864773099?text=Hi%2C%20I%27m%20interested%20in%20Billing%20OS" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.9 9.9 0 1 1 8.37 4.63m8.42-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+</a>
+
+<div class="mbar">
+  <a class="btn btn-o js-phone" href="tel:+919864773099">Call now</a>
+  <button type="button" class="btn btn-p" data-lead="Free demo">Free demo</button>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <img src="/assets/images/reynrel-logo-png.png" alt="Reynrel Infotech" width="160" height="40" loading="lazy">
+        <p>Your technology partner for business software, apps and digital transformation.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/reynrel" target="_blank" rel="noopener" aria-label="LinkedIn" id="footerLinkedin"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="https://www.instagram.com/reynrel_infotech" target="_blank" rel="noopener" aria-label="Instagram" id="footerInstagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://wa.me/+919864773099" target="_blank" rel="noopener" aria-label="WhatsApp" id="footerWhatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.79a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.9 9.9 0 1 1 8.37 4.63m8.42-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Company</h4><ul><li><a href="/about">About Us</a></li><li><a href="/why-choose-us">Why Choose Us</a></li><li><a href="/client-success">Client Success</a></li><li><a href="/roi-calculator">ROI Calculator</a></li><li><a href="/contact-us">Contact Us</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="/services">Custom App Development</a></li><li><a href="/services">Web Development</a></li><li><a href="/services">Tech Consultation</a></li><li><a href="/services">Support &amp; Maintenance</a></li></ul></div>
+      <div><h4>Products</h4><ul><li><a href="/products/billing-os">Billing OS</a></li><li><a href="/products/inventory-management">Inventory Management</a></li><li><a href="/products">All Products</a></li><li><a href="/android-apps">Android Apps</a></li></ul></div>
+      <div><h4>Contact</h4><ul>
+        <li id="footerAddress">House No. 46, LKRB Path, Nabin Nagar, Guwahati, Assam 781024, India</li>
+        <li><a href="mailto:info.reynrel@gmail.com" id="footerEmail">info.reynrel@gmail.com</a></li>
+        <li><a href="tel:+919864773099" id="footerPhone">+91 9864773099</a></li>
+      </ul></div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr">2026</span> Reynrel Infotech. All rights reserved.</span>
+      <nav aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a><a href="/cookie-policy">Cookie Policy</a><a href="/refund-cancellation">Cancellation &amp; Refund</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var API = location.port === '5173' ? 'http://localhost:4000/api' : '/api';
+  var SOURCE = 'product-billing-os';
+  var POPUP_DELAY_MS = 4000;                 // show the popup 4 seconds after the page opens
+  var DISMISS_DAYS = 3, SUBMITTED_DAYS = 30; // don't nag returning visitors
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  // Accepts pasted numbers like "+91 98765 43210" or "098765 43210".
+  var normPhone = function (v) {
+    var d = String(v).replace(/\D/g, '');
+    if (d.length > 10 && d.indexOf('91') === 0) d = d.slice(2);
+    if (d.length > 10 && d.charAt(0) === '0') d = d.slice(1);
+    return d.slice(0, 10);
+  };
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Campaign attribution kept with the lead.
+  var qs = new URLSearchParams(location.search);
+  var utm = { source: qs.get('utm_source') || '', medium: qs.get('utm_medium') || '', campaign: qs.get('utm_campaign') || '' };
+
+  // ---- Nav ----
+  var nav = $('#nav');
+  var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 10); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  var burger = $('#burger'), mmenu = $('#mmenu');
+  burger.addEventListener('click', function () {
+    var open = mmenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  $$('#mmenu a').forEach(function (a) { a.addEventListener('click', function () { mmenu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
+
+  // ---- Reveal on scroll ----
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.08 });
+    $$('.rv').forEach(function (el) { io.observe(el); });
+  } else { $$('.rv').forEach(function (el) { el.classList.add('in'); }); }
+
+  // ---- Screenshot tabs (keyboard accessible) ----
+  var tabs = $$('[role="tab"]');
+  function selectTab(t) {
+    tabs.forEach(function (x) {
+      var on = x === t;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      var n = tabs[(i + d + tabs.length) % tabs.length]; selectTab(n); n.focus();
+    });
+  });
+
+  // ---- Lead forms ----
+  var tpl = document.getElementById('leadTpl');
+  function mount(host, idPrefix) {
+    host.appendChild(tpl.content.cloneNode(true));
+    $$('.fld', host).forEach(function (f, i) {
+      var input = $('input,select', f), label = $('label', f);
+      input.id = idPrefix + i; label.htmlFor = input.id;
+    });
+    var form = $('form', host);
+    form.addEventListener('submit', function (e) { e.preventDefault(); submitLead(host, form); });
+    $('[name=phone]', form).addEventListener('input', function (e) { e.target.value = normPhone(e.target.value); });
+    $$('input,select', form).forEach(function (el) { el.addEventListener('input', function () { el.closest('.fld') && el.closest('.fld').classList.remove('err'); }); });
+    return host;
+  }
+  var pageLead = mount($('#pageLead'), 'pl');
+  $('[data-title]', pageLead).textContent = 'Request a free demo';
+  var popupLead = mount($('#popupLead'), 'pp');
+  $('[data-title]', popupLead).id = 'leadModalTitle';
+
+  function validate(form) {
+    var ok = true, first = null;
+    var mark = function (name, bad) {
+      var f = $('[name=' + name + ']', form).closest('.fld');
+      f.classList.toggle('err', bad);
+      if (bad) { ok = false; first = first || $('[name=' + name + ']', form); }
+    };
+    mark('name', form.name.value.trim().length < 2);
+    mark('phone', !/^[6-9]\d{9}$/.test(form.phone.value));
+    var em = form.email.value.trim();
+    mark('email', !!em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em));
+    if (first) first.focus();
+    return ok;
+  }
+
+  function submitLead(host, form, extra) {
+    var err = $('.form-err', host);
+    err.style.display = 'none';
+    if (!validate(form)) return;
+    var btn = $('button[type=submit]', form), label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var plan = host.getAttribute('data-plan') || '';
+    var body = Object.assign({
+      name: form.name.value.trim(),
+      phone: form.phone.value,
+      email: form.email.value.trim(),
+      businessType: form.businessType.value,
+      city: form.city.value.trim(),
+      website: form.website.value,
+      service: 'Billing OS' + (plan ? ' — ' + plan : ''),
+      message: plan ? 'Interested in: ' + plan : '',
+      source: host === popupLead ? SOURCE + '-popup' : SOURCE,
+      page: location.pathname,
+      utm: utm
+    }, extra || {});
+    fetch(API + '/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok) throw new Error(d.error || 'Request failed'); return d; }); })
+      .then(function () {
+        host.classList.add('ok');
+        store.set('rl_lead_submitted', String(Date.now()));
+        if (window.gtag) window.gtag('event', 'generate_lead', { form: body.source });
+        if (window.fbq) window.fbq('track', 'Lead');
+      })
+      .catch(function (e) {
+        err.textContent = (e && e.message && e.message !== 'Failed to fetch') ? e.message : 'Could not send. Please check your connection or chat with us on WhatsApp.';
+        err.style.display = 'block';
+      })
+      .then(function () { btn.disabled = false; btn.textContent = label; });
+  }
+
+  // Hero quick form: name + mobile only.
+  var quick = $('#quickForm'), quickMsg = $('#quickMsg');
+  quick.phone.addEventListener('input', function (e) { e.target.value = normPhone(e.target.value); });
+  quick.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = quick.name.value.trim(), phone = quick.phone.value;
+    var show = function (t, ok) { quickMsg.textContent = t; quickMsg.style.color = ok ? '#047857' : '#b91c1c'; quickMsg.style.display = 'block'; };
+    if (name.length < 2) { show('Please enter your name.'); quick.name.focus(); return; }
+    if (!/^[6-9]\d{9}$/.test(phone)) { show('Please enter a valid 10-digit mobile number.'); quick.phone.focus(); return; }
+    var btn = $('button', quick); btn.disabled = true;
+    fetch(API + '/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: name, phone: phone, website: quick.website.value, service: 'Billing OS — Free demo', source: SOURCE, page: location.pathname, utm: utm }) })
+      .then(function (r) { if (!r.ok) throw new Error(); quick.reset(); show('Thank you! We will call you within 1 working day.', true); store.set('rl_lead_submitted', String(Date.now())); })
+      .catch(function () { show('Could not send. Please try again or chat with us on WhatsApp.'); })
+      .then(function () { btn.disabled = false; });
+  });
+
+  // ---- Popup ----
+  var modal = $('#leadModal'), lastFocus = null, timer = null;
+  function openModal(plan, auto) {
+    if (modal.classList.contains('open')) return;
+    clearTimeout(timer);
+    popupLead.setAttribute('data-plan', plan || '');
+    $('[data-title]', popupLead).textContent = plan && plan !== 'Free demo' ? (plan === 'Pricing question' ? 'Ask about pricing' : 'Get a quote — ' + plan) : 'Get a free demo';
+    lastFocus = document.activeElement;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Opened by a click: focus the first field. Opened automatically: focus the dialog only, so phones don't pop up the keyboard.
+    setTimeout(function () { var f = auto ? $('.box', modal) : $('input[name=name]', popupLead); if (f && !popupLead.classList.contains('ok')) f.focus({ preventScroll: true }); }, 60);
+  }
+  function closeModal() {
+    if (!modal.classList.contains('open')) return;
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (!popupLead.classList.contains('ok')) store.set('rl_lead_dismissed', String(Date.now()));
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  $$('[data-close]', modal).forEach(function (el) { el.addEventListener('click', closeModal); });
+  document.addEventListener('keydown', function (e) {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Tab') { // keep focus inside the dialog
+      var f = $$('button,input,select,a[href]', modal).filter(function (x) { return x.offsetParent !== null; });
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+  $$('[data-lead]').forEach(function (b) { b.addEventListener('click', function (e) { e.preventDefault(); openModal(b.getAttribute('data-lead')); }); });
+
+  // Auto-open once, after a short delay, unless the visitor already submitted or recently closed it,
+  // or is busy typing in another form.
+  var days = function (k) { var t = Number(store.get(k)); return t ? (Date.now() - t) / 864e5 : Infinity; };
+  if (days('rl_lead_submitted') > SUBMITTED_DAYS && days('rl_lead_dismissed') > DISMISS_DAYS) {
+    timer = setTimeout(function () {
+      var a = document.activeElement;
+      if (a && (a.tagName === 'INPUT' || a.tagName === 'SELECT')) return;
+      openModal('', true);
+    }, POPUP_DELAY_MS);
+  }
+
+  // ---- Contact details from the admin panel ----
+  fetch(API + '/settings').then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
+    if (!s) return;
+    if (s.address) $('#footerAddress').textContent = s.address;
+    if (s.email) { var e = $('#footerEmail'); e.textContent = s.email; e.href = 'mailto:' + s.email; }
+    if (s.phone) {
+      var tel = 'tel:' + s.phone.replace(/\s+/g, '');
+      var p = $('#footerPhone'); p.textContent = s.phone; p.href = tel;
+      $$('.js-phone').forEach(function (a) { a.href = tel; if (!a.classList.contains('btn')) a.lastChild.textContent = s.phone; });
+    }
+    var sl = s.socialLinks || {};
+    if (sl.linkedin) $('#footerLinkedin').href = sl.linkedin;
+    if (sl.instagram) $('#footerInstagram').href = sl.instagram;
+    if (sl.whatsapp) $('#footerWhatsapp').href = sl.whatsapp;
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

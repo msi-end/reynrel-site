@@ -14,6 +14,8 @@ const sourceLabels = {
   'contact-page': 'Contact Page',
   'product-inventory-management': 'Inventory page',
   'product-inventory-management-popup': 'Inventory page (popup)',
+  'product-billing-os': 'Billing OS page',
+  'product-billing-os-popup': 'Billing OS page (popup)',
   unknown: 'Unknown'
 };
 

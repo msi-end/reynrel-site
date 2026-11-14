@@ -69,6 +69,22 @@ export const DEFAULT_TERMS = `RENDIL PARTNER PROGRAM — TERMS & CONDITIONS
 13. Governing law. Laws of India; courts at Guwahati, Assam.`;
 
 // Starter catalogue. Edit, extend or delete in Admin > Products.
+// From the Billing OS (Consumption POS) README.
+export const BILLING_OS_FEATURES = [
+  ['Billing', 'Touch-first POS', 'Product grid with pictures, category tabs, Popular tab, instant search and barcode / short-code scanning'],
+  ['Billing', 'Payments', 'Cash with change, UPI with on-screen QR, card, split payments or udhaar with credit-limit checks'],
+  ['Billing', 'Hold & resume bills', 'Running tables, pre-bill printing, reprint, order types, table numbers and served-by staff'],
+  ['Billing', 'GST & discounts', 'Line and bill discounts, GST inclusive or exclusive per item, round-off'],
+  ['Customers', 'Regular customers', 'Repeat, top, with-dues, new and lapsed segments; visits, lifetime spend and usual items'],
+  ['Customers', 'Udhaar ledger', 'Credit ledger, payments against dues and WhatsApp reminders'],
+  ['Business', 'Expenses', 'Salary, purchases, rent, utilities, marketing and custom categories with CSV export'],
+  ['Business', 'Employees & salaries', 'Monthly, weekly, daily, hourly or commission pay; advances and bonuses'],
+  ['Reports', 'Dashboard & reports', 'Net sales, net profit, P&L, day-wise close, item profitability, GST and staff commission'],
+  ['System', 'Reliable billing', 'No duplicate bills, offline outbox that syncs automatically, immutable bills with audited voids and returns'],
+  ['System', 'Thermal receipts', '2-inch and 3-inch layouts with logo, GST breakup, dues and optional UPI QR'],
+  ['System', 'Roles & permissions', 'Admin, Manager, Cashier, Accountant and Employee with an editable permission matrix']
+];
+
 export const SEED_PRODUCTS = [
   {
     slug: 'inventory-management',
@@ -101,16 +117,17 @@ export const SEED_PRODUCTS = [
   {
     slug: 'billing-os',
     name: 'Billing OS',
-    category: 'Billing & GST',
+    category: 'Billing & POS',
     icon: 'Receipt',
     status: 'draft',
-    tagline: 'Add the Billing OS tagline',
-    description: 'Draft — add the Billing OS description, plans, services, features and screenshots in Admin > Products. Drafts are hidden from partners.',
+    tagline: 'Touch-first billing for salons, restaurants, cafés and beverage shops',
+    description:
+      'A fast point of sale built around the bill, not the stockroom. Bill quickly, recognise regular customers, track udhaar, record expenses and salaries, and see what the business actually earns. Runs as a desktop app or a web app on desktop, tablet and phone.',
     website_url: 'https://reynrel.in/products/billing-os',
     default_commission_pct: 20,
     renewal_commission_pct: 10,
     plans: [],
     services: [],
-    features: []
+    features: BILLING_OS_FEATURES
   }
 ];
