@@ -1,18 +1,30 @@
 import slugify from './slugify';
 
-export const getProductSlug = (product) => slugify(product?.name || product?.id || '');
+// Product pages live at /products/<slug>.
+// - If a product has a custom HTML page (product.introPage = folder name under
+//   public/products/), that static page is served by the backend at /products/<introPage>.
+// - Otherwise the React page at /products/<slug> is built from the product's data.
+//   The slug is product.slug (editable in Admin > Products) or derived from the name.
 
-// Resolves where a product's "Product Intro" should navigate to.
-// Admins pick a standalone HTML file per product (product.introPage, see
-// ProductsAdmin.jsx / data/productIntroPages.js). If none is set, falls back
-// to the in-app React product intro page built from the product's own data.
+// Values saved before the URL migration ("inventory-manager/") map to the new slugs.
+const LEGACY_INTRO_PAGES = { 'inventory-manager': 'inventory-management' };
+
+export const normalizeIntroPage = (value) => {
+  const v = String(value || '')
+    .trim()
+    .replace(/^\/?(product-intro|products)\//, '')
+    .replace(/\/?(index\.html)?$/, '');
+  return LEGACY_INTRO_PAGES[v] || v;
+};
+
+export const getProductSlug = (product) => {
+  const intro = normalizeIntroPage(product?.introPage);
+  return intro || slugify(product?.slug || product?.name || product?.id || '');
+};
+
 export const getProductIntroLink = (product) => {
-  const introPage = product?.introPage?.trim?.();
-
-  if (introPage) {
-    return { external: true, href: `/product-intro/${introPage}` };
-  }
-
+  const intro = normalizeIntroPage(product?.introPage);
+  if (intro) return { external: true, href: `/products/${intro}` };
   return { external: false, href: `/products/${getProductSlug(product)}` };
 };
 

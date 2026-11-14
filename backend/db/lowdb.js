@@ -64,7 +64,7 @@ const seedProducts = [
       { title: 'Customer Udhar (Khatabook)', description: 'Track customer credit and payments digitally, replacing the paper khatabook' },
       { title: 'Reports & Analytics', description: 'Explore sales, stock and GSTR-ready reports in real time' }
     ],
-    introPage: 'inventory-manager/'
+    introPage: 'inventory-management'
   },
   {
     name: 'CRM Software',
@@ -326,6 +326,18 @@ const seedAndroidApps = [
   }
 ];
 
+// URL slug for a product page: explicit `slug`, else derived from the name.
+// Mirrors frontend/src/utils/productIntro.js so links and the sitemap agree.
+const slugify = (v) => String(v || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+export function productSlug(product) {
+  const intro = String(product?.introPage || '').replace(/^\/?(product-intro|products)\//, '').replace(/\/?(index\.html)?$/, '');
+  if (intro) return LEGACY_INTRO_PAGES[intro] || slugify(intro);
+  return slugify(product?.slug || product?.name);
+}
+
+// Old intro-page values ("inventory-manager/") -> new product page slugs.
+const LEGACY_INTRO_PAGES = { 'inventory-manager/': 'inventory-management', 'inventory-manager': 'inventory-management' };
+
 const adapter = new JSONFile(dbFile);
 export const db = new Low(adapter, defaultData);
 
@@ -378,6 +390,13 @@ export async function initDb() {
   db.data.subscriptions ||= [];
   db.data.renewalRequests ||= [];
   db.data.leads ||= [];
+
+  for (const p of db.data.products || []) {
+    if (p.introPage && LEGACY_INTRO_PAGES[p.introPage]) {
+      p.introPage = LEGACY_INTRO_PAGES[p.introPage];
+      changed = true;
+    }
+  }
 
   if (changed) {
     await db.write();
